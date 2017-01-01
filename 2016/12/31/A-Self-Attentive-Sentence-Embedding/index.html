@@ -17,22 +17,22 @@
 摘要
 本文内容：提出一个新的模型——通过自注意力提取一个可理解的句子嵌入表达
 特点：用2维矩阵来表达句子而不是1维向量，其中矩阵的">
-<meta property="og:image" content="https://frankblood.github.io/./imgs/sentence.png">
-<meta property="og:image" content="https://frankblood.github.io/./imgs/biLSTM.png">
-<meta property="og:image" content="https://frankblood.github.io/./imgs/H.png">
-<meta property="og:image" content="https://frankblood.github.io/./imgs/weight_a.png">
-<meta property="og:image" content="https://frankblood.github.io/./imgs/weights_A.png">
-<meta property="og:image" content="https://frankblood.github.io/./imgs/M.png">
-<meta property="og:image" content="https://frankblood.github.io/./imgs/measure_redundancy.png">
-<meta property="og:image" content="https://frankblood.github.io/./imgs/aij.png">
-<meta property="og:updated_time" content="2016-12-31T09:24:23.964Z">
+<meta property="og:image" content="https://frankblood.github.io/./img/sentence.png">
+<meta property="og:image" content="https://frankblood.github.io/./img/biLSTM.png">
+<meta property="og:image" content="https://frankblood.github.io/./img/H.png">
+<meta property="og:image" content="https://frankblood.github.io/./img/weight_a.png">
+<meta property="og:image" content="https://frankblood.github.io/./img/weights_A.png">
+<meta property="og:image" content="https://frankblood.github.io/./img/M.png">
+<meta property="og:image" content="https://frankblood.github.io/./img/measure_redundancy.png">
+<meta property="og:image" content="https://frankblood.github.io/./img/aij.png">
+<meta property="og:updated_time" content="2017-01-01T11:40:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A_Self_Attentive_Sentence_Embedding">
 <meta name="twitter:description" content="一个自注意力的句子嵌入表达 by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp;amp; Yoshua Bengio for ICLR 2017
 摘要
 本文内容：提出一个新的模型——通过自注意力提取一个可理解的句子嵌入表达
 特点：用2维矩阵来表达句子而不是1维向量，其中矩阵的">
-<meta name="twitter:image" content="https://frankblood.github.io/./imgs/sentence.png">
+<meta name="twitter:image" content="https://frankblood.github.io/./img/sentence.png">
   
     <link rel="alternate" href="/atom.xml" title="Study IR in IRLAB" type="application/atom+xml">
   
@@ -150,20 +150,20 @@
 <li><p>biLSTM</p>
 <blockquote>
 <ul>
-<li>每个句子包含n个字（或者词），每个词用d维的Embedding表示（word2vec/Glove/simple），则这个句子表示为一个2维矩阵。此时，句子中的每个词是独立的。<br><br><img src="./imgs/sentence.png" alt="sentence"></li>
-<li>用双向LSTM(biLSTM)获取单个句子中相邻词的依赖关系。隐藏层的维度是u。<br><br><img src="./imgs/biLSTM.png" alt="biLSTM"></li>
-<li>直接将两个LSTM获得的隐藏层拼接起来，得到n个2u维的向量。<br><br><img src="./imgs/H.png" alt="H"></li>
+<li>每个句子包含n个字（或者词），每个词用d维的Embedding表示（word2vec/Glove/simple），则这个句子表示为一个2维矩阵。此时，句子中的每个词是独立的。<br><br><img src="./img/sentence.png" alt="sentence"></li>
+<li>用双向LSTM(biLSTM)获取单个句子中相邻词的依赖关系。隐藏层的维度是u。<br><br><img src="./img/biLSTM.png" alt="biLSTM"></li>
+<li>直接将两个LSTM获得的隐藏层拼接起来，得到n个2u维的向量。<br><br><img src="./img/H.png" alt="H"></li>
 </ul>
 </blockquote>
 </li>
 <li><p>自注意力机制</p>
 <blockquote>
 <ul>
-<li>目标：将在H中的n个结合LSTM隐藏层的向量进行线性组合，获得一个fixed_size（固定<br>长度）的嵌入式表达。<br><br><img src="./imgs/weight_a.png" alt="weight_a"></li>
+<li>目标：将在H中的n个结合LSTM隐藏层的向量进行线性组合，获得一个fixed_size（固定<br>长度）的嵌入式表达。<br><br><img src="./img/weight_a.png" alt="weight_a"></li>
 <li>这个相当于两层MLP。第一层的输入是H^T（一个2u×n的矩阵），权重是Ws1（一个d×2u&gt;的矩阵）,激活函数是tanh，输出是一个d×n的矩阵;第二层的输入为第一层的输出，权重是ws2（一个d维向量），激活函数是softmax，输出是自注意机制部分的权重a（一个n维向量）<br>。</li>
 <li>将获得的权重a乘以H得到的向量m（一个2u维的向量）作为句子的表达。</li>
-<li>上面的步骤，只能表达句子语义的一个方面或者内容。（这个有点牵强），如果需要从<br>多个方面表示句子的语义信息，则要多个自注意力权重。提取一个句子的r个不同的方面。&gt;将ws2扩展为Ws2（一个r×d的矩阵），得到的自注意力权重从a扩展为A（一个r×n的矩阵）。<br>这里的softmax仅对输入的第二维作用。<br><br><img src="./imgs/weights_A.png" alt="weights_A"></li>
-<li>最后句子的嵌入式表达M（r×2u的矩阵）。<br><br><img src="./imgs/M.png" alt="M"></li>
+<li>上面的步骤，只能表达句子语义的一个方面或者内容。（这个有点牵强），如果需要从<br>多个方面表示句子的语义信息，则要多个自注意力权重。提取一个句子的r个不同的方面。&gt;将ws2扩展为Ws2（一个r×d的矩阵），得到的自注意力权重从a扩展为A（一个r×n的矩阵）。<br>这里的softmax仅对输入的第二维作用。<br><br><img src="./img/weights_A.png" alt="weights_A"></li>
+<li>最后句子的嵌入式表达M（r×2u的矩阵）。<br><br><img src="./img/M.png" alt="M"></li>
 </ul>
 </blockquote>
 </li>
@@ -173,7 +173,7 @@
 <li>Kullback Leibler divergence：权重向量中的任意两个的KL距离是评价多样性的最好的&gt;方法。（不晓得这个距离是个什么鬼！据说计算成本非常大，所以不用这个方法）</li>
 <li><p>评价冗余程度：见下图</p>
 <blockquote>
-<p><img src="./imgs/measure_redundancy.png" alt="measure_redundancy"><br></p>
+<p><img src="./img/measure_redundancy.png" alt="measure_redundancy"><br></p>
 <ul>
 <li>其中，A是自注意力产生的权重矩阵，I是单位阵，之后求Frobenius范数。类似于L2正&gt;则项，惩罚项P将被一个系数相乘，然后之前的loss一起被最小化（这个loss取决于之后的&gt;应用）。</li>
 </ul>
@@ -181,7 +181,7 @@
 </li>
 <li><p>解释：考虑在权重矩阵A中的两个不同的向量a1和a2，因为softmax函数，A中的每个向量&gt;的和应该是1.所以每个向量被视为离散概率分布的概率质量。对AAT任何非对角元素，表示&gt;为：</p>
 <blockquote>
-<p><img src="./imgs/aij.png" alt="aij"><br></p>
+<p><img src="./img/aij.png" alt="aij"><br></p>
 <ul>
 <li>在一种极端情况：两个向量a1和a2没有重叠，那么aij应该是0</li>
 <li>在另一种极端情况：如果两个分布是相同的且都表示单个词，那么其值为1。</li>
@@ -256,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/" data-id="cixd122o700012lh09sucjszi" class="article-share-link">Share</a>
+      <a data-url="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/" data-id="cixel7o900000bfh0j4x0lpur" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embedding-RNN-Attention/">Embedding, RNN, Attention</a></li></ul>
@@ -344,7 +344,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 He Guoxiu<br>
+      &copy; 2017 He Guoxiu<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
