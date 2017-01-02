@@ -91,16 +91,33 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
-<h1 id="利用gensim调用word2vec模型"><a href="#利用gensim调用word2vec模型" class="headerlink" title="利用gensim调用word2vec模型"></a>利用gensim调用word2vec模型</h1><p><strong>Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28</strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2017/01/02/Tutorial-for-Word2vec/#more">Read More</a>
-          </p>
-        
+<h1 id="利用gensim调用word2vec模型"><a href="#利用gensim调用word2vec模型" class="headerlink" title="利用gensim调用word2vec模型"></a>利用gensim调用word2vec模型</h1><p><strong>Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28</strong></p>
+<h2 id="Python2环境配置"><a href="#Python2环境配置" class="headerlink" title="Python2环境配置"></a>Python2环境配置</h2><ul>
+<li>请参照<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001374738150500472fd5785c194ebea336061163a8a974000" target="_blank" rel="external">Python 廖雪峰官网</a></li>
+</ul>
+<h2 id="gensim安装"><a href="#gensim安装" class="headerlink" title="gensim安装"></a>gensim安装</h2><ul>
+<li><code>$ pip install --upgrade gensim</code></li>
+<li>具体参见<a href="http://radimrehurek.com/gensim/install.html" target="_blank" rel="external">gensim Install</a></li>
+</ul>
+<h2 id="下载word2vec模型"><a href="#下载word2vec模型" class="headerlink" title="下载word2vec模型"></a>下载word2vec模型</h2><ul>
+<li>常见的<a href="https://github.com/3Top/word2vec-api" target="_blank" rel="external">模型下载列表</a>，请选择合适的下载即<br>可。</li>
+<li>实验室已下载好一个wikipedia-pubmed-and-PMC-w2v.bin。</li>
+</ul>
+<h2 id="利用gensim调用word2vec模型-1"><a href="#利用gensim调用word2vec模型-1" class="headerlink" title="利用gensim调用word2vec模型"></a>利用gensim调用word2vec模型</h2><ul>
+<li>进入python环境：<code>$ python</code></li>
+<li>导入gensim：<code>import gensim</code></li>
+<li>设置word2vec模型路径：<code>word2vec_path=&#39;./wikipedia-pubmed-and-PMC-w2v.bin&#39;</code></li>
+<li>加载word2vec模型：<code>model = gensim.models.Word2Vec.load_word2vec_format(word2vec_path, binary=True)  # C binary format</code></li>
+<li>获得某个词的词向量：<code>model[&#39;computer&#39;]</code></li>
+<li>获得和某个词最相似的3个词：<code>model.similar_by_word(&#39;computer&#39;, topn=3, restrict_vocab=None)</code></li>
+<li>获得某两个词的相似度：<code>model.similarity(&#39;woman&#39;, &#39;man&#39;)</code></li>
+<li>其他更多请参见<a href="http://radimrehurek.com/gensim/models/word2vec.html" target="_blank" rel="external">gensim官方API</a></li>
+</ul>
+<h1 id="补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…"><a href="#补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…" class="headerlink" title="补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…"></a>补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…</h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/" data-id="cixfvab7y0001yah0vnwuvc8f" class="article-share-link">Share</a>
+      <a data-url="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/" data-id="cixfvf6dh000002h0wjw2fxfx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -283,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/" data-id="cixfvab7u0000yah0jlmz344h" class="article-share-link">Share</a>
+      <a data-url="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/" data-id="cixfvf6dr000402h08oyck78s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Embedding-RNN-Attention/">Embedding, RNN, Attention</a></li></ul>
@@ -324,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://frankblood.github.io/2016/12/31/welcome/" data-id="cixfvab840004yah0js992qmy" class="article-share-link">Share</a>
+      <a data-url="https://frankblood.github.io/2016/12/31/welcome/" data-id="cixfvf6dq000302h0tydnoe5u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/soul/">soul</a></li></ul>
@@ -371,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://frankblood.github.io/2016/12/31/hello-world/" data-id="cixfvab820003yah0rleuj81w" class="article-share-link">Share</a>
+      <a data-url="https://frankblood.github.io/2016/12/31/hello-world/" data-id="cixfvf6dl000102h0fl0kd3xt" class="article-share-link">Share</a>
       
       
     </footer>
