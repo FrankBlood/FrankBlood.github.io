@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Tutorial,Word2vec,Tools," />
+  <meta name="keywords" content="RNN,Tutorial,Code," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="&amp;#x5229;&amp;#x7528;gensim&amp;#x8C03;&amp;#x7528;word2vec&amp;#x6A21;&amp;#x578B;Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28">
+<meta name="description" content="Tutorial for RNNRNN&amp;#x7684;&amp;#x7B80;&amp;#x4ECB;&amp;#xFF0C;&amp;#x6570;&amp;#x5B66;&amp;#x539F;&amp;#x7406;&amp;#xFF0C;&amp;#x4EE3;&amp;#x7801;&amp;#x5B9E;&amp;#x73B0; by Guoxiu for starting learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tutorial-for-Word2vec">
-<meta property="og:url" content="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/index.html">
+<meta property="og:title" content="Tutorial-for-RNN">
+<meta property="og:url" content="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/index.html">
 <meta property="og:site_name" content="Study IR in IRLAB">
-<meta property="og:description" content="&amp;#x5229;&amp;#x7528;gensim&amp;#x8C03;&amp;#x7528;word2vec&amp;#x6A21;&amp;#x578B;Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28">
-<meta property="og:image" content="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/avatar.png">
-<meta property="og:updated_time" content="2017-01-03T03:21:36.958Z">
+<meta property="og:description" content="Tutorial for RNNRNN&amp;#x7684;&amp;#x7B80;&amp;#x4ECB;&amp;#xFF0C;&amp;#x6570;&amp;#x5B66;&amp;#x539F;&amp;#x7406;&amp;#xFF0C;&amp;#x4EE3;&amp;#x7801;&amp;#x5B9E;&amp;#x73B0; by Guoxiu for starting learning">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/diags.jpeg">
+<meta property="og:updated_time" content="2017-01-03T03:19:03.863Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tutorial-for-Word2vec">
-<meta name="twitter:description" content="&amp;#x5229;&amp;#x7528;gensim&amp;#x8C03;&amp;#x7528;word2vec&amp;#x6A21;&amp;#x578B;Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28">
-<meta name="twitter:image" content="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/avatar.png">
+<meta name="twitter:title" content="Tutorial-for-RNN">
+<meta name="twitter:description" content="Tutorial for RNNRNN&amp;#x7684;&amp;#x7B80;&amp;#x4ECB;&amp;#xFF0C;&amp;#x6570;&amp;#x5B66;&amp;#x539F;&amp;#x7406;&amp;#xFF0C;&amp;#x4EE3;&amp;#x7801;&amp;#x5B9E;&amp;#x73B0; by Guoxiu for starting learning">
+<meta name="twitter:image" content="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/diags.jpeg">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/"/>
+  <link rel="canonical" href="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/"/>
 
 
 
 
 
-  <title> Tutorial-for-Word2vec | Study IR in IRLAB </title>
+  <title> Tutorial-for-RNN | Study IR in IRLAB </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +262,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="He Guoxiu">
@@ -286,7 +286,7 @@
             
             
               
-                Tutorial-for-Word2vec
+                Tutorial-for-RNN
               
             
           </h1>
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-02T17:02:37+08:00">
-                2017-01-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-03T11:02:45+08:00">
+                2017-01-03
               </time>
             
 
@@ -359,28 +359,15 @@
       
 
       
-        <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
-<h1 id="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;"><a href="#&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;" class="headerlink" title="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;"></a>&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;</h1><p><strong>Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28</strong><br><a id="more"></a></p>
-<h2 id="Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;"><a href="#Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;" class="headerlink" title="Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;"></a>Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;</h2><ul>
-<li>&#x8BF7;&#x53C2;&#x7167;<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001374738150500472fd5785c194ebea336061163a8a974000" target="_blank" rel="external">Python &#x5ED6;&#x96EA;&#x5CF0;&#x5B98;&#x7F51;</a></li>
+        <h1 id="Tutorial-for-RNN"><a href="#Tutorial-for-RNN" class="headerlink" title="Tutorial for RNN"></a>Tutorial for RNN</h1><p><strong>RNN&#x7684;&#x7B80;&#x4ECB;&#xFF0C;&#x6570;&#x5B66;&#x539F;&#x7406;&#xFF0C;&#x4EE3;&#x7801;&#x5B9E;&#x73B0; by Guoxiu for starting learning</strong><br><br><a id="more"></a></p>
+<h2 id="&#x58F0;&#x660E;"><a href="#&#x58F0;&#x660E;" class="headerlink" title="&#x58F0;&#x660E;"></a>&#x58F0;&#x660E;</h2><p><strong>&#x672C;&#x6587;&#x53C2;&#x7167;&#x4E86;<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="external">Understanding LSTM Networks</a>&#x548C;<a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/" target="_blank" rel="external">The Unreasonable Effectiveness of Recurrent Neural Networks</a></strong><br><br>&#x60F3;&#x6DF1;&#x5165;&#x5B66;&#x4E60;&#x7684;&#x540C;&#x5B66;&#xFF0C;&#x5EFA;&#x8BAE;&#x9605;&#x8BFB;&#x4EE5;&#x4E0A;&#x4E24;&#x4E2A;&#x535A;&#x5BA2;&#x6216;&#x8005;&#x76F8;&#x5173;&#x8BBA;&#x6587;&#x3002;</p>
+<h2 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h2><ul>
+<li>RNN&#x53EF;&#x4EE5;&#x5BF9;&#x5E8F;&#x5217;&#x4E2D;&#x524D;&#x4E00;&#x4E2A;&#x8F93;&#x5165;&#x5BF9;&#x5F53;&#x524D;&#x8F93;&#x5165;&#x7684;&#x5F71;&#x54CD;&#x8FDB;&#x884C;&#x5EFA;&#x6A21;</li>
+<li>RNN&#x5929;&#x751F;&#x9002;&#x5408;&#x8BED;&#x8A00;&#x6A21;&#x578B;</li>
+<li>&#x57FA;&#x4E8E;RNN&#x7684;seq2seq&#x548C;attention&#x673A;&#x5236;&#x5728;&#x6587;&#x672C;&#x8868;&#x8FBE;&#x4E0A;&#x53D6;&#x5F97;&#x4E86;&#x6781;&#x5927;&#x7684;&#x8FDB;&#x5C55;</li>
 </ul>
-<h2 id="gensim&#x5B89;&#x88C5;"><a href="#gensim&#x5B89;&#x88C5;" class="headerlink" title="gensim&#x5B89;&#x88C5;"></a>gensim&#x5B89;&#x88C5;</h2><ul>
-<li><code>$ pip install --upgrade gensim</code></li>
-<li>&#x5177;&#x4F53;&#x53C2;&#x89C1;<a href="http://radimrehurek.com/gensim/install.html" target="_blank" rel="external">gensim Install</a></li>
-</ul>
-<h2 id="&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;"><a href="#&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;" class="headerlink" title="&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;"></a>&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;</h2><ul>
-<li>&#x5E38;&#x89C1;&#x7684;<a href="https://github.com/3Top/word2vec-api" target="_blank" rel="external">&#x6A21;&#x578B;&#x4E0B;&#x8F7D;&#x5217;&#x8868;</a>&#xFF0C;&#x8BF7;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x4E0B;&#x8F7D;&#x5373;<br>&#x53EF;&#x3002;</li>
-<li>&#x5B9E;&#x9A8C;&#x5BA4;&#x5DF2;&#x4E0B;&#x8F7D;&#x597D;&#x4E00;&#x4E2A;wikipedia-pubmed-and-PMC-w2v.bin&#x3002;</li>
-</ul>
-<h2 id="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;-1"><a href="#&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;-1" class="headerlink" title="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;"></a>&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;</h2><ul>
-<li>&#x8FDB;&#x5165;python&#x73AF;&#x5883;&#xFF1A;<code>$ python</code></li>
-<li>&#x5BFC;&#x5165;gensim&#xFF1A;<code>import gensim</code></li>
-<li>&#x8BBE;&#x7F6E;word2vec&#x6A21;&#x578B;&#x8DEF;&#x5F84;&#xFF1A;<code>word2vec_path=&apos;./wikipedia-pubmed-and-PMC-w2v.bin&apos;</code></li>
-<li>&#x52A0;&#x8F7D;word2vec&#x6A21;&#x578B;&#xFF1A;<code>model = gensim.models.Word2Vec.load_word2vec_format(word2vec_path, binary=True)  # C binary format</code></li>
-<li>&#x83B7;&#x5F97;&#x67D0;&#x4E2A;&#x8BCD;&#x7684;&#x8BCD;&#x5411;&#x91CF;&#xFF1A;<code>model[&apos;computer&apos;]</code></li>
-<li>&#x83B7;&#x5F97;&#x548C;&#x67D0;&#x4E2A;&#x8BCD;&#x6700;&#x76F8;&#x4F3C;&#x7684;3&#x4E2A;&#x8BCD;&#xFF1A;<code>model.similar_by_word(&apos;computer&apos;, topn=3, restrict_vocab=None)</code></li>
-<li>&#x83B7;&#x5F97;&#x67D0;&#x4E24;&#x4E2A;&#x8BCD;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#xFF1A;<code>model.similarity(&apos;woman&apos;, &apos;man&apos;)</code></li>
-<li>&#x5176;&#x4ED6;&#x66F4;&#x591A;&#x8BF7;&#x53C2;&#x89C1;<a href="http://radimrehurek.com/gensim/models/word2vec.html" target="_blank" rel="external">gensim&#x5B98;&#x65B9;API</a><br><br><img src="/2017/01/02/Tutorial-for-Word2vec/avatar.png" alt="avatar"><h1 id="&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;"><a href="#&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;" class="headerlink" title="&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;"></a>&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;</h1></li>
+<h2 id="&#x539F;&#x7406;"><a href="#&#x539F;&#x7406;" class="headerlink" title="&#x539F;&#x7406;"></a>&#x539F;&#x7406;</h2><ul>
+<li>&#x5E38;&#x89C1;RNN&#x6A21;&#x578B;&#x5BF9;&#x6BD4;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;<br><br><img src="/2017/01/03/Tutorial-for-RNN/diags.jpeg" alt="diags.jpeg"></li>
 </ul>
 
       
@@ -405,11 +392,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/RNN/" rel="tag"># RNN</a>
+          
             <a href="/tags/Tutorial/" rel="tag"># Tutorial</a>
           
-            <a href="/tags/Word2vec/" rel="tag"># Word2vec</a>
-          
-            <a href="/tags/Tools/" rel="tag"># Tools</a>
+            <a href="/tags/Code/" rel="tag"># Code</a>
           
         </div>
       
@@ -418,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/31/A-Self-Attentive-Sentence-Embedding/" rel="next" title="A_Self_Attentive_Sentence_Embedding">
-                <i class="fa fa-chevron-left"></i> A_Self_Attentive_Sentence_Embedding
+              <a href="/2017/01/03/report-for-data-mining/" rel="next" title="report_for_data_mining">
+                <i class="fa fa-chevron-left"></i> report_for_data_mining
               </a>
             
           </div>
@@ -427,10 +414,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/02/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -553,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用gensim调用word2vec模型"><span class="nav-number">1.</span> <span class="nav-text">利用gensim调用word2vec模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python2环境配置"><span class="nav-number">1.1.</span> <span class="nav-text">Python2环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gensim安装"><span class="nav-number">1.2.</span> <span class="nav-text">gensim安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载word2vec模型"><span class="nav-number">1.3.</span> <span class="nav-text">下载word2vec模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用gensim调用word2vec模型-1"><span class="nav-number">1.4.</span> <span class="nav-text">利用gensim调用word2vec模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…"><span class="nav-number">2.</span> <span class="nav-text">补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tutorial-for-RNN"><span class="nav-number">1.</span> <span class="nav-text">Tutorial for RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明"><span class="nav-number">1.1.</span> <span class="nav-text">声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.3.</span> <span class="nav-text">原理</span></a></li></ol></li></ol></div>
             
 
           </div>
