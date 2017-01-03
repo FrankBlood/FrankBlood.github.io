@@ -84,25 +84,25 @@
 
 
 
-<meta name="description" content="一个自注意力的句子嵌入表达 by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp;amp; Yoshua Bengio for ICLR 2017">
+<meta name="description" content="&amp;#x4E00;&amp;#x4E2A;&amp;#x81EA;&amp;#x6CE8;&amp;#x610F;&amp;#x529B;&amp;#x7684;&amp;#x53E5;&amp;#x5B50;&amp;#x5D4C;&amp;#x5165;&amp;#x8868;&amp;#x8FBE; by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp;amp; Yo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A_Self_Attentive_Sentence_Embedding">
 <meta property="og:url" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/index.html">
 <meta property="og:site_name" content="Study IR in IRLAB">
-<meta property="og:description" content="一个自注意力的句子嵌入表达 by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp;amp; Yoshua Bengio for ICLR 2017">
-<meta property="og:image" content="https://frankblood.github.io/./img/sentence.png">
-<meta property="og:image" content="https://frankblood.github.io/./img/biLSTM.png">
-<meta property="og:image" content="https://frankblood.github.io/./img/H.png">
-<meta property="og:image" content="https://frankblood.github.io/./img/weight_a.png">
-<meta property="og:image" content="https://frankblood.github.io/./img/weights_A.png">
-<meta property="og:image" content="https://frankblood.github.io/./img/M.png">
-<meta property="og:image" content="https://frankblood.github.io/./img/measure_redundancy.png">
-<meta property="og:image" content="https://frankblood.github.io/./img/aij.png">
+<meta property="og:description" content="&amp;#x4E00;&amp;#x4E2A;&amp;#x81EA;&amp;#x6CE8;&amp;#x610F;&amp;#x529B;&amp;#x7684;&amp;#x53E5;&amp;#x5B50;&amp;#x5D4C;&amp;#x5165;&amp;#x8868;&amp;#x8FBE; by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp;amp; Yo">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/sentence.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/biLSTM.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/H.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/weight_a.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/weights_A.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/M.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/measure_redundancy.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/aij.png">
 <meta property="og:updated_time" content="2017-01-02T10:13:07.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A_Self_Attentive_Sentence_Embedding">
-<meta name="twitter:description" content="一个自注意力的句子嵌入表达 by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp;amp; Yoshua Bengio for ICLR 2017">
-<meta name="twitter:image" content="https://frankblood.github.io/./img/sentence.png">
+<meta name="twitter:description" content="&amp;#x4E00;&amp;#x4E2A;&amp;#x81EA;&amp;#x6CE8;&amp;#x610F;&amp;#x529B;&amp;#x7684;&amp;#x53E5;&amp;#x5B50;&amp;#x5D4C;&amp;#x5165;&amp;#x8868;&amp;#x8FBE; by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp;amp; Yo">
+<meta name="twitter:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/sentence.png">
 
 
 
@@ -324,125 +324,125 @@
       
 
       
-        <p><strong>一个自注意力的句子嵌入表达 by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp; Yoshua Bengio for ICLR 2017</strong><br><a id="more"></a></p>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
-<li><strong>本文内容：</strong>提出一个新的模型——通过自注意力提取一个可理解的句子嵌入表达</li>
-<li>特点：用2维矩阵来表达句子而不是1维向量，其中矩阵的每一行表示句子的不同方面的特<br>征</li>
-<li>创新：模型中使用自注意力机制和一个特殊的正则项</li>
-<li>评价：在三个不同的任务中进行评测——author profiling / sentiment classification / textual entailment</li>
-<li>结果：结果很好哟</li>
+        <p><strong>&#x4E00;&#x4E2A;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x7684;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE; by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp; Yoshua Bengio for ICLR 2017</strong><br><a id="more"></a></p>
+<h2 id="&#x6458;&#x8981;"><a href="#&#x6458;&#x8981;" class="headerlink" title="&#x6458;&#x8981;"></a>&#x6458;&#x8981;</h2><ul>
+<li><strong>&#x672C;&#x6587;&#x5185;&#x5BB9;&#xFF1A;</strong>&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6A21;&#x578B;&#x2014;&#x2014;&#x901A;&#x8FC7;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x63D0;&#x53D6;&#x4E00;&#x4E2A;&#x53EF;&#x7406;&#x89E3;&#x7684;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;</li>
+<li>&#x7279;&#x70B9;&#xFF1A;&#x7528;2&#x7EF4;&#x77E9;&#x9635;&#x6765;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x800C;&#x4E0D;&#x662F;1&#x7EF4;&#x5411;&#x91CF;&#xFF0C;&#x5176;&#x4E2D;&#x77E9;&#x9635;&#x7684;&#x6BCF;&#x4E00;&#x884C;&#x8868;&#x793A;&#x53E5;&#x5B50;&#x7684;&#x4E0D;&#x540C;&#x65B9;&#x9762;&#x7684;&#x7279;<br>&#x5F81;</li>
+<li>&#x521B;&#x65B0;&#xFF1A;&#x6A21;&#x578B;&#x4E2D;&#x4F7F;&#x7528;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x548C;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x6B63;&#x5219;&#x9879;</li>
+<li>&#x8BC4;&#x4EF7;&#xFF1A;&#x5728;&#x4E09;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x4EFB;&#x52A1;&#x4E2D;&#x8FDB;&#x884C;&#x8BC4;&#x6D4B;&#x2014;&#x2014;author profiling / sentiment classification / textual entailment</li>
+<li>&#x7ED3;&#x679C;&#xFF1A;&#x7ED3;&#x679C;&#x5F88;&#x597D;&#x54DF;</li>
 </ul>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>本部分主要讲了从词到段落嵌入式表达的发展及重要的方法</strong><br></p>
+<h2 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h2><p><strong>&#x672C;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x8BB2;&#x4E86;&#x4ECE;&#x8BCD;&#x5230;&#x6BB5;&#x843D;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x7684;&#x53D1;&#x5C55;&#x53CA;&#x91CD;&#x8981;&#x7684;&#x65B9;&#x6CD5;</strong><br></p>
 <ul>
-<li>词：词嵌入，一种单个词的分布式表达，可以表示词的语义信息</li>
-<li><p>可以很好获得短语和句子的包含语义的分布式表达的方法主要分为两类：</p>
+<li>&#x8BCD;&#xFF1A;&#x8BCD;&#x5D4C;&#x5165;&#xFF0C;&#x4E00;&#x79CD;&#x5355;&#x4E2A;&#x8BCD;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8868;&#x8FBE;&#xFF0C;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x8BCD;&#x7684;&#x8BED;&#x4E49;&#x4FE1;&#x606F;</li>
+<li><p>&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x83B7;&#x5F97;&#x77ED;&#x8BED;&#x548C;&#x53E5;&#x5B50;&#x7684;&#x5305;&#x542B;&#x8BED;&#x4E49;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8868;&#x8FBE;&#x7684;&#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;</p>
 <blockquote>
 <ol>
-<li>通过无监督学习获得的全局句子嵌入表达：SkipThought vectors和DBOW模型。全局训<br>练可以利用大量的不标记的语料。</li>
-<li>通过监督学习，为某个明确的任务训练得到的句子表达。通常与接下来的任务有关。</li>
-<li>通常，特定训练的句子表达性能优于全局表达。</li>
+<li>&#x901A;&#x8FC7;&#x65E0;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#x83B7;&#x5F97;&#x7684;&#x5168;&#x5C40;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#xFF1A;SkipThought vectors&#x548C;DBOW&#x6A21;&#x578B;&#x3002;&#x5168;&#x5C40;&#x8BAD;<br>&#x7EC3;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x5927;&#x91CF;&#x7684;&#x4E0D;&#x6807;&#x8BB0;&#x7684;&#x8BED;&#x6599;&#x3002;</li>
+<li>&#x901A;&#x8FC7;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#xFF0C;&#x4E3A;&#x67D0;&#x4E2A;&#x660E;&#x786E;&#x7684;&#x4EFB;&#x52A1;&#x8BAD;&#x7EC3;&#x5F97;&#x5230;&#x7684;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x3002;&#x901A;&#x5E38;&#x4E0E;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x4EFB;&#x52A1;&#x6709;&#x5173;&#x3002;</li>
+<li>&#x901A;&#x5E38;&#xFF0C;&#x7279;&#x5B9A;&#x8BAD;&#x7EC3;&#x7684;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x6027;&#x80FD;&#x4F18;&#x4E8E;&#x5168;&#x5C40;&#x8868;&#x8FBE;&#x3002;</li>
 </ol>
 </blockquote>
 </li>
-<li><p>接下来详细介绍在特定任务下，如何嵌入式表达句子。比如各种RNN和CNN</p>
+<li><p>&#x63A5;&#x4E0B;&#x6765;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x5728;&#x7279;&#x5B9A;&#x4EFB;&#x52A1;&#x4E0B;&#xFF0C;&#x5982;&#x4F55;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x3002;&#x6BD4;&#x5982;&#x5404;&#x79CD;RNN&#x548C;CNN</p>
 <blockquote>
 <ol>
-<li>利用注意力机制，在CNN或者LSTM模型上提取信息源来知道提取句子嵌入表达（没理解<br>是什么鬼！！）</li>
-<li>在LSTM的每步结果上加max pooling / averaging</li>
-<li>直接利用最后一步的隐藏层作为句子的嵌入式表达</li>
+<li>&#x5229;&#x7528;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF0C;&#x5728;CNN&#x6216;&#x8005;LSTM&#x6A21;&#x578B;&#x4E0A;&#x63D0;&#x53D6;&#x4FE1;&#x606F;&#x6E90;&#x6765;&#x77E5;&#x9053;&#x63D0;&#x53D6;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#xFF08;&#x6CA1;&#x7406;&#x89E3;<br>&#x662F;&#x4EC0;&#x4E48;&#x9B3C;&#xFF01;&#xFF01;&#xFF09;</li>
+<li>&#x5728;LSTM&#x7684;&#x6BCF;&#x6B65;&#x7ED3;&#x679C;&#x4E0A;&#x52A0;max pooling / averaging</li>
+<li>&#x76F4;&#x63A5;&#x5229;&#x7528;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x7684;&#x9690;&#x85CF;&#x5C42;&#x4F5C;&#x4E3A;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;</li>
 </ol>
 </blockquote>
 </li>
-<li><p><strong>本文假设：</strong>获取一个RNN模型的每一步语义表达是相对困难且不必要的。</p>
+<li><p><strong>&#x672C;&#x6587;&#x5047;&#x8BBE;&#xFF1A;</strong>&#x83B7;&#x53D6;&#x4E00;&#x4E2A;RNN&#x6A21;&#x578B;&#x7684;&#x6BCF;&#x4E00;&#x6B65;&#x8BED;&#x4E49;&#x8868;&#x8FBE;&#x662F;&#x76F8;&#x5BF9;&#x56F0;&#x96BE;&#x4E14;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x3002;</p>
 <blockquote>
 <ul>
-<li>本文提出的自注意力机制可以将句子不同方面的语义提取至不同的向量表达</li>
-<li>本方法利用了LSTM的记忆（即中间输出）</li>
+<li>&#x672C;&#x6587;&#x63D0;&#x51FA;&#x7684;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x5C06;&#x53E5;&#x5B50;&#x4E0D;&#x540C;&#x65B9;&#x9762;&#x7684;&#x8BED;&#x4E49;&#x63D0;&#x53D6;&#x81F3;&#x4E0D;&#x540C;&#x7684;&#x5411;&#x91CF;&#x8868;&#x8FBE;</li>
+<li>&#x672C;&#x65B9;&#x6CD5;&#x5229;&#x7528;&#x4E86;LSTM&#x7684;&#x8BB0;&#x5FC6;&#xFF08;&#x5373;&#x4E2D;&#x95F4;&#x8F93;&#x51FA;&#xFF09;</li>
 </ul>
 </blockquote>
 </li>
 </ul>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="模型（自注意力机制）"><a href="#模型（自注意力机制）" class="headerlink" title="模型（自注意力机制）"></a>模型（自注意力机制）</h3><p><strong>模型包括两个部分，一部分是biLSTM，另一部分是自注意力机制。biLSTM获得一般隐藏层<br>表达，自注意力机制获得一个权重矩阵。两个矩阵做点积，句子的嵌入式表达（结果是一个<br>矩阵）</strong><br></p>
+<h2 id="&#x65B9;&#x6CD5;"><a href="#&#x65B9;&#x6CD5;" class="headerlink" title="&#x65B9;&#x6CD5;"></a>&#x65B9;&#x6CD5;</h2><h3 id="&#x6A21;&#x578B;&#xFF08;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF09;"><a href="#&#x6A21;&#x578B;&#xFF08;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF09;" class="headerlink" title="&#x6A21;&#x578B;&#xFF08;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF09;"></a>&#x6A21;&#x578B;&#xFF08;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF09;</h3><p><strong>&#x6A21;&#x578B;&#x5305;&#x62EC;&#x4E24;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x4E00;&#x90E8;&#x5206;&#x662F;biLSTM&#xFF0C;&#x53E6;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x3002;biLSTM&#x83B7;&#x5F97;&#x4E00;&#x822C;&#x9690;&#x85CF;&#x5C42;<br>&#x8868;&#x8FBE;&#xFF0C;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x6743;&#x91CD;&#x77E9;&#x9635;&#x3002;&#x4E24;&#x4E2A;&#x77E9;&#x9635;&#x505A;&#x70B9;&#x79EF;&#xFF0C;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#xFF08;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x4E2A;<br>&#x77E9;&#x9635;&#xFF09;</strong><br></p>
 <ul>
 <li><p>biLSTM</p>
 <blockquote>
 <ul>
-<li>每个句子包含n个字（或者词），每个词用d维的Embedding表示（word2vec/Glove/simple），则这个句子表示为一个2维矩阵。此时，句子中的每个词是独立的。<br><br><img src="./img/sentence.png" alt="sentence"></li>
-<li>用双向LSTM(biLSTM)获取单个句子中相邻词的依赖关系。隐藏层的维度是u。<br><br><img src="./img/biLSTM.png" alt="biLSTM"></li>
-<li>直接将两个LSTM获得的隐藏层拼接起来，得到n个2u维的向量。<br><br><img src="./img/H.png" alt="H"></li>
+<li>&#x6BCF;&#x4E2A;&#x53E5;&#x5B50;&#x5305;&#x542B;n&#x4E2A;&#x5B57;&#xFF08;&#x6216;&#x8005;&#x8BCD;&#xFF09;&#xFF0C;&#x6BCF;&#x4E2A;&#x8BCD;&#x7528;d&#x7EF4;&#x7684;Embedding&#x8868;&#x793A;&#xFF08;word2vec/Glove/simple&#xFF09;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x53E5;&#x5B50;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;2&#x7EF4;&#x77E9;&#x9635;&#x3002;&#x6B64;&#x65F6;&#xFF0C;&#x53E5;&#x5B50;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8BCD;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/sentence.png" alt="sentence"></li>
+<li>&#x7528;&#x53CC;&#x5411;LSTM(biLSTM)&#x83B7;&#x53D6;&#x5355;&#x4E2A;&#x53E5;&#x5B50;&#x4E2D;&#x76F8;&#x90BB;&#x8BCD;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;&#x9690;&#x85CF;&#x5C42;&#x7684;&#x7EF4;&#x5EA6;&#x662F;u&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/biLSTM.png" alt="biLSTM"></li>
+<li>&#x76F4;&#x63A5;&#x5C06;&#x4E24;&#x4E2A;LSTM&#x83B7;&#x5F97;&#x7684;&#x9690;&#x85CF;&#x5C42;&#x62FC;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x5F97;&#x5230;n&#x4E2A;2u&#x7EF4;&#x7684;&#x5411;&#x91CF;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/H.png" alt="H"></li>
 </ul>
 </blockquote>
 </li>
-<li><p>自注意力机制</p>
+<li><p>&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;</p>
 <blockquote>
 <ul>
-<li>目标：将在H中的n个结合LSTM隐藏层的向量进行线性组合，获得一个fixed_size（固定<br>长度）的嵌入式表达。<br><br><img src="./img/weight_a.png" alt="weight_a"></li>
-<li>这个相当于两层MLP。第一层的输入是H^T（一个2u×n的矩阵），权重是Ws1（一个d×2u&gt;的矩阵）,激活函数是tanh，输出是一个d×n的矩阵;第二层的输入为第一层的输出，权重是ws2（一个d维向量），激活函数是softmax，输出是自注意机制部分的权重a（一个n维向量）<br>。</li>
-<li>将获得的权重a乘以H得到的向量m（一个2u维的向量）作为句子的表达。</li>
-<li>上面的步骤，只能表达句子语义的一个方面或者内容。（这个有点牵强），如果需要从<br>多个方面表示句子的语义信息，则要多个自注意力权重。提取一个句子的r个不同的方面。&gt;将ws2扩展为Ws2（一个r×d的矩阵），得到的自注意力权重从a扩展为A（一个r×n的矩阵）。<br>这里的softmax仅对输入的第二维作用。<br><br><img src="./img/weights_A.png" alt="weights_A"></li>
-<li>最后句子的嵌入式表达M（r×2u的矩阵）。<br><br><img src="./img/M.png" alt="M"></li>
+<li>&#x76EE;&#x6807;&#xFF1A;&#x5C06;&#x5728;H&#x4E2D;&#x7684;n&#x4E2A;&#x7ED3;&#x5408;LSTM&#x9690;&#x85CF;&#x5C42;&#x7684;&#x5411;&#x91CF;&#x8FDB;&#x884C;&#x7EBF;&#x6027;&#x7EC4;&#x5408;&#xFF0C;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;fixed_size&#xFF08;&#x56FA;&#x5B9A;<br>&#x957F;&#x5EA6;&#xFF09;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/weight_a.png" alt="weight_a"></li>
+<li>&#x8FD9;&#x4E2A;&#x76F8;&#x5F53;&#x4E8E;&#x4E24;&#x5C42;MLP&#x3002;&#x7B2C;&#x4E00;&#x5C42;&#x7684;&#x8F93;&#x5165;&#x662F;H^T&#xFF08;&#x4E00;&#x4E2A;2u&#xD7;n&#x7684;&#x77E9;&#x9635;&#xFF09;&#xFF0C;&#x6743;&#x91CD;&#x662F;Ws1&#xFF08;&#x4E00;&#x4E2A;d&#xD7;2u&gt;&#x7684;&#x77E9;&#x9635;&#xFF09;,&#x6FC0;&#x6D3B;&#x51FD;&#x6570;&#x662F;tanh&#xFF0C;&#x8F93;&#x51FA;&#x662F;&#x4E00;&#x4E2A;d&#xD7;n&#x7684;&#x77E9;&#x9635;;&#x7B2C;&#x4E8C;&#x5C42;&#x7684;&#x8F93;&#x5165;&#x4E3A;&#x7B2C;&#x4E00;&#x5C42;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x6743;&#x91CD;&#x662F;ws2&#xFF08;&#x4E00;&#x4E2A;d&#x7EF4;&#x5411;&#x91CF;&#xFF09;&#xFF0C;&#x6FC0;&#x6D3B;&#x51FD;&#x6570;&#x662F;softmax&#xFF0C;&#x8F93;&#x51FA;&#x662F;&#x81EA;&#x6CE8;&#x610F;&#x673A;&#x5236;&#x90E8;&#x5206;&#x7684;&#x6743;&#x91CD;a&#xFF08;&#x4E00;&#x4E2A;n&#x7EF4;&#x5411;&#x91CF;&#xFF09;<br>&#x3002;</li>
+<li>&#x5C06;&#x83B7;&#x5F97;&#x7684;&#x6743;&#x91CD;a&#x4E58;&#x4EE5;H&#x5F97;&#x5230;&#x7684;&#x5411;&#x91CF;m&#xFF08;&#x4E00;&#x4E2A;2u&#x7EF4;&#x7684;&#x5411;&#x91CF;&#xFF09;&#x4F5C;&#x4E3A;&#x53E5;&#x5B50;&#x7684;&#x8868;&#x8FBE;&#x3002;</li>
+<li>&#x4E0A;&#x9762;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x53EA;&#x80FD;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x8BED;&#x4E49;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x9762;&#x6216;&#x8005;&#x5185;&#x5BB9;&#x3002;&#xFF08;&#x8FD9;&#x4E2A;&#x6709;&#x70B9;&#x7275;&#x5F3A;&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4ECE;<br>&#x591A;&#x4E2A;&#x65B9;&#x9762;&#x8868;&#x793A;&#x53E5;&#x5B50;&#x7684;&#x8BED;&#x4E49;&#x4FE1;&#x606F;&#xFF0C;&#x5219;&#x8981;&#x591A;&#x4E2A;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x6743;&#x91CD;&#x3002;&#x63D0;&#x53D6;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x7684;r&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x9762;&#x3002;&gt;&#x5C06;ws2&#x6269;&#x5C55;&#x4E3A;Ws2&#xFF08;&#x4E00;&#x4E2A;r&#xD7;d&#x7684;&#x77E9;&#x9635;&#xFF09;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x6743;&#x91CD;&#x4ECE;a&#x6269;&#x5C55;&#x4E3A;A&#xFF08;&#x4E00;&#x4E2A;r&#xD7;n&#x7684;&#x77E9;&#x9635;&#xFF09;&#x3002;<br>&#x8FD9;&#x91CC;&#x7684;softmax&#x4EC5;&#x5BF9;&#x8F93;&#x5165;&#x7684;&#x7B2C;&#x4E8C;&#x7EF4;&#x4F5C;&#x7528;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/weights_A.png" alt="weights_A"></li>
+<li>&#x6700;&#x540E;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;M&#xFF08;r&#xD7;2u&#x7684;&#x77E9;&#x9635;&#xFF09;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/M.png" alt="M"></li>
 </ul>
 </blockquote>
 </li>
 </ul>
-<h3 id="惩罚项"><a href="#惩罚项" class="headerlink" title="惩罚项"></a>惩罚项</h3><p><strong>问题：如果自注意力机制提供相似的权重，句子的嵌入式表达矩阵M就有冗余的问题。所&gt;以需要惩罚项，来保证注意力机制得到的不同的求和权重向量尽量多样化（diversity）。</strong><br></p>
+<h3 id="&#x60E9;&#x7F5A;&#x9879;"><a href="#&#x60E9;&#x7F5A;&#x9879;" class="headerlink" title="&#x60E9;&#x7F5A;&#x9879;"></a>&#x60E9;&#x7F5A;&#x9879;</h3><p><strong>&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x679C;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x63D0;&#x4F9B;&#x76F8;&#x4F3C;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x77E9;&#x9635;M&#x5C31;&#x6709;&#x5197;&#x4F59;&#x7684;&#x95EE;&#x9898;&#x3002;&#x6240;&gt;&#x4EE5;&#x9700;&#x8981;&#x60E9;&#x7F5A;&#x9879;&#xFF0C;&#x6765;&#x4FDD;&#x8BC1;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x5F97;&#x5230;&#x7684;&#x4E0D;&#x540C;&#x7684;&#x6C42;&#x548C;&#x6743;&#x91CD;&#x5411;&#x91CF;&#x5C3D;&#x91CF;&#x591A;&#x6837;&#x5316;&#xFF08;diversity&#xFF09;&#x3002;</strong><br></p>
 <ul>
-<li>Kullback Leibler divergence：权重向量中的任意两个的KL距离是评价多样性的最好的&gt;方法。（不晓得这个距离是个什么鬼！据说计算成本非常大，所以不用这个方法）</li>
-<li><p>评价冗余程度：见下图</p>
+<li>Kullback Leibler divergence&#xFF1A;&#x6743;&#x91CD;&#x5411;&#x91CF;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E24;&#x4E2A;&#x7684;KL&#x8DDD;&#x79BB;&#x662F;&#x8BC4;&#x4EF7;&#x591A;&#x6837;&#x6027;&#x7684;&#x6700;&#x597D;&#x7684;&gt;&#x65B9;&#x6CD5;&#x3002;&#xFF08;&#x4E0D;&#x6653;&#x5F97;&#x8FD9;&#x4E2A;&#x8DDD;&#x79BB;&#x662F;&#x4E2A;&#x4EC0;&#x4E48;&#x9B3C;&#xFF01;&#x636E;&#x8BF4;&#x8BA1;&#x7B97;&#x6210;&#x672C;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF09;</li>
+<li><p>&#x8BC4;&#x4EF7;&#x5197;&#x4F59;&#x7A0B;&#x5EA6;&#xFF1A;&#x89C1;&#x4E0B;&#x56FE;</p>
 <blockquote>
-<p><img src="./img/measure_redundancy.png" alt="measure_redundancy"><br></p>
+<p><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/measure_redundancy.png" alt="measure_redundancy"><br></p>
 <ul>
-<li>其中，A是自注意力产生的权重矩阵，I是单位阵，之后求Frobenius范数。类似于L2正&gt;则项，惩罚项P将被一个系数相乘，然后之前的loss一起被最小化（这个loss取决于之后的&gt;应用）。</li>
+<li>&#x5176;&#x4E2D;&#xFF0C;A&#x662F;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x4EA7;&#x751F;&#x7684;&#x6743;&#x91CD;&#x77E9;&#x9635;&#xFF0C;I&#x662F;&#x5355;&#x4F4D;&#x9635;&#xFF0C;&#x4E4B;&#x540E;&#x6C42;Frobenius&#x8303;&#x6570;&#x3002;&#x7C7B;&#x4F3C;&#x4E8E;L2&#x6B63;&gt;&#x5219;&#x9879;&#xFF0C;&#x60E9;&#x7F5A;&#x9879;P&#x5C06;&#x88AB;&#x4E00;&#x4E2A;&#x7CFB;&#x6570;&#x76F8;&#x4E58;&#xFF0C;&#x7136;&#x540E;&#x4E4B;&#x524D;&#x7684;loss&#x4E00;&#x8D77;&#x88AB;&#x6700;&#x5C0F;&#x5316;&#xFF08;&#x8FD9;&#x4E2A;loss&#x53D6;&#x51B3;&#x4E8E;&#x4E4B;&#x540E;&#x7684;&gt;&#x5E94;&#x7528;&#xFF09;&#x3002;</li>
 </ul>
 </blockquote>
 </li>
-<li><p>解释：考虑在权重矩阵A中的两个不同的向量a1和a2，因为softmax函数，A中的每个向量&gt;的和应该是1.所以每个向量被视为离散概率分布的概率质量。对AAT任何非对角元素，表示&gt;为：</p>
+<li><p>&#x89E3;&#x91CA;&#xFF1A;&#x8003;&#x8651;&#x5728;&#x6743;&#x91CD;&#x77E9;&#x9635;A&#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x5411;&#x91CF;a1&#x548C;a2&#xFF0C;&#x56E0;&#x4E3A;softmax&#x51FD;&#x6570;&#xFF0C;A&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5411;&#x91CF;&gt;&#x7684;&#x548C;&#x5E94;&#x8BE5;&#x662F;1.&#x6240;&#x4EE5;&#x6BCF;&#x4E2A;&#x5411;&#x91CF;&#x88AB;&#x89C6;&#x4E3A;&#x79BB;&#x6563;&#x6982;&#x7387;&#x5206;&#x5E03;&#x7684;&#x6982;&#x7387;&#x8D28;&#x91CF;&#x3002;&#x5BF9;AAT&#x4EFB;&#x4F55;&#x975E;&#x5BF9;&#x89D2;&#x5143;&#x7D20;&#xFF0C;&#x8868;&#x793A;&gt;&#x4E3A;&#xFF1A;</p>
 <blockquote>
-<p><img src="./img/aij.png" alt="aij"><br></p>
+<p><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/aij.png" alt="aij"><br></p>
 <ul>
-<li>在一种极端情况：两个向量a1和a2没有重叠，那么aij应该是0</li>
-<li>在另一种极端情况：如果两个分布是相同的且都表示单个词，那么其值为1。</li>
+<li>&#x5728;&#x4E00;&#x79CD;&#x6781;&#x7AEF;&#x60C5;&#x51B5;&#xFF1A;&#x4E24;&#x4E2A;&#x5411;&#x91CF;a1&#x548C;a2&#x6CA1;&#x6709;&#x91CD;&#x53E0;&#xFF0C;&#x90A3;&#x4E48;aij&#x5E94;&#x8BE5;&#x662F;0</li>
+<li>&#x5728;&#x53E6;&#x4E00;&#x79CD;&#x6781;&#x7AEF;&#x60C5;&#x51B5;&#xFF1A;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x5206;&#x5E03;&#x662F;&#x76F8;&#x540C;&#x7684;&#x4E14;&#x90FD;&#x8868;&#x793A;&#x5355;&#x4E2A;&#x8BCD;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x503C;&#x4E3A;1&#x3002;</li>
 </ul>
 </blockquote>
 </li>
-<li><p>回到刚刚的那个计算冗余度的公式，把AAT减去单位矩阵I，然后求最小值，这样要求AAT&gt;在对角线的值接近于1（即每个向量a都尽量少关注几个单词），其他位置的值接近于0（这&gt;样防止不同的向量a有冗余）。</p>
+<li><p>&#x56DE;&#x5230;&#x521A;&#x521A;&#x7684;&#x90A3;&#x4E2A;&#x8BA1;&#x7B97;&#x5197;&#x4F59;&#x5EA6;&#x7684;&#x516C;&#x5F0F;&#xFF0C;&#x628A;AAT&#x51CF;&#x53BB;&#x5355;&#x4F4D;&#x77E9;&#x9635;I&#xFF0C;&#x7136;&#x540E;&#x6C42;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x8FD9;&#x6837;&#x8981;&#x6C42;AAT&gt;&#x5728;&#x5BF9;&#x89D2;&#x7EBF;&#x7684;&#x503C;&#x63A5;&#x8FD1;&#x4E8E;1&#xFF08;&#x5373;&#x6BCF;&#x4E2A;&#x5411;&#x91CF;a&#x90FD;&#x5C3D;&#x91CF;&#x5C11;&#x5173;&#x6CE8;&#x51E0;&#x4E2A;&#x5355;&#x8BCD;&#xFF09;&#xFF0C;&#x5176;&#x4ED6;&#x4F4D;&#x7F6E;&#x7684;&#x503C;&#x63A5;&#x8FD1;&#x4E8E;0&#xFF08;&#x8FD9;&gt;&#x6837;&#x9632;&#x6B62;&#x4E0D;&#x540C;&#x7684;&#x5411;&#x91CF;a&#x6709;&#x5197;&#x4F59;&#xFF09;&#x3002;</p>
 </li>
-<li><p><strong>思考：</strong>避免冗余的方法肯定不止这一种，而且该方法解释的很牵强。我觉得为了更好<br>的实现可解释性，应该从句法格式，包含的词汇和其他含义等考虑。</p>
+<li><p><strong>&#x601D;&#x8003;&#xFF1A;</strong>&#x907F;&#x514D;&#x5197;&#x4F59;&#x7684;&#x65B9;&#x6CD5;&#x80AF;&#x5B9A;&#x4E0D;&#x6B62;&#x8FD9;&#x4E00;&#x79CD;&#xFF0C;&#x800C;&#x4E14;&#x8BE5;&#x65B9;&#x6CD5;&#x89E3;&#x91CA;&#x7684;&#x5F88;&#x7275;&#x5F3A;&#x3002;&#x6211;&#x89C9;&#x5F97;&#x4E3A;&#x4E86;&#x66F4;&#x597D;<br>&#x7684;&#x5B9E;&#x73B0;&#x53EF;&#x89E3;&#x91CA;&#x6027;&#xFF0C;&#x5E94;&#x8BE5;&#x4ECE;&#x53E5;&#x6CD5;&#x683C;&#x5F0F;&#xFF0C;&#x5305;&#x542B;&#x7684;&#x8BCD;&#x6C47;&#x548C;&#x5176;&#x4ED6;&#x542B;&#x4E49;&#x7B49;&#x8003;&#x8651;&#x3002;</p>
 </li>
 </ul>
-<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><ul>
-<li>可解释性的“解释”：对于句子嵌入表达矩阵M，其每一行都由权重矩阵A中的a对LSTM的所&gt;有隐藏结果进行加权。然后画了四个看不大懂的图。。</li>
-<li>主要的模型思想就是在BiLSTM的结果上，加入自注意力机制，对所有隐藏层的结果进行加<br>权，得到一个能够嵌入式表达句子语义的矩阵。为了防止自注意力机制得到的结果太相似，<br>加入一个惩罚项，保证同一个自注意力机制的权重向量关注点更集中，不同的自注意力机制<br>的权重向量关注点更多样化。在训练时，惩罚项和任务相关的loss一起作为优化目标。</li>
+<h3 id="&#x53EF;&#x89C6;&#x5316;"><a href="#&#x53EF;&#x89C6;&#x5316;" class="headerlink" title="&#x53EF;&#x89C6;&#x5316;"></a>&#x53EF;&#x89C6;&#x5316;</h3><ul>
+<li>&#x53EF;&#x89E3;&#x91CA;&#x6027;&#x7684;&#x201C;&#x89E3;&#x91CA;&#x201D;&#xFF1A;&#x5BF9;&#x4E8E;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x77E9;&#x9635;M&#xFF0C;&#x5176;&#x6BCF;&#x4E00;&#x884C;&#x90FD;&#x7531;&#x6743;&#x91CD;&#x77E9;&#x9635;A&#x4E2D;&#x7684;a&#x5BF9;LSTM&#x7684;&#x6240;&gt;&#x6709;&#x9690;&#x85CF;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x52A0;&#x6743;&#x3002;&#x7136;&#x540E;&#x753B;&#x4E86;&#x56DB;&#x4E2A;&#x770B;&#x4E0D;&#x5927;&#x61C2;&#x7684;&#x56FE;&#x3002;&#x3002;</li>
+<li>&#x4E3B;&#x8981;&#x7684;&#x6A21;&#x578B;&#x601D;&#x60F3;&#x5C31;&#x662F;&#x5728;BiLSTM&#x7684;&#x7ED3;&#x679C;&#x4E0A;&#xFF0C;&#x52A0;&#x5165;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF0C;&#x5BF9;&#x6240;&#x6709;&#x9690;&#x85CF;&#x5C42;&#x7684;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x52A0;<br>&#x6743;&#xFF0C;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x80FD;&#x591F;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x8BED;&#x4E49;&#x7684;&#x77E9;&#x9635;&#x3002;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x592A;&#x76F8;&#x4F3C;&#xFF0C;<br>&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x60E9;&#x7F5A;&#x9879;&#xFF0C;&#x4FDD;&#x8BC1;&#x540C;&#x4E00;&#x4E2A;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x7684;&#x6743;&#x91CD;&#x5411;&#x91CF;&#x5173;&#x6CE8;&#x70B9;&#x66F4;&#x96C6;&#x4E2D;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;<br>&#x7684;&#x6743;&#x91CD;&#x5411;&#x91CF;&#x5173;&#x6CE8;&#x70B9;&#x66F4;&#x591A;&#x6837;&#x5316;&#x3002;&#x5728;&#x8BAD;&#x7EC3;&#x65F6;&#xFF0C;&#x60E9;&#x7F5A;&#x9879;&#x548C;&#x4EFB;&#x52A1;&#x76F8;&#x5173;&#x7684;loss&#x4E00;&#x8D77;&#x4F5C;&#x4E3A;&#x4F18;&#x5316;&#x76EE;&#x6807;&#x3002;</li>
 </ul>
-<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><ul>
-<li><p>通过自预测进行句子嵌入式表达（Sentence Embedding via Self-Prediction）：类似于<br><strong>自编码</strong>的思想，即通过预测自己来嵌入式表达句子。</p>
-<blockquote>
-<ul>
-<li>ParagraphVector：优化句子嵌入式表达来预测句子中的以词袋模型表达的句子。</li>
-<li>Sequential Denoising Autoen-coders (SDAE)：应用基于LSTM的编码解码框架。通过&gt;将句子中词的顺序考虑进来，编码器把句子表示为一个嵌入表达，解码器用来预测这个句子<br>。</li>
-<li>recursive auto-encoder：学习一个句子的句法树的每个节点的嵌入表达，通过预测这<br>个节点的子节点来优化嵌入表达。</li>
-</ul>
-</blockquote>
-</li>
-<li><p>通过预测临近句子的句子嵌入式表达（Sentence Embeddings via Predicting Adjacent Sentences）：充分利用句子的上下文信息。</p>
+<h2 id="&#x76F8;&#x5173;&#x5DE5;&#x4F5C;"><a href="#&#x76F8;&#x5173;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x76F8;&#x5173;&#x5DE5;&#x4F5C;"></a>&#x76F8;&#x5173;&#x5DE5;&#x4F5C;</h2><ul>
+<li><p>&#x901A;&#x8FC7;&#x81EA;&#x9884;&#x6D4B;&#x8FDB;&#x884C;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#xFF08;Sentence Embedding via Self-Prediction&#xFF09;&#xFF1A;&#x7C7B;&#x4F3C;&#x4E8E;<br><strong>&#x81EA;&#x7F16;&#x7801;</strong>&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x5373;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x81EA;&#x5DF1;&#x6765;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x3002;</p>
 <blockquote>
 <ul>
-<li>SkipThought and FastSent：通过预测临近句子来训练句子嵌入表达。一个特殊情况就<br>是利用编码-解码器通过预测双语平行句来训练句子的嵌入表达。</li>
+<li>ParagraphVector&#xFF1A;&#x4F18;&#x5316;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x6765;&#x9884;&#x6D4B;&#x53E5;&#x5B50;&#x4E2D;&#x7684;&#x4EE5;&#x8BCD;&#x888B;&#x6A21;&#x578B;&#x8868;&#x8FBE;&#x7684;&#x53E5;&#x5B50;&#x3002;</li>
+<li>Sequential Denoising Autoen-coders (SDAE)&#xFF1A;&#x5E94;&#x7528;&#x57FA;&#x4E8E;LSTM&#x7684;&#x7F16;&#x7801;&#x89E3;&#x7801;&#x6846;&#x67B6;&#x3002;&#x901A;&#x8FC7;&gt;&#x5C06;&#x53E5;&#x5B50;&#x4E2D;&#x8BCD;&#x7684;&#x987A;&#x5E8F;&#x8003;&#x8651;&#x8FDB;&#x6765;&#xFF0C;&#x7F16;&#x7801;&#x5668;&#x628A;&#x53E5;&#x5B50;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#xFF0C;&#x89E3;&#x7801;&#x5668;&#x7528;&#x6765;&#x9884;&#x6D4B;&#x8FD9;&#x4E2A;&#x53E5;&#x5B50;<br>&#x3002;</li>
+<li>recursive auto-encoder&#xFF1A;&#x5B66;&#x4E60;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x7684;&#x53E5;&#x6CD5;&#x6811;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#xFF0C;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x8FD9;<br>&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5B50;&#x8282;&#x70B9;&#x6765;&#x4F18;&#x5316;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;</li>
 </ul>
 </blockquote>
 </li>
-<li><p>总结：</p>
+<li><p>&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x4E34;&#x8FD1;&#x53E5;&#x5B50;&#x7684;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#xFF08;Sentence Embeddings via Predicting Adjacent Sentences&#xFF09;&#xFF1A;&#x5145;&#x5206;&#x5229;&#x7528;&#x53E5;&#x5B50;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#x3002;</p>
 <blockquote>
 <ul>
-<li>所有的以前的在半监督句子嵌入结构的工作要不是通过在句子中词的嵌入表达上做max/average pooling，要么是直接提取LSTM的最后一层作为嵌入式表达。</li>
-<li>这些方法限制了嵌入表达——单个向量不能覆盖和区别在同一个句子的不同方面。</li>
-<li><strong>本文工作：</strong>通过结合自注意力机制和矩阵表达，解决了上述问题。</li>
-<li><strong>其他工作：</strong>通过利用外部语言结构如分词和依赖树提高句子的表达。但是本文没有<br>利用语言结构来指导句子表达模型。</li>
+<li>SkipThought and FastSent&#xFF1A;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x4E34;&#x8FD1;&#x53E5;&#x5B50;&#x6765;&#x8BAD;&#x7EC3;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x5C31;<br>&#x662F;&#x5229;&#x7528;&#x7F16;&#x7801;-&#x89E3;&#x7801;&#x5668;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x53CC;&#x8BED;&#x5E73;&#x884C;&#x53E5;&#x6765;&#x8BAD;&#x7EC3;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;</li>
+</ul>
+</blockquote>
+</li>
+<li><p>&#x603B;&#x7ED3;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x6240;&#x6709;&#x7684;&#x4EE5;&#x524D;&#x7684;&#x5728;&#x534A;&#x76D1;&#x7763;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x7ED3;&#x6784;&#x7684;&#x5DE5;&#x4F5C;&#x8981;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5728;&#x53E5;&#x5B50;&#x4E2D;&#x8BCD;&#x7684;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x4E0A;&#x505A;max/average pooling&#xFF0C;&#x8981;&#x4E48;&#x662F;&#x76F4;&#x63A5;&#x63D0;&#x53D6;LSTM&#x7684;&#x6700;&#x540E;&#x4E00;&#x5C42;&#x4F5C;&#x4E3A;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x3002;</li>
+<li>&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x9650;&#x5236;&#x4E86;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x2014;&#x2014;&#x5355;&#x4E2A;&#x5411;&#x91CF;&#x4E0D;&#x80FD;&#x8986;&#x76D6;&#x548C;&#x533A;&#x522B;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x7684;&#x4E0D;&#x540C;&#x65B9;&#x9762;&#x3002;</li>
+<li><strong>&#x672C;&#x6587;&#x5DE5;&#x4F5C;&#xFF1A;</strong>&#x901A;&#x8FC7;&#x7ED3;&#x5408;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x548C;&#x77E9;&#x9635;&#x8868;&#x8FBE;&#xFF0C;&#x89E3;&#x51B3;&#x4E86;&#x4E0A;&#x8FF0;&#x95EE;&#x9898;&#x3002;</li>
+<li><strong>&#x5176;&#x4ED6;&#x5DE5;&#x4F5C;&#xFF1A;</strong>&#x901A;&#x8FC7;&#x5229;&#x7528;&#x5916;&#x90E8;&#x8BED;&#x8A00;&#x7ED3;&#x6784;&#x5982;&#x5206;&#x8BCD;&#x548C;&#x4F9D;&#x8D56;&#x6811;&#x63D0;&#x9AD8;&#x53E5;&#x5B50;&#x7684;&#x8868;&#x8FBE;&#x3002;&#x4F46;&#x662F;&#x672C;&#x6587;&#x6CA1;&#x6709;<br>&#x5229;&#x7528;&#x8BED;&#x8A00;&#x7ED3;&#x6784;&#x6765;&#x6307;&#x5BFC;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x6A21;&#x578B;&#x3002;</li>
 </ul>
 </blockquote>
 </li>
 </ul>
-<h2 id="试验结果"><a href="#试验结果" class="headerlink" title="试验结果"></a>试验结果</h2><p><strong>通过三个不同的数据集以三个不同的任务评价句子嵌入模型</strong><br></p>
+<h2 id="&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;"><a href="#&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;" class="headerlink" title="&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;"></a>&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;</h2><p><strong>&#x901A;&#x8FC7;&#x4E09;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x96C6;&#x4EE5;&#x4E09;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x4EFB;&#x52A1;&#x8BC4;&#x4EF7;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x6A21;&#x578B;</strong><br></p>
 <table>
 <thead>
 <tr>
@@ -459,15 +459,15 @@
 </tr>
 </tbody>
 </table>
-<h2 id="结果和讨论"><a href="#结果和讨论" class="headerlink" title="结果和讨论"></a>结果和讨论</h2><p><strong>本文内容：</strong>利用自注意力机制，得到一个固定长度的句子矩阵嵌入表达。<br></p>
+<h2 id="&#x7ED3;&#x679C;&#x548C;&#x8BA8;&#x8BBA;"><a href="#&#x7ED3;&#x679C;&#x548C;&#x8BA8;&#x8BBA;" class="headerlink" title="&#x7ED3;&#x679C;&#x548C;&#x8BA8;&#x8BBA;"></a>&#x7ED3;&#x679C;&#x548C;&#x8BA8;&#x8BBA;</h2><p><strong>&#x672C;&#x6587;&#x5185;&#x5BB9;&#xFF1A;</strong>&#x5229;&#x7528;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF0C;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x53E5;&#x5B50;&#x77E9;&#x9635;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;<br></p>
 <ul>
-<li>细节：如上面模型部分所示</li>
-<li>优点：可以将不同长度的序列编码至固定的表达;可扩展性很强，可以不经修改直接应用&gt;于更长的文本——段落/文章。</li>
-<li>其他不重要的。</li>
+<li>&#x7EC6;&#x8282;&#xFF1A;&#x5982;&#x4E0A;&#x9762;&#x6A21;&#x578B;&#x90E8;&#x5206;&#x6240;&#x793A;</li>
+<li>&#x4F18;&#x70B9;&#xFF1A;&#x53EF;&#x4EE5;&#x5C06;&#x4E0D;&#x540C;&#x957F;&#x5EA6;&#x7684;&#x5E8F;&#x5217;&#x7F16;&#x7801;&#x81F3;&#x56FA;&#x5B9A;&#x7684;&#x8868;&#x8FBE;;&#x53EF;&#x6269;&#x5C55;&#x6027;&#x5F88;&#x5F3A;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x7ECF;&#x4FEE;&#x6539;&#x76F4;&#x63A5;&#x5E94;&#x7528;&gt;&#x4E8E;&#x66F4;&#x957F;&#x7684;&#x6587;&#x672C;&#x2014;&#x2014;&#x6BB5;&#x843D;/&#x6587;&#x7AE0;&#x3002;</li>
+<li>&#x5176;&#x4ED6;&#x4E0D;&#x91CD;&#x8981;&#x7684;&#x3002;</li>
 </ul>
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><ul>
-<li>引文上下文和整个文档表达之间的相似度，然后ranking。问题在于短文本如何和长文本&gt;进行匹配。</li>
-<li>训练一种翻译模型，从citation context（中） -&gt; abstract（英），可以解决跨语言的<br>引文推荐。</li>
+<h1 id="&#x601D;&#x8003;"><a href="#&#x601D;&#x8003;" class="headerlink" title="&#x601D;&#x8003;"></a>&#x601D;&#x8003;</h1><ul>
+<li>&#x5F15;&#x6587;&#x4E0A;&#x4E0B;&#x6587;&#x548C;&#x6574;&#x4E2A;&#x6587;&#x6863;&#x8868;&#x8FBE;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#xFF0C;&#x7136;&#x540E;ranking&#x3002;&#x95EE;&#x9898;&#x5728;&#x4E8E;&#x77ED;&#x6587;&#x672C;&#x5982;&#x4F55;&#x548C;&#x957F;&#x6587;&#x672C;&gt;&#x8FDB;&#x884C;&#x5339;&#x914D;&#x3002;</li>
+<li>&#x8BAD;&#x7EC3;&#x4E00;&#x79CD;&#x7FFB;&#x8BD1;&#x6A21;&#x578B;&#xFF0C;&#x4ECE;citation context&#xFF08;&#x4E2D;&#xFF09; -&gt; abstract&#xFF08;&#x82F1;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x8DE8;&#x8BED;&#x8A00;&#x7684;<br>&#x5F15;&#x6587;&#x63A8;&#x8350;&#x3002;</li>
 </ul>
 
       
