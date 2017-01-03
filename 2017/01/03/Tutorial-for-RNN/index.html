@@ -91,8 +91,9 @@
 <meta property="og:site_name" content="Study IR in IRLAB">
 <meta property="og:description" content="RNN&amp;#x7B80;&amp;#x4ECB;RNN&amp;#x7684;&amp;#x7B80;&amp;#x4ECB;&amp;#xFF0C;&amp;#x6570;&amp;#x5B66;&amp;#x539F;&amp;#x7406;&amp;#xFF0C;&amp;#x4EE3;&amp;#x7801;&amp;#x5B9E;&amp;#x73B0; by Guoxiu for starting learning">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/RNN-rolled.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/RNN-unrolled.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/diags.jpeg">
-<meta property="og:updated_time" content="2017-01-03T05:21:50.262Z">
+<meta property="og:updated_time" content="2017-01-03T06:46:35.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tutorial-for-RNN">
 <meta name="twitter:description" content="RNN&amp;#x7B80;&amp;#x4ECB;RNN&amp;#x7684;&amp;#x7B80;&amp;#x4ECB;&amp;#xFF0C;&amp;#x6570;&amp;#x5B66;&amp;#x539F;&amp;#x7406;&amp;#xFF0C;&amp;#x4EE3;&amp;#x7801;&amp;#x5B9E;&amp;#x73B0; by Guoxiu for starting learning">
@@ -361,7 +362,6 @@
 
       
         <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
-<p><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
 <h1 id="RNN&#x7B80;&#x4ECB;"><a href="#RNN&#x7B80;&#x4ECB;" class="headerlink" title="RNN&#x7B80;&#x4ECB;"></a>RNN&#x7B80;&#x4ECB;</h1><p><strong>RNN&#x7684;&#x7B80;&#x4ECB;&#xFF0C;&#x6570;&#x5B66;&#x539F;&#x7406;&#xFF0C;&#x4EE3;&#x7801;&#x5B9E;&#x73B0; by Guoxiu for starting learning</strong><br><br><a id="more"></a></p>
 <h2 id="&#x58F0;&#x660E;"><a href="#&#x58F0;&#x660E;" class="headerlink" title="&#x58F0;&#x660E;"></a>&#x58F0;&#x660E;</h2><p><strong>&#x672C;&#x6587;&#x53C2;&#x7167;&#x4E86;<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="external">Understanding LSTM Networks</a>&#x548C;<a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/" target="_blank" rel="external">The Unreasonable Effectiveness of Recurrent Neural Networks</a></strong><br><br>&#x60F3;&#x6DF1;&#x5165;&#x5B66;&#x4E60;&#x7684;&#x540C;&#x5B66;&#xFF0C;&#x5EFA;&#x8BAE;&#x9605;&#x8BFB;&#x4EE5;&#x4E0A;&#x4E24;&#x4E2A;&#x535A;&#x5BA2;&#x6216;&#x8005;&#x76F8;&#x5173;&#x8BBA;&#x6587;&#x3002;</p>
 <h2 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h2><ul>
@@ -370,7 +370,7 @@
 <li>&#x57FA;&#x4E8E;RNN&#x7684;seq2seq&#x548C;attention&#x673A;&#x5236;&#x5728;&#x6587;&#x672C;&#x8868;&#x8FBE;&#x4E0A;&#x53D6;&#x5F97;&#x4E86;&#x6781;&#x5927;&#x7684;&#x8FDB;&#x5C55;</li>
 </ul>
 <h2 id="&#x539F;&#x7406;"><a href="#&#x539F;&#x7406;" class="headerlink" title="&#x539F;&#x7406;"></a>&#x539F;&#x7406;</h2><ul>
-<li>RNN(Recurrent Neural Network)&#xFF1A;They are networks with loops in them, allowing information to persist.<br><br>&#x56FE;&#x793A;&#x5982;&#x4E0B;&#xFF1A;<br><img src="/2017/01/03/Tutorial-for-RNN/RNN-rolled.png" alt="RNN-rolled"><br><br>&#x5176;&#x4E2D;$$x_t$$&#x662F;&#x8F93;&#x5165;&#xFF0C;$$A$$&#x662F;&#x4E2D;&#x95F4;&#x7684;&#x9690;&#x85CF;&#x5C42;&#xFF0C;$$h_t$$&#x662F;&#x8F93;&#x51FA;&#x3002;&#x5FAA;&#x73AF;&#x5141;&#x8BB8;&#x628A;&#x9690;&#x85CF;&#x5C42;&#x7684;&#x4FE1;&#x606F;&#x4ECE;&#x7B2C;&#x4E00;&#x4E2A;step&#x4F20;&#x9012;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;step&#x3002;</li>
+<li>RNN(Recurrent Neural Network)&#xFF1A;They are networks with loops in them, allowing information to persist.<br><br>&#x56FE;&#x793A;&#x5982;&#x4E0B;&#xFF1A;<br><img src="/2017/01/03/Tutorial-for-RNN/RNN-rolled.png" alt="RNN-rolled"><br><br>&#x5176;&#x4E2D;x_t&#x662F;&#x8F93;&#x5165;&#xFF0C;A&#x662F;&#x4E2D;&#x95F4;&#x7684;&#x9690;&#x85CF;&#x5C42;&#xFF0C;h_t&#x662F;&#x8F93;&#x51FA;&#x3002;&#x5FAA;&#x73AF;&#x5141;&#x8BB8;&#x628A;&#x9690;&#x85CF;&#x5C42;&#x7684;&#x4FE1;&#x606F;&#x4ECE;&#x7B2C;&#x4E00;&#x4E2A;step&#x4F20;&#x9012;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;step&#xFF0C;&#x8FD9;&#x4E2A;&#x540C;&#x4EBA;&#x7C7B;&#x7684;&#x8BB0;&#x5FC6;&#x7C7B;&#x4F3C;&#x3002;&#x5176;&#x5B9E;&#x4E00;&#x4E2A;RNN&#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x662F;&#x597D;&#x51E0;&#x4E2A;&#x76F8;&#x540C;&#x7F51;&#x7EDC;&#x7684;&#x590D;&#x5236;&#xFF0C;&#x628A;&#x4E0A;&#x56FE;&#x5C55;&#x5F00;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;<br><img src="/2017/01/03/Tutorial-for-RNN/RNN-unrolled.png" alt="RNN-unrolled"><br><br>&#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;step&#x4E2D;&#xFF0C;&#x4E0D;&#x4EC5;&#x63A5;&#x53D7;&#x5F53;&#x524D;step&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x8FD8;&#x63A5;&#x53D7;&#x4E0A;&#x4E00;&#x4E2A;step&#x7684;&#x9690;&#x85CF;&#x5C42;&#x4F5C;&#x4E3A;&#x5165;&#x3002;</li>
 <li>&#x5E38;&#x89C1;RNN&#x6A21;&#x578B;&#x5BF9;&#x6BD4;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;<br><br><img src="/2017/01/03/Tutorial-for-RNN/diags.jpeg" alt="diags.jpeg"></li>
 </ul>
 
