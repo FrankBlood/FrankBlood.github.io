@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/RNN-rolled.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/RNN-unrolled.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/03/Tutorial-for-RNN/diags.jpeg">
-<meta property="og:updated_time" content="2017-01-03T08:55:52.815Z">
+<meta property="og:updated_time" content="2017-01-03T09:13:29.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tutorial-for-RNN">
 <meta name="twitter:description" content="RNN&amp;#x7B80;&amp;#x4ECB;RNN&amp;#x7684;&amp;#x7B80;&amp;#x4ECB;&amp;#xFF0C;&amp;#x6570;&amp;#x5B66;&amp;#x539F;&amp;#x7406;&amp;#xFF0C;&amp;#x4EE3;&amp;#x7801;&amp;#x5B9E;&amp;#x73B0; by Guoxiu for starting learning">
@@ -392,8 +392,13 @@
 <li>RNN&#x7684;&#x53C2;&#x6570;&#x662F;&#x4E09;&#x4E2A;&#x77E9;&#x9635;&#xFF0C;<code>W_hh</code>, <code>W_xh</code>&#x548C;<code>W_hy</code>&#x3002;</li>
 <li>&#x9690;&#x85CF;&#x5C42;<code>self.h</code>&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x96F6;&#x5411;&#x91CF;&#x3002;</li>
 <li><code>np.tanh</code>&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x7EBF;&#x6027;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x628A;&#x503C;&#x6FC0;&#x6D3B;&#x81F3;<code>[-1, 1]</code>&#x3002;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x9690;&#x85CF;&#x5C42;&#x5411;&#x91CF;&#xFF1A;$h_t=tanh(W_{hh}h_{t-1}+W_{xh}x_{t})$</li>
-<li>&#x5728;tanh&#x4E2D;&#x5305;&#x62EC;&#x4E24;&#x90E8;&#x5206;&#xFF1A;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x4E4B;&#x524D;&#x7684;&#x9690;&#x85CF;&#x5C42;&#xFF0C;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x5F53;&#x524D;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x5229;&#x7528;<code>np.dot</code>&#x8BA1;&#x7B97;&#x8F93;&#x5165;&#x548C;&#x6743;&#x91CD;&#x7684;&#x7ED3;&#x679C;&#x3002;</li>
+<li>&#x5728;tanh&#x4E2D;&#x5305;&#x62EC;&#x4E24;&#x90E8;&#x5206;&#xFF1A;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x4E4B;&#x524D;&#x7684;&#x9690;&#x85CF;&#x5C42;&#xFF0C;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x5F53;&#x524D;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x5206;&#x522B;&#x5229;&#x7528;<code>np.dot</code>&#x8BA1;&#x7B97;&#x8F93;&#x5165;&#x548C;&#x6743;&#x91CD;&#x7684;&#x7ED3;&#x679C;&#x3002;tanh&#x5728;&#x5143;&#x7D20;&#x7EA7;&#x88AB;&#x5E94;&#x7528;&#x3002;</li>
+<li>&#x521D;&#x59CB;&#x65F6;&#xFF0C;&#x6240;&#x6709;&#x53C2;&#x6570;&#x88AB;&#x968F;&#x673A;&#x8D4B;&#x503C;&#x3002;&#x5728;loss&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x4E0B;&#xFF0C;&#x5728;&#x7ED9;&#x5B9A;x&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8F93;&#x51FA;&#x8D8A;&#x6765;&#x8D8A;&#x63A5;&#x8FD1;y&#x3002;</li>
 </ul>
+</li>
+<li>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#xFF1A;<pre><code class="python">y1 = rnn1.step(x)
+y = rnn2.step(y1)
+</code></pre>
 </li>
 </ul>
 
