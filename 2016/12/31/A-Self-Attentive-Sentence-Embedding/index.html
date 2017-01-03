@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Embedding, RNN, Attention," />
+  <meta name="keywords" content="Embedding,RNN,Attention," />
 
 
 
@@ -90,19 +90,19 @@
 <meta property="og:url" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/index.html">
 <meta property="og:site_name" content="Study IR in IRLAB">
 <meta property="og:description" content="&amp;#x4E00;&amp;#x4E2A;&amp;#x81EA;&amp;#x6CE8;&amp;#x610F;&amp;#x529B;&amp;#x7684;&amp;#x53E5;&amp;#x5B50;&amp;#x5D4C;&amp;#x5165;&amp;#x8868;&amp;#x8FBE; by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp;amp; Yo">
-<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/sentence.png">
-<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/biLSTM.png">
-<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/H.png">
-<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/weight_a.png">
-<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/weights_A.png">
-<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/M.png">
-<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/measure_redundancy.png">
-<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/aij.png">
-<meta property="og:updated_time" content="2017-01-02T10:13:07.310Z">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/sentence.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/biLSTM.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/H.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/weight_a.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/weights_A.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/M.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/measure_redundancy.png">
+<meta property="og:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/aij.png">
+<meta property="og:updated_time" content="2017-01-03T01:30:37.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A_Self_Attentive_Sentence_Embedding">
 <meta name="twitter:description" content="&amp;#x4E00;&amp;#x4E2A;&amp;#x81EA;&amp;#x6CE8;&amp;#x610F;&amp;#x529B;&amp;#x7684;&amp;#x53E5;&amp;#x5B50;&amp;#x5D4C;&amp;#x5165;&amp;#x8868;&amp;#x8FBE; by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou &amp;amp; Yo">
-<meta name="twitter:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/sentence.png">
+<meta name="twitter:image" content="https://frankblood.github.io/2016/12/31/A-Self-Attentive-Sentence-Embedding/sentence.png">
 
 
 
@@ -336,74 +336,58 @@
 <ul>
 <li>&#x8BCD;&#xFF1A;&#x8BCD;&#x5D4C;&#x5165;&#xFF0C;&#x4E00;&#x79CD;&#x5355;&#x4E2A;&#x8BCD;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8868;&#x8FBE;&#xFF0C;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x8BCD;&#x7684;&#x8BED;&#x4E49;&#x4FE1;&#x606F;</li>
 <li><p>&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x83B7;&#x5F97;&#x77ED;&#x8BED;&#x548C;&#x53E5;&#x5B50;&#x7684;&#x5305;&#x542B;&#x8BED;&#x4E49;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8868;&#x8FBE;&#x7684;&#x65B9;&#x6CD5;&#x4E3B;&#x8981;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;</p>
-<blockquote>
 <ol>
 <li>&#x901A;&#x8FC7;&#x65E0;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#x83B7;&#x5F97;&#x7684;&#x5168;&#x5C40;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#xFF1A;SkipThought vectors&#x548C;DBOW&#x6A21;&#x578B;&#x3002;&#x5168;&#x5C40;&#x8BAD;<br>&#x7EC3;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x5927;&#x91CF;&#x7684;&#x4E0D;&#x6807;&#x8BB0;&#x7684;&#x8BED;&#x6599;&#x3002;</li>
 <li>&#x901A;&#x8FC7;&#x76D1;&#x7763;&#x5B66;&#x4E60;&#xFF0C;&#x4E3A;&#x67D0;&#x4E2A;&#x660E;&#x786E;&#x7684;&#x4EFB;&#x52A1;&#x8BAD;&#x7EC3;&#x5F97;&#x5230;&#x7684;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x3002;&#x901A;&#x5E38;&#x4E0E;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x4EFB;&#x52A1;&#x6709;&#x5173;&#x3002;</li>
 <li>&#x901A;&#x5E38;&#xFF0C;&#x7279;&#x5B9A;&#x8BAD;&#x7EC3;&#x7684;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x6027;&#x80FD;&#x4F18;&#x4E8E;&#x5168;&#x5C40;&#x8868;&#x8FBE;&#x3002;</li>
 </ol>
-</blockquote>
 </li>
 <li><p>&#x63A5;&#x4E0B;&#x6765;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x5728;&#x7279;&#x5B9A;&#x4EFB;&#x52A1;&#x4E0B;&#xFF0C;&#x5982;&#x4F55;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x3002;&#x6BD4;&#x5982;&#x5404;&#x79CD;RNN&#x548C;CNN</p>
-<blockquote>
 <ol>
 <li>&#x5229;&#x7528;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF0C;&#x5728;CNN&#x6216;&#x8005;LSTM&#x6A21;&#x578B;&#x4E0A;&#x63D0;&#x53D6;&#x4FE1;&#x606F;&#x6E90;&#x6765;&#x77E5;&#x9053;&#x63D0;&#x53D6;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#xFF08;&#x6CA1;&#x7406;&#x89E3;<br>&#x662F;&#x4EC0;&#x4E48;&#x9B3C;&#xFF01;&#xFF01;&#xFF09;</li>
 <li>&#x5728;LSTM&#x7684;&#x6BCF;&#x6B65;&#x7ED3;&#x679C;&#x4E0A;&#x52A0;max pooling / averaging</li>
 <li>&#x76F4;&#x63A5;&#x5229;&#x7528;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x7684;&#x9690;&#x85CF;&#x5C42;&#x4F5C;&#x4E3A;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;</li>
 </ol>
-</blockquote>
 </li>
 <li><p><strong>&#x672C;&#x6587;&#x5047;&#x8BBE;&#xFF1A;</strong>&#x83B7;&#x53D6;&#x4E00;&#x4E2A;RNN&#x6A21;&#x578B;&#x7684;&#x6BCF;&#x4E00;&#x6B65;&#x8BED;&#x4E49;&#x8868;&#x8FBE;&#x662F;&#x76F8;&#x5BF9;&#x56F0;&#x96BE;&#x4E14;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x3002;</p>
-<blockquote>
 <ul>
 <li>&#x672C;&#x6587;&#x63D0;&#x51FA;&#x7684;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x5C06;&#x53E5;&#x5B50;&#x4E0D;&#x540C;&#x65B9;&#x9762;&#x7684;&#x8BED;&#x4E49;&#x63D0;&#x53D6;&#x81F3;&#x4E0D;&#x540C;&#x7684;&#x5411;&#x91CF;&#x8868;&#x8FBE;</li>
 <li>&#x672C;&#x65B9;&#x6CD5;&#x5229;&#x7528;&#x4E86;LSTM&#x7684;&#x8BB0;&#x5FC6;&#xFF08;&#x5373;&#x4E2D;&#x95F4;&#x8F93;&#x51FA;&#xFF09;</li>
 </ul>
-</blockquote>
 </li>
 </ul>
 <h2 id="&#x65B9;&#x6CD5;"><a href="#&#x65B9;&#x6CD5;" class="headerlink" title="&#x65B9;&#x6CD5;"></a>&#x65B9;&#x6CD5;</h2><h3 id="&#x6A21;&#x578B;&#xFF08;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF09;"><a href="#&#x6A21;&#x578B;&#xFF08;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF09;" class="headerlink" title="&#x6A21;&#x578B;&#xFF08;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF09;"></a>&#x6A21;&#x578B;&#xFF08;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF09;</h3><p><strong>&#x6A21;&#x578B;&#x5305;&#x62EC;&#x4E24;&#x4E2A;&#x90E8;&#x5206;&#xFF0C;&#x4E00;&#x90E8;&#x5206;&#x662F;biLSTM&#xFF0C;&#x53E6;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x3002;biLSTM&#x83B7;&#x5F97;&#x4E00;&#x822C;&#x9690;&#x85CF;&#x5C42;<br>&#x8868;&#x8FBE;&#xFF0C;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x6743;&#x91CD;&#x77E9;&#x9635;&#x3002;&#x4E24;&#x4E2A;&#x77E9;&#x9635;&#x505A;&#x70B9;&#x79EF;&#xFF0C;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#xFF08;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x4E2A;<br>&#x77E9;&#x9635;&#xFF09;</strong><br></p>
 <ul>
 <li><p>biLSTM</p>
-<blockquote>
 <ul>
-<li>&#x6BCF;&#x4E2A;&#x53E5;&#x5B50;&#x5305;&#x542B;n&#x4E2A;&#x5B57;&#xFF08;&#x6216;&#x8005;&#x8BCD;&#xFF09;&#xFF0C;&#x6BCF;&#x4E2A;&#x8BCD;&#x7528;d&#x7EF4;&#x7684;Embedding&#x8868;&#x793A;&#xFF08;word2vec/Glove/simple&#xFF09;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x53E5;&#x5B50;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;2&#x7EF4;&#x77E9;&#x9635;&#x3002;&#x6B64;&#x65F6;&#xFF0C;&#x53E5;&#x5B50;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8BCD;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/sentence.png" alt="sentence"></li>
-<li>&#x7528;&#x53CC;&#x5411;LSTM(biLSTM)&#x83B7;&#x53D6;&#x5355;&#x4E2A;&#x53E5;&#x5B50;&#x4E2D;&#x76F8;&#x90BB;&#x8BCD;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;&#x9690;&#x85CF;&#x5C42;&#x7684;&#x7EF4;&#x5EA6;&#x662F;u&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/biLSTM.png" alt="biLSTM"></li>
-<li>&#x76F4;&#x63A5;&#x5C06;&#x4E24;&#x4E2A;LSTM&#x83B7;&#x5F97;&#x7684;&#x9690;&#x85CF;&#x5C42;&#x62FC;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x5F97;&#x5230;n&#x4E2A;2u&#x7EF4;&#x7684;&#x5411;&#x91CF;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/H.png" alt="H"></li>
+<li>&#x6BCF;&#x4E2A;&#x53E5;&#x5B50;&#x5305;&#x542B;n&#x4E2A;&#x5B57;&#xFF08;&#x6216;&#x8005;&#x8BCD;&#xFF09;&#xFF0C;&#x6BCF;&#x4E2A;&#x8BCD;&#x7528;d&#x7EF4;&#x7684;Embedding&#x8868;&#x793A;&#xFF08;word2vec/Glove/simple&#xFF09;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x53E5;&#x5B50;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;2&#x7EF4;&#x77E9;&#x9635;&#x3002;&#x6B64;&#x65F6;&#xFF0C;&#x53E5;&#x5B50;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8BCD;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/sentence.png" alt="sentence"></li>
+<li>&#x7528;&#x53CC;&#x5411;LSTM(biLSTM)&#x83B7;&#x53D6;&#x5355;&#x4E2A;&#x53E5;&#x5B50;&#x4E2D;&#x76F8;&#x90BB;&#x8BCD;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;&#x9690;&#x85CF;&#x5C42;&#x7684;&#x7EF4;&#x5EA6;&#x662F;u&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/biLSTM.png" alt="biLSTM"></li>
+<li>&#x76F4;&#x63A5;&#x5C06;&#x4E24;&#x4E2A;LSTM&#x83B7;&#x5F97;&#x7684;&#x9690;&#x85CF;&#x5C42;&#x62FC;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x5F97;&#x5230;n&#x4E2A;2u&#x7EF4;&#x7684;&#x5411;&#x91CF;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/H.png" alt="H"></li>
 </ul>
-</blockquote>
 </li>
 <li><p>&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;</p>
-<blockquote>
 <ul>
-<li>&#x76EE;&#x6807;&#xFF1A;&#x5C06;&#x5728;H&#x4E2D;&#x7684;n&#x4E2A;&#x7ED3;&#x5408;LSTM&#x9690;&#x85CF;&#x5C42;&#x7684;&#x5411;&#x91CF;&#x8FDB;&#x884C;&#x7EBF;&#x6027;&#x7EC4;&#x5408;&#xFF0C;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;fixed_size&#xFF08;&#x56FA;&#x5B9A;<br>&#x957F;&#x5EA6;&#xFF09;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/weight_a.png" alt="weight_a"></li>
+<li>&#x76EE;&#x6807;&#xFF1A;&#x5C06;&#x5728;H&#x4E2D;&#x7684;n&#x4E2A;&#x7ED3;&#x5408;LSTM&#x9690;&#x85CF;&#x5C42;&#x7684;&#x5411;&#x91CF;&#x8FDB;&#x884C;&#x7EBF;&#x6027;&#x7EC4;&#x5408;&#xFF0C;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;fixed_size&#xFF08;&#x56FA;&#x5B9A;<br>&#x957F;&#x5EA6;&#xFF09;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/weight_a.png" alt="weight_a"></li>
 <li>&#x8FD9;&#x4E2A;&#x76F8;&#x5F53;&#x4E8E;&#x4E24;&#x5C42;MLP&#x3002;&#x7B2C;&#x4E00;&#x5C42;&#x7684;&#x8F93;&#x5165;&#x662F;H^T&#xFF08;&#x4E00;&#x4E2A;2u&#xD7;n&#x7684;&#x77E9;&#x9635;&#xFF09;&#xFF0C;&#x6743;&#x91CD;&#x662F;Ws1&#xFF08;&#x4E00;&#x4E2A;d&#xD7;2u&gt;&#x7684;&#x77E9;&#x9635;&#xFF09;,&#x6FC0;&#x6D3B;&#x51FD;&#x6570;&#x662F;tanh&#xFF0C;&#x8F93;&#x51FA;&#x662F;&#x4E00;&#x4E2A;d&#xD7;n&#x7684;&#x77E9;&#x9635;;&#x7B2C;&#x4E8C;&#x5C42;&#x7684;&#x8F93;&#x5165;&#x4E3A;&#x7B2C;&#x4E00;&#x5C42;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x6743;&#x91CD;&#x662F;ws2&#xFF08;&#x4E00;&#x4E2A;d&#x7EF4;&#x5411;&#x91CF;&#xFF09;&#xFF0C;&#x6FC0;&#x6D3B;&#x51FD;&#x6570;&#x662F;softmax&#xFF0C;&#x8F93;&#x51FA;&#x662F;&#x81EA;&#x6CE8;&#x610F;&#x673A;&#x5236;&#x90E8;&#x5206;&#x7684;&#x6743;&#x91CD;a&#xFF08;&#x4E00;&#x4E2A;n&#x7EF4;&#x5411;&#x91CF;&#xFF09;<br>&#x3002;</li>
 <li>&#x5C06;&#x83B7;&#x5F97;&#x7684;&#x6743;&#x91CD;a&#x4E58;&#x4EE5;H&#x5F97;&#x5230;&#x7684;&#x5411;&#x91CF;m&#xFF08;&#x4E00;&#x4E2A;2u&#x7EF4;&#x7684;&#x5411;&#x91CF;&#xFF09;&#x4F5C;&#x4E3A;&#x53E5;&#x5B50;&#x7684;&#x8868;&#x8FBE;&#x3002;</li>
-<li>&#x4E0A;&#x9762;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x53EA;&#x80FD;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x8BED;&#x4E49;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x9762;&#x6216;&#x8005;&#x5185;&#x5BB9;&#x3002;&#xFF08;&#x8FD9;&#x4E2A;&#x6709;&#x70B9;&#x7275;&#x5F3A;&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4ECE;<br>&#x591A;&#x4E2A;&#x65B9;&#x9762;&#x8868;&#x793A;&#x53E5;&#x5B50;&#x7684;&#x8BED;&#x4E49;&#x4FE1;&#x606F;&#xFF0C;&#x5219;&#x8981;&#x591A;&#x4E2A;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x6743;&#x91CD;&#x3002;&#x63D0;&#x53D6;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x7684;r&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x9762;&#x3002;&gt;&#x5C06;ws2&#x6269;&#x5C55;&#x4E3A;Ws2&#xFF08;&#x4E00;&#x4E2A;r&#xD7;d&#x7684;&#x77E9;&#x9635;&#xFF09;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x6743;&#x91CD;&#x4ECE;a&#x6269;&#x5C55;&#x4E3A;A&#xFF08;&#x4E00;&#x4E2A;r&#xD7;n&#x7684;&#x77E9;&#x9635;&#xFF09;&#x3002;<br>&#x8FD9;&#x91CC;&#x7684;softmax&#x4EC5;&#x5BF9;&#x8F93;&#x5165;&#x7684;&#x7B2C;&#x4E8C;&#x7EF4;&#x4F5C;&#x7528;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/weights_A.png" alt="weights_A"></li>
-<li>&#x6700;&#x540E;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;M&#xFF08;r&#xD7;2u&#x7684;&#x77E9;&#x9635;&#xFF09;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/M.png" alt="M"></li>
+<li>&#x4E0A;&#x9762;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x53EA;&#x80FD;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x8BED;&#x4E49;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x9762;&#x6216;&#x8005;&#x5185;&#x5BB9;&#x3002;&#xFF08;&#x8FD9;&#x4E2A;&#x6709;&#x70B9;&#x7275;&#x5F3A;&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4ECE;<br>&#x591A;&#x4E2A;&#x65B9;&#x9762;&#x8868;&#x793A;&#x53E5;&#x5B50;&#x7684;&#x8BED;&#x4E49;&#x4FE1;&#x606F;&#xFF0C;&#x5219;&#x8981;&#x591A;&#x4E2A;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x6743;&#x91CD;&#x3002;&#x63D0;&#x53D6;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x7684;r&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x9762;&#x3002;&gt;&#x5C06;ws2&#x6269;&#x5C55;&#x4E3A;Ws2&#xFF08;&#x4E00;&#x4E2A;r&#xD7;d&#x7684;&#x77E9;&#x9635;&#xFF09;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x6743;&#x91CD;&#x4ECE;a&#x6269;&#x5C55;&#x4E3A;A&#xFF08;&#x4E00;&#x4E2A;r&#xD7;n&#x7684;&#x77E9;&#x9635;&#xFF09;&#x3002;<br>&#x8FD9;&#x91CC;&#x7684;softmax&#x4EC5;&#x5BF9;&#x8F93;&#x5165;&#x7684;&#x7B2C;&#x4E8C;&#x7EF4;&#x4F5C;&#x7528;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/weights_A.png" alt="weights_A"></li>
+<li>&#x6700;&#x540E;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;M&#xFF08;r&#xD7;2u&#x7684;&#x77E9;&#x9635;&#xFF09;&#x3002;<br><br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/M.png" alt="M"></li>
 </ul>
-</blockquote>
 </li>
 </ul>
 <h3 id="&#x60E9;&#x7F5A;&#x9879;"><a href="#&#x60E9;&#x7F5A;&#x9879;" class="headerlink" title="&#x60E9;&#x7F5A;&#x9879;"></a>&#x60E9;&#x7F5A;&#x9879;</h3><p><strong>&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x679C;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x63D0;&#x4F9B;&#x76F8;&#x4F3C;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x77E9;&#x9635;M&#x5C31;&#x6709;&#x5197;&#x4F59;&#x7684;&#x95EE;&#x9898;&#x3002;&#x6240;&gt;&#x4EE5;&#x9700;&#x8981;&#x60E9;&#x7F5A;&#x9879;&#xFF0C;&#x6765;&#x4FDD;&#x8BC1;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x5F97;&#x5230;&#x7684;&#x4E0D;&#x540C;&#x7684;&#x6C42;&#x548C;&#x6743;&#x91CD;&#x5411;&#x91CF;&#x5C3D;&#x91CF;&#x591A;&#x6837;&#x5316;&#xFF08;diversity&#xFF09;&#x3002;</strong><br></p>
 <ul>
 <li>Kullback Leibler divergence&#xFF1A;&#x6743;&#x91CD;&#x5411;&#x91CF;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E24;&#x4E2A;&#x7684;KL&#x8DDD;&#x79BB;&#x662F;&#x8BC4;&#x4EF7;&#x591A;&#x6837;&#x6027;&#x7684;&#x6700;&#x597D;&#x7684;&gt;&#x65B9;&#x6CD5;&#x3002;&#xFF08;&#x4E0D;&#x6653;&#x5F97;&#x8FD9;&#x4E2A;&#x8DDD;&#x79BB;&#x662F;&#x4E2A;&#x4EC0;&#x4E48;&#x9B3C;&#xFF01;&#x636E;&#x8BF4;&#x8BA1;&#x7B97;&#x6210;&#x672C;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF09;</li>
-<li><p>&#x8BC4;&#x4EF7;&#x5197;&#x4F59;&#x7A0B;&#x5EA6;&#xFF1A;&#x89C1;&#x4E0B;&#x56FE;</p>
-<blockquote>
-<p><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/measure_redundancy.png" alt="measure_redundancy"><br></p>
+<li><p>&#x8BC4;&#x4EF7;&#x5197;&#x4F59;&#x7A0B;&#x5EA6;&#xFF1A;&#x89C1;&#x4E0B;&#x56FE;<br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/measure_redundancy.png" alt="measure_redundancy"><br></p>
 <ul>
 <li>&#x5176;&#x4E2D;&#xFF0C;A&#x662F;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x4EA7;&#x751F;&#x7684;&#x6743;&#x91CD;&#x77E9;&#x9635;&#xFF0C;I&#x662F;&#x5355;&#x4F4D;&#x9635;&#xFF0C;&#x4E4B;&#x540E;&#x6C42;Frobenius&#x8303;&#x6570;&#x3002;&#x7C7B;&#x4F3C;&#x4E8E;L2&#x6B63;&gt;&#x5219;&#x9879;&#xFF0C;&#x60E9;&#x7F5A;&#x9879;P&#x5C06;&#x88AB;&#x4E00;&#x4E2A;&#x7CFB;&#x6570;&#x76F8;&#x4E58;&#xFF0C;&#x7136;&#x540E;&#x4E4B;&#x524D;&#x7684;loss&#x4E00;&#x8D77;&#x88AB;&#x6700;&#x5C0F;&#x5316;&#xFF08;&#x8FD9;&#x4E2A;loss&#x53D6;&#x51B3;&#x4E8E;&#x4E4B;&#x540E;&#x7684;&gt;&#x5E94;&#x7528;&#xFF09;&#x3002;</li>
 </ul>
-</blockquote>
 </li>
-<li><p>&#x89E3;&#x91CA;&#xFF1A;&#x8003;&#x8651;&#x5728;&#x6743;&#x91CD;&#x77E9;&#x9635;A&#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x5411;&#x91CF;a1&#x548C;a2&#xFF0C;&#x56E0;&#x4E3A;softmax&#x51FD;&#x6570;&#xFF0C;A&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5411;&#x91CF;&gt;&#x7684;&#x548C;&#x5E94;&#x8BE5;&#x662F;1.&#x6240;&#x4EE5;&#x6BCF;&#x4E2A;&#x5411;&#x91CF;&#x88AB;&#x89C6;&#x4E3A;&#x79BB;&#x6563;&#x6982;&#x7387;&#x5206;&#x5E03;&#x7684;&#x6982;&#x7387;&#x8D28;&#x91CF;&#x3002;&#x5BF9;AAT&#x4EFB;&#x4F55;&#x975E;&#x5BF9;&#x89D2;&#x5143;&#x7D20;&#xFF0C;&#x8868;&#x793A;&gt;&#x4E3A;&#xFF1A;</p>
-<blockquote>
-<p><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/./img/aij.png" alt="aij"><br></p>
+<li><p>&#x89E3;&#x91CA;&#xFF1A;&#x8003;&#x8651;&#x5728;&#x6743;&#x91CD;&#x77E9;&#x9635;A&#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x5411;&#x91CF;a1&#x548C;a2&#xFF0C;&#x56E0;&#x4E3A;softmax&#x51FD;&#x6570;&#xFF0C;A&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5411;&#x91CF;&gt;&#x7684;&#x548C;&#x5E94;&#x8BE5;&#x662F;1.&#x6240;&#x4EE5;&#x6BCF;&#x4E2A;&#x5411;&#x91CF;&#x88AB;&#x89C6;&#x4E3A;&#x79BB;&#x6563;&#x6982;&#x7387;&#x5206;&#x5E03;&#x7684;&#x6982;&#x7387;&#x8D28;&#x91CF;&#x3002;&#x5BF9;AAT&#x4EFB;&#x4F55;&#x975E;&#x5BF9;&#x89D2;&#x5143;&#x7D20;&#xFF0C;&#x8868;&#x793A;&gt;&#x4E3A;&#xFF1A;<br><img src="/2016/12/31/A-Self-Attentive-Sentence-Embedding/aij.png" alt="aij"><br></p>
 <ul>
 <li>&#x5728;&#x4E00;&#x79CD;&#x6781;&#x7AEF;&#x60C5;&#x51B5;&#xFF1A;&#x4E24;&#x4E2A;&#x5411;&#x91CF;a1&#x548C;a2&#x6CA1;&#x6709;&#x91CD;&#x53E0;&#xFF0C;&#x90A3;&#x4E48;aij&#x5E94;&#x8BE5;&#x662F;0</li>
 <li>&#x5728;&#x53E6;&#x4E00;&#x79CD;&#x6781;&#x7AEF;&#x60C5;&#x51B5;&#xFF1A;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x5206;&#x5E03;&#x662F;&#x76F8;&#x540C;&#x7684;&#x4E14;&#x90FD;&#x8868;&#x793A;&#x5355;&#x4E2A;&#x8BCD;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x503C;&#x4E3A;1&#x3002;</li>
 </ul>
-</blockquote>
 </li>
 <li><p>&#x56DE;&#x5230;&#x521A;&#x521A;&#x7684;&#x90A3;&#x4E2A;&#x8BA1;&#x7B97;&#x5197;&#x4F59;&#x5EA6;&#x7684;&#x516C;&#x5F0F;&#xFF0C;&#x628A;AAT&#x51CF;&#x53BB;&#x5355;&#x4F4D;&#x77E9;&#x9635;I&#xFF0C;&#x7136;&#x540E;&#x6C42;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x8FD9;&#x6837;&#x8981;&#x6C42;AAT&gt;&#x5728;&#x5BF9;&#x89D2;&#x7EBF;&#x7684;&#x503C;&#x63A5;&#x8FD1;&#x4E8E;1&#xFF08;&#x5373;&#x6BCF;&#x4E2A;&#x5411;&#x91CF;a&#x90FD;&#x5C3D;&#x91CF;&#x5C11;&#x5173;&#x6CE8;&#x51E0;&#x4E2A;&#x5355;&#x8BCD;&#xFF09;&#xFF0C;&#x5176;&#x4ED6;&#x4F4D;&#x7F6E;&#x7684;&#x503C;&#x63A5;&#x8FD1;&#x4E8E;0&#xFF08;&#x8FD9;&gt;&#x6837;&#x9632;&#x6B62;&#x4E0D;&#x540C;&#x7684;&#x5411;&#x91CF;a&#x6709;&#x5197;&#x4F59;&#xFF09;&#x3002;</p>
 </li>
@@ -416,30 +400,24 @@
 </ul>
 <h2 id="&#x76F8;&#x5173;&#x5DE5;&#x4F5C;"><a href="#&#x76F8;&#x5173;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x76F8;&#x5173;&#x5DE5;&#x4F5C;"></a>&#x76F8;&#x5173;&#x5DE5;&#x4F5C;</h2><ul>
 <li><p>&#x901A;&#x8FC7;&#x81EA;&#x9884;&#x6D4B;&#x8FDB;&#x884C;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#xFF08;Sentence Embedding via Self-Prediction&#xFF09;&#xFF1A;&#x7C7B;&#x4F3C;&#x4E8E;<br><strong>&#x81EA;&#x7F16;&#x7801;</strong>&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x5373;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x81EA;&#x5DF1;&#x6765;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x3002;</p>
-<blockquote>
 <ul>
 <li>ParagraphVector&#xFF1A;&#x4F18;&#x5316;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x6765;&#x9884;&#x6D4B;&#x53E5;&#x5B50;&#x4E2D;&#x7684;&#x4EE5;&#x8BCD;&#x888B;&#x6A21;&#x578B;&#x8868;&#x8FBE;&#x7684;&#x53E5;&#x5B50;&#x3002;</li>
 <li>Sequential Denoising Autoen-coders (SDAE)&#xFF1A;&#x5E94;&#x7528;&#x57FA;&#x4E8E;LSTM&#x7684;&#x7F16;&#x7801;&#x89E3;&#x7801;&#x6846;&#x67B6;&#x3002;&#x901A;&#x8FC7;&gt;&#x5C06;&#x53E5;&#x5B50;&#x4E2D;&#x8BCD;&#x7684;&#x987A;&#x5E8F;&#x8003;&#x8651;&#x8FDB;&#x6765;&#xFF0C;&#x7F16;&#x7801;&#x5668;&#x628A;&#x53E5;&#x5B50;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#xFF0C;&#x89E3;&#x7801;&#x5668;&#x7528;&#x6765;&#x9884;&#x6D4B;&#x8FD9;&#x4E2A;&#x53E5;&#x5B50;<br>&#x3002;</li>
 <li>recursive auto-encoder&#xFF1A;&#x5B66;&#x4E60;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x7684;&#x53E5;&#x6CD5;&#x6811;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#xFF0C;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x8FD9;<br>&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5B50;&#x8282;&#x70B9;&#x6765;&#x4F18;&#x5316;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;</li>
 </ul>
-</blockquote>
 </li>
 <li><p>&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x4E34;&#x8FD1;&#x53E5;&#x5B50;&#x7684;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#xFF08;Sentence Embeddings via Predicting Adjacent Sentences&#xFF09;&#xFF1A;&#x5145;&#x5206;&#x5229;&#x7528;&#x53E5;&#x5B50;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#x3002;</p>
-<blockquote>
 <ul>
 <li>SkipThought and FastSent&#xFF1A;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x4E34;&#x8FD1;&#x53E5;&#x5B50;&#x6765;&#x8BAD;&#x7EC3;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x5C31;<br>&#x662F;&#x5229;&#x7528;&#x7F16;&#x7801;-&#x89E3;&#x7801;&#x5668;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x53CC;&#x8BED;&#x5E73;&#x884C;&#x53E5;&#x6765;&#x8BAD;&#x7EC3;&#x53E5;&#x5B50;&#x7684;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;</li>
 </ul>
-</blockquote>
 </li>
 <li><p>&#x603B;&#x7ED3;&#xFF1A;</p>
-<blockquote>
 <ul>
 <li>&#x6240;&#x6709;&#x7684;&#x4EE5;&#x524D;&#x7684;&#x5728;&#x534A;&#x76D1;&#x7763;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x7ED3;&#x6784;&#x7684;&#x5DE5;&#x4F5C;&#x8981;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5728;&#x53E5;&#x5B50;&#x4E2D;&#x8BCD;&#x7684;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x4E0A;&#x505A;max/average pooling&#xFF0C;&#x8981;&#x4E48;&#x662F;&#x76F4;&#x63A5;&#x63D0;&#x53D6;LSTM&#x7684;&#x6700;&#x540E;&#x4E00;&#x5C42;&#x4F5C;&#x4E3A;&#x5D4C;&#x5165;&#x5F0F;&#x8868;&#x8FBE;&#x3002;</li>
 <li>&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x9650;&#x5236;&#x4E86;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x2014;&#x2014;&#x5355;&#x4E2A;&#x5411;&#x91CF;&#x4E0D;&#x80FD;&#x8986;&#x76D6;&#x548C;&#x533A;&#x522B;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x7684;&#x4E0D;&#x540C;&#x65B9;&#x9762;&#x3002;</li>
 <li><strong>&#x672C;&#x6587;&#x5DE5;&#x4F5C;&#xFF1A;</strong>&#x901A;&#x8FC7;&#x7ED3;&#x5408;&#x81EA;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x548C;&#x77E9;&#x9635;&#x8868;&#x8FBE;&#xFF0C;&#x89E3;&#x51B3;&#x4E86;&#x4E0A;&#x8FF0;&#x95EE;&#x9898;&#x3002;</li>
 <li><strong>&#x5176;&#x4ED6;&#x5DE5;&#x4F5C;&#xFF1A;</strong>&#x901A;&#x8FC7;&#x5229;&#x7528;&#x5916;&#x90E8;&#x8BED;&#x8A00;&#x7ED3;&#x6784;&#x5982;&#x5206;&#x8BCD;&#x548C;&#x4F9D;&#x8D56;&#x6811;&#x63D0;&#x9AD8;&#x53E5;&#x5B50;&#x7684;&#x8868;&#x8FBE;&#x3002;&#x4F46;&#x662F;&#x672C;&#x6587;&#x6CA1;&#x6709;<br>&#x5229;&#x7528;&#x8BED;&#x8A00;&#x7ED3;&#x6784;&#x6765;&#x6307;&#x5BFC;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x6A21;&#x578B;&#x3002;</li>
 </ul>
-</blockquote>
 </li>
 </ul>
 <h2 id="&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;"><a href="#&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;" class="headerlink" title="&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;"></a>&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;</h2><p><strong>&#x901A;&#x8FC7;&#x4E09;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x96C6;&#x4EE5;&#x4E09;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x4EFB;&#x52A1;&#x8BC4;&#x4EF7;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x6A21;&#x578B;</strong><br></p>
@@ -492,7 +470,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Embedding-RNN-Attention/" rel="tag"># Embedding, RNN, Attention</a>
+            <a href="/tags/Embedding/" rel="tag"># Embedding</a>
+          
+            <a href="/tags/RNN/" rel="tag"># RNN</a>
+          
+            <a href="/tags/Attention/" rel="tag"># Attention</a>
           
         </div>
       
@@ -594,7 +576,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
