@@ -1,0 +1,767 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="RNN,QA," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension&amp;#x9605;&amp;#x8BFB;&amp;#x7406;&amp;#x89E3;&amp;#x4E2D;&amp;#x7AEF;&amp;#x5BF9;&amp;#x7AEF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="End2end_Answer_Chunk_Extraction_and_Ranking_for_Reading_Comprehension">
+<meta property="og:url" content="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/index.html">
+<meta property="og:site_name" content="Study IR in IRLAB">
+<meta property="og:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension&amp;#x9605;&amp;#x8BFB;&amp;#x7406;&amp;#x89E3;&amp;#x4E2D;&amp;#x7AEF;&amp;#x5BF9;&amp;#x7AEF">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/baseline.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/GRU.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/likelihood_RC.png">
+<meta property="og:updated_time" content="2017-01-04T04:07:25.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="End2end_Answer_Chunk_Extraction_and_Ranking_for_Reading_Comprehension">
+<meta name="twitter:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension&amp;#x9605;&amp;#x8BFB;&amp;#x7406;&amp;#x89E3;&amp;#x4E2D;&amp;#x7AEF;&amp;#x5BF9;&amp;#x7AEF">
+<meta name="twitter:image" content="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/baseline.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/"/>
+
+
+
+
+
+  <title> End2end_Answer_Chunk_Extraction_and_Ranking_for_Reading_Comprehension | Study IR in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Study IR in IRLAB</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Embedding, RNN and so on</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="He Guoxiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Study IR in IRLAB">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Study IR in IRLAB" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                End2end_Answer_Chunk_Extraction_and_Ranking_for_Reading_Comprehension
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T12:00:17+08:00">
+                2017-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
+<h1 id="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension"><a href="#&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension" class="headerlink" title="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension"></a>&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension</h1><p><strong>&#x9605;&#x8BFB;&#x7406;&#x89E3;&#x4E2D;&#x7AEF;&#x5BF9;&#x7AEF;&#x7684;&#x7B54;&#x6848;&#x63D0;&#x53D6;&#x548C;&#x6392;&#x5E8F; by IBM Watson for AAAI 2017</strong><br><a id="more"></a></p>
+<h2 id="&#x6458;&#x8981;"><a href="#&#x6458;&#x8981;" class="headerlink" title="&#x6458;&#x8981;"></a>&#x6458;&#x8981;</h2><ul>
+<li><strong>&#x672C;&#x6587;&#x5185;&#x5BB9;&#xFF1A;</strong>&#x672C;&#x6587;&#x63D0;&#x51FA;&#x4E00;&#x4E2A;dynamic chunk reader(DCR)&#x2014;&#x2014;&#x4E00;&#x4E2A;&#x7AEF;&#x5BF9;&#x7AEF;&#x7684;&#x795E;&#x7ECF;&#x9605;&#x8BFB;&#x7406;&#x89E3;&#x6A21;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x6587;&#x6863;&#x96C6;&#x5408;&#x4E2D;&#xFF0C;&#x4E3A;&#x56DE;&#x7B54;&#x95EE;&#x9898;&#x63D0;&#x53D6;&#x548C;&#x6392;&#x5E8F;&#x4E00;&#x4E2A;&#x56DE;&#x7B54;&#x5019;&#x9009;&#x96C6;&#x3002;</li>
+<li>&#x7279;&#x70B9;&#xFF1A;DCR&#x53EF;&#x4EE5;&#x9884;&#x6D4B;&#x4E00;&#x4E2A;&#x4E0D;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x56DE;&#x7B54;&#xFF0C;&#x800C;&#x4E4B;&#x524D;&#x7684;RC&#x6A21;&#x578B;&#x53EA;&#x80FD;&#x9884;&#x6D4B;&#x5355;&#x4E2A;&#x8BCD;&#x6216;&#x8005;&#x4E00;&#x4E2A;&#x5B9E;&#x4F53;&#x3002;</li>
+<li>&#x6A21;&#x578B;&#x6982;&#x8FF0;&#xFF1A;DCR&#x628A;&#x6587;&#x6863;&#x548C;&#x4E00;&#x4E2A;&#x8F93;&#x5165;&#x95EE;&#x9898;&#x7528;RNN&#x7F16;&#x7801;&#xFF0C;&#x7136;&#x540E;&#x5E94;&#x7528;&#x4E00;&#x4E2A;word-by-word&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x6765;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;&#x6587;&#x6863;&#x7684;&#x57FA;&#x4E8E;&#x95EE;&#x9898;&#x7684;&#x8868;&#x8FBE;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4E00;&#x4E2A;&#x5757;&#x8868;&#x8FBE;&#x751F;&#x6210;&#x5668;&#x548C;&#x4E00;&#x4E2A;&#x6392;&#x5E8F;&#x6A21;&#x578B;&#x3002;</li>
+<li>&#x5B9E;&#x9A8C;&#xFF1A;&#x7ED3;&#x679C;&#x8868;&#x660E;DCR&#x5728;SQuAD&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x5B9E;&#x73B0;&#x4E86;state-of-the-art&#x63D0;&#x53D6;&#x5339;&#x914D;&#x548C;F1_score&#x3002;</li>
+</ul>
+<h2 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h2><ul>
+<li>&#x80CC;&#x666F;&#xFF1A;&#x57FA;&#x4E8E;&#x95EE;&#x7B54;&#x7684;&#x9605;&#x8BFB;&#x7406;&#x89E3;&#x662F;&#x4E00;&#x4E2A;&#x5229;&#x7528;&#x4ECE;&#x76F8;&#x5173;&#x6587;&#x6863;&#x63D0;&#x53D6;&#x4E00;&#x4E2A;&#x5757;&#x6765;&#x56DE;&#x7B54;&#x95EE;&#x9898;&#x7684;&#x4EFB;&#x52A1;&#x3002;</li>
+<li>&#x4EE5;&#x524D;&#x7684;&#x6210;&#x679C;&#xFF1A;&#x5728;&#x7ED9;&#x5B9A;&#x7684;&#x6587;&#x6863;&#x4E2D;&#x63D0;&#x53D6;&#x5355;&#x4E2A;&#x8BCD;&#x6216;&#x8005;&#x5355;&#x4E2A;&#x5B9E;&#x4F53;&#x4F5C;&#x4E3A;&#x7B54;&#x6848;; &#x6216;&#x8005;&#x5728;&#x4EBA;&#x5DE5;&#x63D0;&#x4F9B;&#x7684;&#x5C0F;&#x5019;&#x9009;&#x96C6;&#x4E2D;&#x901A;&#x8FC7;&#x6392;&#x5E8F;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6B63;&#x786E;&#x7684;&#x7B54;&#x6848;&#x3002;</li>
+<li>&#x672C;&#x6587;&#x5173;&#x6CE8;&#x7684;&#x70B9;&#xFF1A;&#x5229;&#x7528;&#x6587;&#x672C;&#x7684;&#x4FE1;&#x606F;&#x6765;&#x63D0;&#x9AD8;&#x7B54;&#x6848;&#x7684;&#x8986;&#x76D6;&#x5EA6;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x4E00;&#x4E9B;&#x6CA1;&#x6709;&#x5173;&#x952E;&#x70B9;&#x7684;&#x56DE;&#x7B54;&#x3002;&#x6587;&#x4E2D;&#x8BF4;&#x9053;&#xFF0C;&#x9664;&#x4E86;&#x4ED6;&#x4EEC;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x6DF1;&#x5165;&#x7684;&#x7814;&#x7A76;&#x3002;</li>
+<li>&#x672C;&#x6587;&#x6A21;&#x578B;&#x7B80;&#x4ECB;&#xFF1A;dynamic chunk reader(DCR)&#xFF0C;&#x4E0D;&#x4EC5;&#x5728;&#x751F;&#x6210;&#x548C;&#x6392;&#x5E8F;&#x5019;&#x9009;&#x56DE;&#x7B54;&#x96C6;&#x4E0A;&#x4E0E;&#x4E4B;&#x524D;&#x7684;&#x7CFB;&#x7EDF;&#x660E;&#x663E;&#x4E0D;&#x540C;&#xFF0C;&#x8FD8;&#x5728;&#x8FD9;&#x4E9B;&#x5DE5;&#x4F5C;&#x4E2D;&#x5206;&#x4EAB;&#x8BC4;&#x4EF7;&#x3002;&#x9996;&#x5148;&#xFF0C;&#x901A;&#x8FC7;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x5B66;&#x4E60;&#x4E00;&#x4E2A;&#x66F4;&#x597D;&#x7684;&#x5019;&#x9009;&#x7B54;&#x6848;&#x5757;&#x8868;&#x8FBE;;&#x7136;&#x540E;&#xFF0C;&#x5229;&#x7528;&#x5757;&#x8868;&#x8FBE;&#x7B54;&#x6848;&#x5019;&#x9009;&#x96C6;&#x800C;&#x4E0D;&#x662F;&#x6309;&#x7167;word-level&#x8868;&#x8FBE;&#x3002;</li>
+<li><strong>&#x672C;&#x6587;&#x8D21;&#x732E;&#xFF1A;</strong><blockquote>
+<ol>
+<li>&#x672C;&#x6587;&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x4EE5;&#x7ED3;&#x5408;&#x5019;&#x9009;&#x7B54;&#x6848;&#x5757;&#x548C;&#x6392;&#x5E8F;&#xFF0C;&#x5373;&#x7B54;&#x6848;&#x4EE5;&#x4E00;&#x79CD;&#x7AEF;&#x5BF9;&#x7AEF;&#x7684;&#x5F62;&#x5F0F;&#x6784;&#x5EFA;&#x548C;&#x6392;&#x5E8F;&#x3002;</li>
+<li>&#x672C;&#x6587;&#x63D0;&#x51FA;&#x4E00;&#x79CD;&#x65B0;&#x7684;&#x95EE;&#x9898;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x6765;&#x63D0;&#x9AD8;&#x6BB5;&#x843D;&#x8BCD;&#x8868;&#x8FBE;&#x3002;</li>
+<li>&#x672C;&#x6587;&#x63D0;&#x51FA;&#x51E0;&#x4E2A;&#x7B80;&#x5355;&#x6709;&#x6548;&#x7684;&#x7279;&#x5F81;&#x6765;&#x589E;&#x5F3A;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#xFF0C;&#x4ECE;&#x6839;&#x672C;&#x4E0A;&#x63D0;&#x9AD8;&#x4E86;&#x5339;&#x914D;&#x548C;&#x6392;&#x5E8F;&#x7684;&#x51C6;&#x786E;&#x7387;&#x3002;</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="&#x95EE;&#x9898;&#x5B9A;&#x4E49;"><a href="#&#x95EE;&#x9898;&#x5B9A;&#x4E49;" class="headerlink" title="&#x95EE;&#x9898;&#x5B9A;&#x4E49;"></a>&#x95EE;&#x9898;&#x5B9A;&#x4E49;</h2><ul>
+<li>&#x76EE;&#x7684;&#xFF1A;&#x57FA;&#x4E8E;&#x4E00;&#x4E2A;&#x6BB5;&#x843D;P&#xFF0C;&#x901A;&#x8FC7;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;A&#xFF0C;&#x56DE;&#x7B54;&#x4E00;&#x4E2A;&#x4E8B;&#x5B9E;&#x578B;&#x7684;&#x6216;&#x8005;&#x975E;&#x4E8B;&#x5B9E;&#x578B;&#x7684;&#x95EE;&#x9898;Q&#x3002;</li>
+<li>Q&#xFF0C;P&#xFF0C;A&#x90FD;&#x662F;&#x53E5;&#x5B50;&#x5E8F;&#x5217;&#xFF0C;&#x5171;&#x7528;&#x4E00;&#x4E2A;&#x8BCD;&#x6C47;&#x8868;V&#x3002;</li>
+<li>&#x8BAD;&#x7EC3;&#x96C6;&#x7684;&#x7EC4;&#x6210;&#x4E3A;&#x4E09;&#x5143;&#x7EC4;&#xFF08;P&#xFF0C;Q&#xFF0C;A&#xFF09;</li>
+<li>&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x53EF;&#x80FD;&#x6709;&#x597D;&#x591A;&#x4E2A;&#x7B54;&#x6848;&#x3002;</li>
+<li><strong>RC&#x4EFB;&#x52A1;&#x7684;&#x7C7B;&#x522B;&#xFF1A;</strong><blockquote>
+<ol>
+<li>quiz-style&#xFF0C;MovieQA&#xFF1A;&#x95EE;&#x9898;&#x6709;&#x591A;&#x4E2A;&#x9009;&#x9879;</li>
+<li>Cloze-style&#xFF1A;&#x901A;&#x5E38;&#x901A;&#x8FC7;&#x4EE3;&#x66FF;&#x5728;&#x53E5;&#x5B50;&#x4E2D;&#x7684;&#x7A7A;&#x683C;&#x6765;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x7B54;&#x6848;&#x3002;</li>
+<li>answer selection&#xFF0C;TREC-QA&#xFF1A;&#x5728;&#x591A;&#x7ED9;&#x5B9A;&#x7684;&#x6BB5;&#x843D;&#x4E2D;&#xFF0C;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x6700;&#x597D;&#x7684;&#x3002;</li>
+<li>SQuAD&#x6570;&#x636E;&#x96C6;&#xFF1A;&#x6EE1;&#x8DB3;&#x4E8B;&#x5B9E;&#x578B;&#x548C;&#x975E;&#x4E8B;&#x5B9E;&#x578B;&#x7684;&#x7B54;&#x6848;&#x63D0;&#x53D6;&#xFF0C;&#x66F4;&#x63A5;&#x8FD1;&#x4E8E;&#x73B0;&#x5B9E;&#x4E16;&#x754C;&#x3002;</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2 id="Baseline&#xFF1A;"><a href="#Baseline&#xFF1A;" class="headerlink" title="Baseline&#xFF1A;"></a>Baseline&#xFF1A;</h2><p><strong>cloze-style RC&#x6A21;&#x578B;&#xFF0C;&#x672C;&#x6587;&#x5C06;&#x5728;&#x8BE5;&#x6A21;&#x578B;&#x4E0A;&#x8FDB;&#x884C;&#x6539;&#x8FDB;&#x3002;&#x5305;&#x62EC;&#x4E24;&#x4E2A;&#x90E8;&#x5206;&#xFF1A;1&#xFF09;&#x72EC;&#x7ACB;&#x7684;&#x7B54;&#x6848;&#x533A;&#x5757;&#xFF0C;&#x88AB;&#x8BAD;&#x7EC3;&#x4EE5;&#x751F;&#x6210;&#x91CD;&#x53E0;&#x5019;&#x9009;&#x533A;&#x5757;;2)&#x4E00;&#x4E2A;&#x795E;&#x7ECF;RC&#x6A21;&#x578B;&#xFF0C;&#x88AB;&#x7528;&#x6765;&#x7ED9;&#x6587;&#x7AE0;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8BCD;&#x8FDB;&#x884C;&#x6253;&#x5206;&#x3002;&#x5177;&#x4F53;&#x89E3;&#x91CA;&#x5982;&#x4E0B;&#xFF1A;</strong><br></p>
+<ul>
+<li>Answer Chunking:</li>
+<li>Feature Extraction and Ranking</li>
+</ul>
+<h2 id="Dynamic-Chunk-Reader"><a href="#Dynamic-Chunk-Reader" class="headerlink" title="Dynamic Chunk Reader"></a>Dynamic Chunk Reader</h2><ul>
+<li><img src="/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/baseline.png" alt="baseline"></li>
+<li><p>DCR&#x4F18;&#x4E8E;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x7684;&#x4E09;&#x4E2A;&#x539F;&#x56E0;&#xFF1A;</p>
+<blockquote>
+<ol>
+<li>&#x6BCF;&#x4E2A;&#x5757;&#x88AB;&#x52A8;&#x6001;&#x5730;&#x6784;&#x5EFA;&#x8868;&#x8FBE;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6709;&#x4E00;&#x4E2A;&#x5148;&#x524D;&#x5B9A;&#x4E49;&#x7684;&#x7279;&#x5F81;&#x503C;</li>
+<li>&#x6BCF;&#x6BB5;&#x8BDD;&#x7684;&#x8BCD;&#x8868;&#x8FBE;&#x901A;&#x8FC7;word-by-word&#x6CE8;&#x610F;&#x529B;&#x6765;&#x63D0;&#x9AD8;&#xFF0C;&#x6765;&#x8BC4;&#x4EF7;&#x6BB5;&#x843D;&#x8BCD;&#x548C;&#x95EE;&#x9898;&#x7684;&#x76F8;&#x5173;&#x6027;&#x3002;</li>
+<li>&#x7AEF;&#x5BF9;&#x7AEF;&#x7684;&#x8BAD;&#x7EC3;&#x3002;</li>
+</ol>
+</blockquote>
+</li>
+<li><p>DCR&#x6709;&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<blockquote>
+<ol>
+<li>encoder layer&#x901A;&#x8FC7;&#x4F7F;&#x7528;biRNN&#x5206;&#x522B;&#x7F16;&#x7801;&#x6BB5;&#x843D;&#x548C;&#x53E5;&#x5B50;</li>
+<li>attention layer&#x8BA1;&#x7B97;&#x6BB5;&#x843D;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x5230;&#x95EE;&#x9898;&#x7684;&#x76F8;&#x5173;&#x5EA6;</li>
+<li>chunk representation layer&#x4ECE;&#x7ED9;&#x5B9A;&#x7684;&#x6BB5;&#x843D;&#x4E2D;&#x52A8;&#x6001;&#x7684;&#x63D0;&#x53D6;&#x5019;&#x9009;&#x5757;&#xFF0C;&#x751F;&#x6210;&#x7F16;&#x7801;&#x6587;&#x672C;&#x4FE1;&#x606F;&#x7684;&#x5757;&#x8868;&#x8FBE;</li>
+<li>ranker layer&#x5BF9;&#x5757;&#x8868;&#x8FBE;&#x548C;&#x7ED9;&#x5B9A;&#x95EE;&#x9898;&#x7684;&#x8868;&#x8FBE;&#x7684;&#x76F8;&#x5173;&#x6027;&#x8FDB;&#x884C;&#x8BC4;&#x5206;&#xFF0C;&#x5229;&#x7528;softmax&#x5C42;&#x5BF9;&#x6240;&#x6709;&#x5019;&#x9009;&#x5757;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x3002;</li>
+</ol>
+</blockquote>
+</li>
+<li><p>Encoder Layer:<br><br>&#x5229;&#x7528;biRNN&#x5BF9;&#x6BB5;&#x843D;&#x548C;&#x95EE;&#x9898;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#xFF0C;&#x83B7;&#x5F97;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x7684;&#x9690;&#x85CF;&#x5C42;&#x3002;&#xFF08;RNN&#x7684;&#x8F93;&#x5165;&#x662F;&#x8BCD;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x548C;&#x8BCD;&#x7684;&#x5176;&#x4ED6;&#x7279;&#x5F81;&#x7684;&#x62FC;&#x63A5;&#xFF09;&#x3002;&#x8BE5;&#x5904;&#x4F7F;&#x7528;&#x7684;RNN&#x6A21;&#x578B;&#x662F;GRU&#x3002;&#x5177;&#x4F53;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;<img src="/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/GRU.png" alt="GRU"></p>
+</li>
+<li>Attention Layer:<br><br>&#x672C;&#x6587;&#x5728;word-by-word&#x6CE8;&#x610F;&#x529B;&#x65B9;&#x6CD5;&#x7684;&#x542F;&#x53D1;&#x4E0B;&#x63D0;&#x51FA;&#x4E00;&#x79CD;&#x65B0;&#x7684;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x3002;</li>
+<li>Chunk Representation Layer:<br><br>&#x5728;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x6CE8;&#x610F;&#x529B;&#x5C42;&#x7684;&#x8F93;&#x51FA;&#x65F6;&#xFF0C;&#x52A8;&#x6001;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5019;&#x9009;&#x7B54;&#x6848;&#x533A;&#x5757;&#x8868;&#x8FBE;&#x3002;&#x9996;&#x5148;&#x51B3;&#x5B9A;&#x5019;&#x9009;&#x533A;&#x5757;&#x7684;&#x6587;&#x6863;&#x8FB9;&#x754C;&#xFF0C;&#x63A5;&#x7740;&#x5229;&#x7528;&#x6240;&#x6709;&#x6216;&#x8005;&#x90E8;&#x5206;&#x6CE8;&#x610F;&#x529B;&#x673A;&#x5236;&#x7684;&#x8868;&#x8FBE;&#x8F93;&#x51FA;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x533A;&#x5757;&#x8868;&#x8FBE;&#x3002;<br><br>&#x7531;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x751F;&#x6210;&#x5019;&#x9009;&#x533A;&#x5757;&#xFF1A;&#x5229;&#x7528;POS&#x65B9;&#x6CD5;;&#x96C6;&#x5408;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x533A;&#x5757;&#x4EE5;&#x6700;&#x5927;&#x5316;&#x5355;&#x8BCD;&#x7684;&#x6570;&#x91CF;&#x3002;&#x672C;&#x6587;&#x5047;&#x8BBE;&#xFF0C;biRNN&#x7684;&#x4E24;&#x4E2A;end&#x8868;&#x8FBE;&#x7684;&#x7ED3;&#x5408;&#x53EF;&#x4EE5;&#x66F4;&#x597D;&#x7684;&#x8868;&#x793A;&#x6574;&#x4E2A;&#x6587;&#x6863;&#x3002;</li>
+<li>Ranker Layer:<br><br>&#x5229;&#x7528;cosine&#x76F8;&#x4F3C;&#x5EA6;&#x8BC4;&#x4EF7;&#x533A;&#x5757;&#x8868;&#x8FBE;&#x5C42;&#x5F97;&#x5230;&#x7684;&#x6BCF;&#x4E2A;&#x533A;&#x5757;&#x7684;&#x8868;&#x8FBE;&#x4E0E;&#x95EE;&#x9898;&#x8868;&#x8FBE;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#x3002;&#x7136;&#x540E;&#x5229;&#x7528;softmax&#x5BF9;&#x6240;&#x6709;&#x5019;&#x9009;&#x533A;&#x5757;&#x8FDB;&#x884C;&#x8BC4;&#x5206;&#x3002;</li>
+<li>&#x76EE;&#x6807;&#x51FD;&#x6570;&#xFF1A;&#x6700;&#x5C0F;&#x5316;&#x8D1F;log&#x4F3C;&#x7136;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;<br><img src="/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/likelihood_RC.png" alt="likelihood_RC"></li>
+</ul>
+<h2 id="&#x5B9E;&#x9A8C;&#xFF1A;"><a href="#&#x5B9E;&#x9A8C;&#xFF1A;" class="headerlink" title="&#x5B9E;&#x9A8C;&#xFF1A;"></a>&#x5B9E;&#x9A8C;&#xFF1A;</h2><ul>
+<li>&#x6570;&#x636E;&#x96C6;&#xFF1A;&#x5229;&#x7528;Stanford Question Answering Dataset(SQuAD)&#x6570;&#x636E;&#x96C6;&#x6765;&#x505A;&#x5B9E;&#x9A8C;&#x3002;&#x56E0;&#x4E3A;&#x5B83;&#x662F;&#x4E8B;&#x5B9E;&#x578B;&#x548C;&#x975E;&#x4E8B;&#x5B9E;&#x578B;&#x6DF7;&#x5408;&#x95EE;&#x9898;&#x6570;&#x636E;&#x96C6;&#x3002;&#x4E00;&#x4E2A;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x7684;&#x5927;&#x89C4;&#x6A21;&#x6570;&#x636E;&#x96C6;&#xFF08;&#x4ECE;536&#x7BC7;&#x7EF4;&#x57FA;&#x767E;&#x79D1;&#x91CC;&#x9009;&#x62E9;&#x7684;100k&#x4E2A;&#x95EE;&#x7B54;&#x5BF9;&#xFF09;&#x3002;&#x7B54;&#x6848;&#x4ECE;&#x4E00;&#x4E2A;&#x8BCD;&#x5230;&#x591A;&#x4E2A;&#x8BCD;&#x4E0D;&#x7B49;&#x3002;</li>
+<li>&#x7279;&#x5F81;&#xFF1A;&#x8F93;&#x5165;&#x7684;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x7684;&#x5411;&#x91CF;&#x8868;&#x8FBE;&#x6709;6&#x90E8;&#x5206;&#x2014;&#x2014;&#x4E00;&#x4E2A;300&#x7EF4;&#x7684;GloVe&#x5D4C;&#x5165;&#x8868;&#x8FBE;;POS&#x7684;one-hot&#x7F16;&#x7801;;NE(name entity)&#x7684;one-hot&#x7F16;&#x7801;;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x503C;&#x8868;&#x793A;&#x662F;&#x5426;&#x4E0E;&#x95EE;&#x9898;&#x4E2D;&#x7684;&#x8BCD;&#x76F8;&#x540C;&#x2026;&#x2026;&#x7B49;&#x5176;&#x4ED6;&#x770B;&#x4E0D;&#x61C2;&#x7684;&#x3002;&#x3002;</li>
+<li>&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#xFF1A;&#x7565;</li>
+<li>&#x5B9E;&#x9A8C;&#x7ED3;&#x679C;&#xFF1A;&#x7565;</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RNN/" rel="tag"># RNN</a>
+          
+            <a href="/tags/QA/" rel="tag"># QA</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/03/Tutorial-for-RNN/" rel="next" title="Tutorial-for-RNN">
+                <i class="fa fa-chevron-left"></i> Tutorial-for-RNN
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="He Guoxiu" />
+          <p class="site-author-name" itemprop="name">He Guoxiu</p>
+          <p class="site-description motion-element" itemprop="description">Some notes for interesting papers, tutorials for useful tools, and inspire for life.</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#论文阅读笔记——End-to-End-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension"><span class="nav-number">1.</span> <span class="nav-text">论文阅读笔记——End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题定义"><span class="nav-number">1.3.</span> <span class="nav-text">问题定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Baseline："><span class="nav-number">1.4.</span> <span class="nav-text">Baseline：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Chunk-Reader"><span class="nav-number">1.5.</span> <span class="nav-text">Dynamic Chunk Reader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验："><span class="nav-number">1.6.</span> <span class="nav-text">实验：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">He Guoxiu</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
