@@ -1,0 +1,760 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Embedding," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;Fine-Grained Analysis of Sentence Embeddings Using Auxiliary Prediciton Tasks&amp;#x5229;&amp;#x7528;&amp;#x9884;&amp;#x6D4B;&amp;#x4EFB;&amp;#x52A1;&amp;#x6765;&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fine Grained Analysis of Sentence Embedding<br>Using Auxiliary Prediction Task">
+<meta property="og:url" content="https://frankblood.github.io/2017/01/08/Fine-Grained-Analysis-of-Sentence-Embedding-Using-Auxiliary-Prediction-Task/index.html">
+<meta property="og:site_name" content="Study in IRLAB">
+<meta property="og:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;Fine-Grained Analysis of Sentence Embeddings Using Auxiliary Prediciton Tasks&amp;#x5229;&amp;#x7528;&amp;#x9884;&amp;#x6D4B;&amp;#x4EFB;&amp;#x52A1;&amp;#x6765;&amp;#">
+<meta property="og:updated_time" content="2017-01-08T05:38:31.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fine Grained Analysis of Sentence Embedding<br>Using Auxiliary Prediction Task">
+<meta name="twitter:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;Fine-Grained Analysis of Sentence Embeddings Using Auxiliary Prediciton Tasks&amp;#x5229;&amp;#x7528;&amp;#x9884;&amp;#x6D4B;&amp;#x4EFB;&amp;#x52A1;&amp;#x6765;&amp;#">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://frankblood.github.io/2017/01/08/Fine-Grained-Analysis-of-Sentence-Embedding-Using-Auxiliary-Prediction-Task/"/>
+
+
+
+
+
+  <title> Fine Grained Analysis of Sentence Embedding<br>Using Auxiliary Prediction Task | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Study in IRLAB</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Embedding, RNN and so on</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/01/08/Fine-Grained-Analysis-of-Sentence-Embedding-Using-Auxiliary-Prediction-Task/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="He Guoxiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Study in IRLAB">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Study in IRLAB" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Fine Grained Analysis of Sentence Embedding<br>Using Auxiliary Prediction Task
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-08T13:32:57+08:00">
+                2017-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
+<h1 id="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;Fine-Grained-Analysis-of-Sentence-Embeddings-Using-Auxiliary-Prediciton-Tasks"><a href="#&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;Fine-Grained-Analysis-of-Sentence-Embeddings-Using-Auxiliary-Prediciton-Tasks" class="headerlink" title="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;Fine-Grained Analysis of Sentence Embeddings Using Auxiliary Prediciton Tasks"></a>&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;Fine-Grained Analysis of Sentence Embeddings Using Auxiliary Prediciton Tasks</h1><p><strong>&#x5229;&#x7528;&#x9884;&#x6D4B;&#x4EFB;&#x52A1;&#x6765;&#x8BE6;&#x7EC6;&#x5206;&#x6790;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE; by Yossi Adi, Einat Kermany, Yonatan Belinkov, Ofer Lavi, Yoav Goldberg for ICLR 2017</strong><br><a id="more"></a></p>
+<h2 id="&#x6458;&#x8981;"><a href="#&#x6458;&#x8981;" class="headerlink" title="&#x6458;&#x8981;"></a>&#x6458;&#x8981;</h2><ul>
+<li>&#x80CC;&#x666F;&#xFF1A;&#x4E3A;&#x4E86;&#x8868;&#x8FBE;&#x53E5;&#x5B50;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x628A;&#x4E0D;&#x540C;&#x957F;&#x5EA6;&#x7684;&#x53E5;&#x5B50;&#x7F16;&#x7801;&#x81F3;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x5411;&#x91CF;&#x5438;&#x5F15;&#x4E86;&#x5F88;&#x591A;&#x7814;&#x7A76;&#x5174;&#x8DA3;&#x3002;</li>
+<li>&#x4F20;&#x7EDF;&#x65B9;&#x6CD5;&#xFF1A;&#x57FA;&#x4E8E;&#x8BCD;&#x5411;&#x91CF;&#x5E73;&#x5747;&#x548C;&#x57FA;&#x4E8E;RNN&#x5982;LSTM&#x9690;&#x85CF;&#x5C42;&#x7684;&#x8868;&#x8FBE;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#xFF1A;&#x53E5;&#x5B50;&#x5411;&#x91CF;&#x4F5C;&#x4E3A;&#x7279;&#x5F81;&#x88AB;&#x7528;&#x4E8E;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x4EFB;&#x52A1;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x6216;&#x8005;&#x4E3A;&#x4E86;&#x5BF9;&#x4E0A;&#x4E0B;&#x6587;&#x8FDB;&#x884C;&#x9884;&#x8BAD;&#x7EC3;&#x3002;</li>
+<li>&#x73B0;&#x72B6;&#xFF1A;&#x65E0;&#x6CD5;&#x5145;&#x5206;&#x4E86;&#x89E3;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x7684;&#x7279;&#x70B9;&#x548C;&#x4ED6;&#x4EEC;&#x6355;&#x83B7;&#x7684;&#x4FE1;&#x606F;</li>
+<li><strong>&#x672C;&#x6587;&#x5185;&#x5BB9;&#xFF1A;</strong><blockquote>
+<ul>
+<li>&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x66F4;&#x597D;&#x7406;&#x89E3;&#x7F16;&#x7801;&#x8868;&#x8FBE;&#x7684;&#x6846;&#x67B6;</li>
+<li>&#x65B9;&#x6CD5;&#xFF1A;&#x672C;&#x6587;&#x901A;&#x8FC7;&#x8BAD;&#x7EC3;&#x5206;&#x7C7B;&#x5668;&#x6765;&#x89E3;&#x51B3;&#x6BCF;&#x4E2A;&#x9884;&#x6D4B;&#x4EFB;&#x52A1;&#x65F6;&#x4F7F;&#x7528;&#x8868;&#x793A;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#xFF0C;&#x5B9A;&#x4E49;&#x5173;&#x4E8E;&#x53E5;&#x5B50;&#x7ED3;&#x6784;&#x7684;&#x5B64;&#x7ACB;&#x65B9;&#x9762;&#xFF08;&#x5373;&#x53E5;&#x5B50;&#x957F;&#x5EA6;&#xFF0C;&#x5355;&#x8BCD;&#x5185;&#x5BB9;&#x548C;&#x5355;&#x8BCD;&#x987A;&#x5E8F;&#xFF09;&#x7684;&#x9884;&#x6D4B;&#x4EFB;&#x52A1;&#x548C;&#x5206;&#x6570;&#x8868;&#x793A;&#x3002;&#x672C;&#x6587;&#x901A;&#x8FC7;&#x5206;&#x6790;&#x4E0D;&#x540C;&#x53E5;&#x5B50;&#x7684;&#x8868;&#x73B0;&#x673A;&#x5236;&#x6765;&#x5C55;&#x793A;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x6F5C;&#x5728;&#x8D21;&#x732E;&#x3002;</li>
+<li>&#x7ED3;&#x679C;&#xFF1A;&#x5206;&#x6790;&#x63ED;&#x793A;&#x4E86;&#x4E0D;&#x540C;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x65B9;&#x6CD5;&#x76F8;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E9B;&#x4F4E;&#x7EA7;&#x9884;&#x6D4B;&#x4EFB;&#x52A1;&#x7684;&#x76F8;&#x5BF9;&#x5F3A;&#x5EA6;&#xFF0C;&#x4EE5;&#x53CA;&#x7F16;&#x7801;&#x5411;&#x91CF;&#x7684;&#x7EF4;&#x6570;&#x5BF9;&#x6240;&#x5F97;&#x5230;&#x7684;&#x8868;&#x793A;&#x7684;&#x5F71;&#x54CD;&#x3002;</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="1-&#x7B80;&#x4ECB;"><a href="#1-&#x7B80;&#x4ECB;" class="headerlink" title="1. &#x7B80;&#x4ECB;"></a>1. &#x7B80;&#x4ECB;</h2><ul>
+<li>&#x80CC;&#x666F;&#xFF1A;&#x76EE;&#x524D;&#x5C3D;&#x7BA1;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x6216;&#x8005;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x5728;&#x6700;&#x8FD1;&#x7684;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;NLP&#x65B9;&#x6CD5;&#x4E2D;&#x5360;&#x4E3B;&#x8981;&#x7684;&#x5730;&#x4F4D;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x5B66;&#x4E60;&#x673A;&#x5236;&#x5230;&#x5E95;&#x80FD;&#x83B7;&#x5F97;&#x4EC0;&#x4E48;&#x7684;&#x6837;&#x7684;&#x4FE1;&#x606F;&#x88AB;&#x7814;&#x7A76;&#x7684;&#x5F88;&#x5C11;&#x3002;</li>
+<li>&#x5E38;&#x89C1;&#x7684;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x65B9;&#x6CD5;&#xFF1A;&#x5E73;&#x5747;&#x8BCD;&#x5411;&#x91CF;&#xFF0C;&#x6709;&#x6807;&#x6CE8;&#x7684;Seq2Seq&#xFF0C;&#x65E0;&#x6807;&#x6CE8;&#x7684;Seq2Seq&#x3002;</li>
+<li>&#x95EE;&#x9898;&#xFF1A;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x662F;&#x4E0D;&#x900F;&#x660E;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x76EE;&#x524D;&#x6CA1;&#x6709;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x6BD4;&#x8F83;&#x4E0D;&#x540C;&#x7684;&#x8868;&#x8FBE;&#x4EE5;&#x53CA;&#x4ED6;&#x4EEC;&#x5728;&#x4E0D;&#x540C;&#x9AD8;&#x5C42;&#x6B21;&#x8BED;&#x4E49;&#x4EFB;&#x52A1;&#xFF08;&#x60C5;&#x611F;&#x5206;&#x7C7B;&#xFF0C;&#x5185;&#x6DB5;&#x8BC6;&#x522B;&#xFF0C;&#x6587;&#x6863;&#x68C0;&#x7D22;&#xFF0C;&#x95EE;&#x7B54;&#x7CFB;&#x7EDF;&#xFF0C;&#x53E5;&#x5B50;&#x76F8;&#x4F3C;&#x5EA6;&#x8BA1;&#x7B97;&#x7B49;&#xFF09;&#x7684;&#x6027;&#x80FD;&#x8868;&#x73B0;&#x3002;</li>
+<li><p><strong>&#x672C;&#x6587;&#x8D21;&#x732E;&#xFF1A;</strong></p>
+<blockquote>
+<ul>
+<li>&#x65B9;&#x6CD5;&#xFF1A;&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5229;&#x7528;&#x7F16;&#x7801;&#x5728;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#x7684;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x8BC4;&#x4EF7;&#x548C;&#x6BD4;&#x8F83;&#x4E0D;&#x540C;&#x5D4C;&#x5165;&#x65B9;&#x6CD5;&#x7684;&#x7EC6;&#x7C92;&#x5EA6;&#x6BD4;&#x8F83;&#x3002;</li>
+<li>&#x6BD4;&#x8F83;&#x7684;&#x57FA;&#x7840;&#xFF1A;&#x57FA;&#x4E8E;LSTM&#x7684;&#x81EA;&#x7F16;&#x7801;&#x548C;&#x7B80;&#x5355;&#x7684;CBOW&#x8868;&#x8FBE;&#x3002;&#x8FD8;&#x6709;skip-thought &#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;</li>
+<li>&#x6BD4;&#x8F83;&#x7684;&#x70B9;&#xFF1A;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x7801;&#x5668;&#x548C;&#x4E0D;&#x540C;&#x7684;&#x5411;&#x91CF;&#x7EF4;&#x5EA6;&#x5BF9;&#x7ED3;&#x679C;&#x7684;&#x5F71;&#x54CD;;&#x53E5;&#x5B50;&#x7684;&#x6700;&#x57FA;&#x7840;&#x7684;&#x7279;&#x5F81;&#x2014;&#x2014;&#x957F;&#x5EA6;&#xFF0C;&#x8574;&#x542B;&#x7684;&#x9879;&#x548C;&#x9879;&#x7684;&#x987A;&#x5E8F;;&#x4E0D;&#x540C;&#x7684;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x80FD;&#x5426;&#x7F16;&#x7801;&#x8FD9;&#x4E9B;&#x6982;&#x5FF5;&#x3002;</li>
+</ul>
+</blockquote>
+</li>
+<li><p>&#x7814;&#x7A76;&#x53D1;&#x73B0;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x57FA;&#x4E8E;&#x5E73;&#x5747;&#x8BCD;&#x5411;&#x91CF;&#x7684;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x975E;&#x5E38;&#x6709;&#x6548;&#xFF0C;&#x4F46;&#x662F;&#x7F16;&#x7801;&#x540E;&#xFF0C;&#x6CA1;&#x6709;&#x53E5;&#x5B50;&#x987A;&#x5E8F;&#x548C;&#x957F;&#x5EA6;&#x7684;&#x7279;&#x5F81;&#x3002;</li>
+<li>LSTM&#x7684;&#x81EA;&#x7F16;&#x7801;&#x5668;&#x5728;&#x7F16;&#x7801;&#x53E5;&#x5B50;&#x987A;&#x5E8F;&#x6BD4;&#x53E5;&#x5B50;&#x5185;&#x5BB9;&#x66F4;&#x6709;&#x6548;</li>
+<li>&#x63D0;&#x9AD8;&#x7F16;&#x7801;&#x5411;&#x91CF;&#x7684;&#x7EF4;&#x5EA6;&#x5728;&#x4E00;&#x4E9B;&#x4EFB;&#x52A1;&#x4E0A;&#x66F4;&#x597D;</li>
+<li>&#x589E;&#x52A0;&#x9690;&#x85CF;&#x5C42;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x7F16;&#x7801;&#x8BCD;&#x5185;&#x5BB9;&#x7684;&#x80FD;&#x529B;</li>
+<li>&#x4EE5;&#x81EA;&#x7F16;&#x7801;&#x8BAD;&#x7EC3;&#x7684;LSTM&#x7F16;&#x7801;&#x5668;&#xFF0C;&#x5F53;&#x7F16;&#x7801;&#x65B0;&#x7684;&#x53E5;&#x5B50;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;&#x7F16;&#x7801;&#x6A21;&#x5F0F;</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-&#x76F8;&#x5173;&#x5DE5;&#x4F5C;&#xFF08;&#x7565;&#xFF09;"><a href="#2-&#x76F8;&#x5173;&#x5DE5;&#x4F5C;&#xFF08;&#x7565;&#xFF09;" class="headerlink" title="2. &#x76F8;&#x5173;&#x5DE5;&#x4F5C;&#xFF08;&#x7565;&#xFF09;"></a>2. &#x76F8;&#x5173;&#x5DE5;&#x4F5C;&#xFF08;&#x7565;&#xFF09;</h2><p>&#xFF5E;</p>
+<h2 id="3-&#x65B9;&#x6CD5;"><a href="#3-&#x65B9;&#x6CD5;" class="headerlink" title="3. &#x65B9;&#x6CD5;"></a>3. &#x65B9;&#x6CD5;</h2><ul>
+<li><p>&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x5B9E;&#x9A8C;&#xFF0C;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x9884;&#x6D4B;&#x4EFB;&#x52A1;&#x3002;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x65B9;&#x6CD5;&#xFF0C;&#x4EA7;&#x751F;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#xFF0C;&#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#x6765;&#x9884;&#x6D4B;&#x53E5;&#x5B50;&#x7684;&#x7279;&#x5B9A;&#x5C5E;&#x6027;&#xFF08;&#x5982;&#x957F;&#x5EA6;&#xFF0C;&#x8BCD;&#x7684;&#x5185;&#x5BB9;&#x5C5E;&#x6027;&#x548C;&#x8BCD;&#x7684;&#x987A;&#x5E8F;&#xFF09;</p>
+</li>
+<li><p>&#x9884;&#x6D4B;&#x4EFB;&#x52A1;&#xFF1A;</p>
+<blockquote>
+<ul>
+<li>&#x957F;&#x5EA6;&#x4EFB;&#x52A1;&#xFF1A;&#x9884;&#x6D4B;&#x53E5;&#x5B50;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x591A;&#x5206;&#x7C7B;</li>
+<li>&#x8BCD;&#x5185;&#x5BB9;&#x4EFB;&#x52A1;&#xFF1A;&#x4E8C;&#x5206;&#x7C7B;&#x4EFB;&#x52A1;&#x3002;&#x5BF9;&#x6D4B;&#x8BD5;&#x5355;&#x8BCD;&#x662F;&#x6765;&#x81EA;&#x53E5;&#x5B50;&#x672C;&#x8EAB;&#x8FD8;&#x662F;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x96C6;&#x8FDB;&#x884C;&#x5206;&#x7C7B;</li>
+<li>&#x8BCD;&#x987A;&#x5E8F;&#x4EFB;&#x52A1;&#xFF1A;&#x4E8C;&#x5206;&#x7C7B;&#x4EFB;&#x52A1;&#x3002;&#x9884;&#x6D4B;&#x5355;&#x8BCD;1&#x662F;&#x5426;&#x5728;&#x5355;&#x8BCD;2&#x524D;&#x6216;&#x540E;&#x3002;</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="4-&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x6A21;&#x578B;"><a href="#4-&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x6A21;&#x578B;" class="headerlink" title="4. &#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x6A21;&#x578B;"></a>4. &#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x6A21;&#x578B;</h2><ul>
+<li>Continuous Bag-of-words(CBOW)</li>
+<li>Encoder-Decoder(ED)</li>
+</ul>
+<h2 id="5-&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;&#x548C;&#x5206;&#x6790;"><a href="#5-&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;&#x548C;&#x5206;&#x6790;" class="headerlink" title="5. &#x8BD5;&#x9A8C;&#x7ED3;&#x679C;&#x548C;&#x5206;&#x6790;"></a>5. &#x8BD5;&#x9A8C;&#x7ED3;&#x679C;&#x548C;&#x5206;&#x6790;</h2><ul>
+<li>&#x524D;&#x9762;&#x6709;&#x63D0;</li>
+</ul>
+<h1 id="&#x601D;&#x8003;"><a href="#&#x601D;&#x8003;" class="headerlink" title="&#x601D;&#x8003;"></a>&#x601D;&#x8003;</h1><p><code>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x662F;&#x63A2;&#x7A76;&#x5E38;&#x89C1;&#x7684;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x5230;&#x5E95;&#x6709;&#x6CA1;&#x6709;&#x7528;&#xFF0C;&#x5E76;&#x5C1D;&#x8BD5;&#x53BB;&#x89E3;&#x91CA;&#x5176;&#x7279;&#x70B9;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x662F;&#x6D45;&#x5C42;&#x6B21;&#x7684;&#x53E5;&#x5B50;&#x8868;&#x8FBE;&#x6D4B;&#x8BD5;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x66F4;&#x6DF1;&#x5165;&#x7684;&#x63A2;&#x7A76;&#x3002;
+&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#x662F;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x53EF;&#x89E3;&#x91CA;&#x7684;&#xFF0C;&#x8868;&#x8FBE;&#x80FD;&#x529B;&#x975E;&#x5E38;&#x5F3A;&#x7684;&#x53E5;&#x5B50;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Embedding/" rel="tag"># Embedding</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/" rel="next" title="End2end Answer Chunk Extraction <br>and Ranking for Reading Comprehension">
+                <i class="fa fa-chevron-left"></i> End2end Answer Chunk Extraction <br>and Ranking for Reading Comprehension
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="He Guoxiu" />
+          <p class="site-author-name" itemprop="name">He Guoxiu</p>
+          <p class="site-description motion-element" itemprop="description">Some notes for interesting papers, tutorials for useful tools, and inspire for life.</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/FrankBlood" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#论文阅读笔记——Fine-Grained-Analysis-of-Sentence-Embeddings-Using-Auxiliary-Prediciton-Tasks"><span class="nav-number">1.</span> <span class="nav-text">论文阅读笔记——Fine-Grained Analysis of Sentence Embeddings Using Auxiliary Prediciton Tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简介"><span class="nav-number">1.2.</span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-相关工作（略）"><span class="nav-number">1.3.</span> <span class="nav-text">2. 相关工作（略）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-方法"><span class="nav-number">1.4.</span> <span class="nav-text">3. 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-句子表达模型"><span class="nav-number">1.5.</span> <span class="nav-text">4. 句子表达模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-试验结果和分析"><span class="nav-number">1.6.</span> <span class="nav-text">5. 试验结果和分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思考"><span class="nav-number">2.</span> <span class="nav-text">思考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">He Guoxiu</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
