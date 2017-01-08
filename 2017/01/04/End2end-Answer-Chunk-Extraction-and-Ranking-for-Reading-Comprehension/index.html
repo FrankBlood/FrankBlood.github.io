@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/baseline.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/GRU.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/04/End2end-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension/likelihood_RC.png">
-<meta property="og:updated_time" content="2017-01-04T04:32:07.724Z">
+<meta property="og:updated_time" content="2017-01-08T06:17:09.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="End2end Answer Chunk Extraction <br>and Ranking for Reading Comprehension">
 <meta name="twitter:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension&amp;#x9605;&amp;#x8BFB;&amp;#x7406;&amp;#x89E3;&amp;#x4E2D;&amp;#x7AEF;&amp;#x5BF9;&amp;#x7AEF">
@@ -362,7 +362,7 @@
 
       
         <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
-<h1 id="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension"><a href="#&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension" class="headerlink" title="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension"></a>&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension</h1><p><strong>&#x9605;&#x8BFB;&#x7406;&#x89E3;&#x4E2D;&#x7AEF;&#x5BF9;&#x7AEF;&#x7684;&#x7B54;&#x6848;&#x63D0;&#x53D6;&#x548C;&#x6392;&#x5E8F; by IBM Watson for AAAI 2017</strong><br><a id="more"></a></p>
+<h1 id="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension"><a href="#&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End-Answer-Chunk-Extraction-and-Ranking-for-Reading-Comprehension" class="headerlink" title="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension"></a>&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension</h1><p><strong>&#x9605;&#x8BFB;&#x7406;&#x89E3;&#x4E2D;&#x7AEF;&#x5BF9;&#x7AEF;&#x7684;&#x7B54;&#x6848;&#x63D0;&#x53D6;&#x548C;&#x6392;&#x5E8F; by IBM Watson for AAAI 2017<a href="https://github.com/FrankBlood/Study_IR/blob/master/Embedding/papers/End-to-End%20Answer%20Chunk%20Extraction%20and%20Ranking%20for%20Reading%20Comprehension.pdf" target="_blank" rel="external">&#x539F;&#x6587;&#x94FE;&#x63A5;</a></strong><br><a id="more"></a></p>
 <h2 id="&#x6458;&#x8981;"><a href="#&#x6458;&#x8981;" class="headerlink" title="&#x6458;&#x8981;"></a>&#x6458;&#x8981;</h2><ul>
 <li><strong>&#x672C;&#x6587;&#x5185;&#x5BB9;&#xFF1A;</strong>&#x672C;&#x6587;&#x63D0;&#x51FA;&#x4E00;&#x4E2A;dynamic chunk reader(DCR)&#x2014;&#x2014;&#x4E00;&#x4E2A;&#x7AEF;&#x5BF9;&#x7AEF;&#x7684;&#x795E;&#x7ECF;&#x9605;&#x8BFB;&#x7406;&#x89E3;&#x6A21;&#x578B;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x6587;&#x6863;&#x96C6;&#x5408;&#x4E2D;&#xFF0C;&#x4E3A;&#x56DE;&#x7B54;&#x95EE;&#x9898;&#x63D0;&#x53D6;&#x548C;&#x6392;&#x5E8F;&#x4E00;&#x4E2A;&#x56DE;&#x7B54;&#x5019;&#x9009;&#x96C6;&#x3002;</li>
 <li>&#x7279;&#x70B9;&#xFF1A;DCR&#x53EF;&#x4EE5;&#x9884;&#x6D4B;&#x4E00;&#x4E2A;&#x4E0D;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x56DE;&#x7B54;&#xFF0C;&#x800C;&#x4E4B;&#x524D;&#x7684;RC&#x6A21;&#x578B;&#x53EA;&#x80FD;&#x9884;&#x6D4B;&#x5355;&#x4E2A;&#x8BCD;&#x6216;&#x8005;&#x4E00;&#x4E2A;&#x5B9E;&#x4F53;&#x3002;</li>
@@ -553,7 +553,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -1,0 +1,747 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Embedding,RNN," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation&amp;#x5229;&amp;#x7528;&amp;#x7F16;&amp;#x7801;-&amp;#x89E3;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learning Phrase Representations<br>using RNN Encoder Decoder for Statistical Machine Traslation">
+<meta property="og:url" content="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/index.html">
+<meta property="og:site_name" content="Study in IRLAB">
+<meta property="og:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation&amp;#x5229;&amp;#x7528;&amp;#x7F16;&amp;#x7801;-&amp;#x89E3;&amp;">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/hidden.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/softmax.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/language_model.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/encoder_decoder.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/decoder.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/likelihood.png">
+<meta property="og:updated_time" content="2017-01-08T06:25:29.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Learning Phrase Representations<br>using RNN Encoder Decoder for Statistical Machine Traslation">
+<meta name="twitter:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#x7B14;&amp;#x8BB0;&amp;#x2014;&amp;#x2014;Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation&amp;#x5229;&amp;#x7528;&amp;#x7F16;&amp;#x7801;-&amp;#x89E3;&amp;">
+<meta name="twitter:image" content="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/hidden.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/"/>
+
+
+
+
+
+  <title> Learning Phrase Representations<br>using RNN Encoder Decoder for Statistical Machine Traslation | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Study in IRLAB</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Embedding, RNN and so on</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="He Guoxiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Study in IRLAB">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Study in IRLAB" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Learning Phrase Representations<br>using RNN Encoder Decoder for Statistical Machine Traslation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-08T14:18:32+08:00">
+                2017-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
+<h1 id="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Translation"><a href="#&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Translation" class="headerlink" title="&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation"></a>&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#x7B14;&#x8BB0;&#x2014;&#x2014;Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation</h1><p><strong>&#x5229;&#x7528;&#x7F16;&#x7801;-&#x89E3;&#x7801;&#x5668;&#x4E3A;&#x673A;&#x5668;&#x7FFB;&#x8BD1;&#x5B66;&#x4E60;&#x6BB5;&#x843D;&#x8868;&#x8FBE; by Bengio in 2014.<a href="https://github.com/FrankBlood/Study_IR/blob/master/Embedding/papers/Learning_Phrase_Representations_using_RNN_Encoder_Decoder_for_Statistical_Machine_Translation.pdf" target="_blank" rel="external">&#x539F;&#x6587;&#x94FE;&#x63A5;</a></strong></p>
+<h2 id="&#x6458;&#x8981;&#xFF1A;"><a href="#&#x6458;&#x8981;&#xFF1A;" class="headerlink" title="&#x6458;&#x8981;&#xFF1A;"></a>&#x6458;&#x8981;&#xFF1A;</h2><ul>
+<li><strong>&#x672C;&#x6587;&#x5185;&#x5BB9;&#xFF1A;</strong>&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x2014;&#x2014;RNN&#x7F16;&#x7801;-&#x89E3;&#x7801;&#x5668;&#xFF0C;&#x5176;&#x5305;&#x542B;&#x4E24;&#x4E2A;RNN&#x7F51;&#x7EDC;&#x3002;</li>
+<li>&#x4E3B;&#x8981;&#x5185;&#x5BB9;&#xFF1A;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;RNN&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5C06;&#x4E00;&#x53E5;&#x8BDD;&#x7F16;&#x7801;&#x5230;&#x4E00;&#x4E2A;&#x786E;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x5411;&#x91CF;&#x8868;&#x8FBE;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;RNN&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5C06;&#x8FD9;&#x4E2A;&#x5411;&#x91CF;&#x8868;&#x8FBE;&#x89E3;&#x7801;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x3002;</li>
+<li>&#x76EE;&#x6807;&#x51FD;&#x6570;&#xFF1A;&#x8FD9;&#x4E2A;&#x6A21;&#x578B;&#x7684;&#x7F16;&#x7801;&#x5668;&#x548C;&#x89E3;&#x7801;&#x5668;&#x88AB;&#x8054;&#x5408;&#x8BAD;&#x7EC3;&#x4EE5;&#x6700;&#x5927;&#x5316;&#x5728;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x6E90;&#x53E5;&#x5B50;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x76EE;&#x6807;&#x53E5;&#x5B50;&#x7684;&#x6761;&#x4EF6;&#x6982;&#x7387;&#x3002;</li>
+<li>&#x7ED3;&#x679C;&#xFF1A;&#x63D0;&#x9AD8;&#x4E86;&#x7EDF;&#x8BA1;&#x673A;&#x5668;&#x7FFB;&#x8BD1;&#x7684;&#x8D28;&#x91CF;&#x3002;</li>
+<li>&#x7279;&#x70B9;&#xFF1A;&#x672C;&#x6B21;&#x63D0;&#x51FA;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x5B66;&#x4E60;&#x5230;&#x4E86;&#x9AD8;&#x8D28;&#x91CF;&#x53E5;&#x5B50;&#x7684;&#x8BED;&#x6CD5;&#x548C;&#x8BED;&#x4E49;&#x8868;&#x8FBE;&#x3002;</li>
+</ul>
+<h2 id="&#x7B80;&#x4ECB;"><a href="#&#x7B80;&#x4ECB;" class="headerlink" title="&#x7B80;&#x4ECB;"></a>&#x7B80;&#x4ECB;</h2><ul>
+<li>&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x80AF;&#x5B9A;&#x53EF;&#x4EE5;&#x88AB;&#x5E76;&#x5DF2;&#x7ECF;&#x88AB;&#x5927;&#x91CF;&#x5E94;&#x7528;&#x4E8E;NLP&#x9886;&#x57DF;&#xFF1A;&#x8BED;&#x8A00;&#x6A21;&#x578B;/&#x6BB5;&#x843D;&#x68C0;&#x6D4B;/&#x8BCD;&#x5D4C;&#x5165;&#x8868;&#x8FBE;&#x3002;</li>
+<li>&#x65B0;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6846;&#x67B6;&#x53EF;&#x4EE5;&#x88AB;&#x4F5C;&#x4E3A;&#x4F20;&#x7EDF;&#x57FA;&#x4E8E;&#x6BB5;&#x843D;&#x7684;&#x7EDF;&#x8BA1;&#x673A;&#x5668;&#x7FFB;&#x8BD1;&#xFF08;SMT&#xFF09;&#x7CFB;&#x7EDF;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</li>
+<li><strong>RNN Encoder-Decoder:</strong>&#x5176;&#x4E2D;&#x7F16;&#x7801;&#x5668;&#xFF0C;&#x5C06;&#x4E0D;&#x540C;&#x957F;&#x5EA6;&#x7684;&#x6E90;&#x53E5;&#x5B50;&#x6620;&#x5C04;&#x5230;&#x4E00;&#x4E2A;&#x8BBE;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x5411;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x89E3;&#x7801;&#x5668;&#x628A;&#x8FD9;&#x4E2A;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x5411;&#x91CF;&#x6620;&#x5C04;&#x5230;&#x76EE;&#x6807;&#x8BED;&#x8A00;&#x7684;&#x4E0D;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x53E5;&#x5B50;&#x3002;</li>
+<li>&#x8BAD;&#x7EC3;&#x76EE;&#x6807;&#x662F;&#x6700;&#x5927;&#x5316;P(target_seq|source_seq)&#x3002;</li>
+<li>&#x53E6;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x51FA;&#x5229;&#x7528;&#x590D;&#x6742;&#x9690;&#x542B;&#x5355;&#x5143;&#x6765;&#x63D0;&#x9AD8;&#x8BB0;&#x5FC6;&#x80FD;&#x529B;&#x548C;&#x8BAD;&#x7EC3;&#x60C5;&#x51B5;</li>
+<li><strong>&#x7279;&#x70B9;&#xFF1A;RNN Encoder-Decoder &#x5B66;&#x4E60;&#x7684;&#x6BB5;&#x843D;&#x7684;&#x8FDE;&#x7EED;&#x7A7A;&#x95F4;&#x7684;&#x8868;&#x8FBE;&#xFF0C;&#x540C;&#x65F6;&#x5305;&#x542B;&#x4E86;&#x8BED;&#x4E49;&#x548C;&#x8BED;&#x6CD5;&#x7ED3;&#x6784;</strong></li>
+</ul>
+<h2 id="RNN-Encoder-Decoder"><a href="#RNN-Encoder-Decoder" class="headerlink" title="RNN Encoder-Decoder"></a>RNN Encoder-Decoder</h2><ol>
+<li><p>&#x521D;&#x6B65;&#xFF1A;RNN</p>
+<blockquote>
+<ul>
+<li>RNN(&#x9012;&#x5F52;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;)&#xFF1A;&#x5728;&#x53D8;&#x91CF;&#x957F;&#x5EA6;&#x5E8F;&#x5217;x&#x4E0A;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5305;&#x62EC;&#x4E00;&#x4E2A;&#x9690;&#x85CF;&#x5C42;h&#x548C;&#x4E00;&#x4E2A;&#x9009;&#x62E9;&#x6027;&#x7684;&#x8F93;&#x51FA;y&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x3002;&#x5728;&#x6BCF;&#x4E2A;step t&#x4E2D;&#xFF0C;RNN&#x7684;&#x9690;&#x85CF;&#x5C42;h&#x7684;&#x66F4;&#x65B0;&#x5982;&#x4E0B;&#xFF1A;<br><img src="/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/hidden.png" alt="hidden"><br>&#x5176;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E2A;f&#x53EF;&#x4EE5;&#x662F;&#x7B80;&#x5355;&#x7684;sigmoid&#x51FD;&#x6570;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x590D;&#x6742;&#x70B9;&#x7684;LSTM&#x3002;&#xFF08;&#x9012;&#x5F52;&#x4E4B;&#x540D;&#x5C31;&#x5728;&#x4E8E;&#x6B64;&#xFF09;</li>
+<li><strong>&#x5173;&#x952E;&#xFF1A;</strong>RNN&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;&#xFF08;&#x8BED;&#x8A00;&#x6A21;&#x578B;&#xFF09;&#xFF0C;&#x5B66;&#x5F97;&#x5728;&#x4E00;&#x4E2A;&#x53E5;&#x5B50;&#x4E0A;&#x7684;&#x6982;&#x7387;&#x5206;&#x5E03;&#x3002;<br><img src="/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/softmax.png" alt="softmax"><br>&#x8BA1;&#x7B97;&#x6574;&#x4E2A;&#x5E8F;&#x5217;x&#x7684;&#x6982;&#x7387;&#x5982;&#x4E0B;&#xFF1A;<br><img src="/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/language_model.png" alt="language_model"><br>&#x901A;&#x8FC7;&#x6BCF;&#x6B65;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5B57;&#x7684;&#x529E;&#x6CD5;&#x53EF;&#x4EE5;&#x62BD;&#x53D6;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x53E5;&#x5B50;&#x3002;</li>
+</ul>
+</blockquote>
+</li>
+<li><p>RNN Encoder-Decoder</p>
+<blockquote>
+<ul>
+<li>&#x672C;&#x6587;&#x5185;&#x5BB9;&#xFF1A;&#x63D0;&#x51FA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6846;&#x67B6;&#x2014;&#x2014;&#x7F16;&#x7801;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x957F;&#x5EA6;&#x7684;&#x5E8F;&#x5217;&#x5230;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x5411;&#x91CF;&#x8868;&#x8FBE;&#xFF0C;&#x7136;&#x540E;&#x89E3;&#x7801;&#x81F3;&#x4E00;&#x4E2A;&#x4E0D;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x5E8F;&#x5217;&#xFF08;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x751F;&#x6210;&#x6A21;&#x578B;&#xFF1A;&#x521D;&#x59CB;&#x53E5;&#x5B50;&#x5230;&#x76EE;&#x6807;&#x53E5;&#x5B50;&#x7684;&#x4E00;&#x4E2A;&#x6761;&#x4EF6;&#x6982;&#x7387;&#xFF09;&#x3002;&#x6846;&#x67B6;&#x5982;&#x4E0B;&#xFF1A;<br><img src="/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/encoder_decoder.png" alt="encoder_decoder"><br></li>
+<li>&#x89E3;&#x91CA;&#xFF1A;encoder&#x662F;&#x4E00;&#x4E2A;RNN&#xFF0C;&#x5B83;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x628A;&#x5E8F;&#x5217;x&#x7684;&#x6BCF;&#x4E2A;&#x9879;&#x8BFB;&#x8FDB;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;rnn&#x6A21;&#x578B;&#x4E0D;&#x505C;&#x7684;&#x66F4;&#x65B0;&#x9690;&#x85CF;&#x5C42;&#x3002;&#x5728;&#x6240;&#x6709;&#x7684;&#x5B57;&#x7B26;&#x90FD;&#x8F93;&#x5165;&#x5230;RNN&#x4E4B;&#x540E;&#xFF0C;&#x9690;&#x85CF;&#x5C42;&#x5C31;&#x662F;&#x6574;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x603B;&#x7ED3;&#x3002;decoder&#x662F;&#x53E6;&#x4E00;&#x4E2A;RNN&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x9690;&#x85CF;&#x5C42;h&#xFF0C;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x4E0B;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x751F;&#x6210;&#x8F93;&#x51FA;&#x53E5;&#x5B50;&#x3002;<br><img src="/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/decoder.png" alt="decoder"></li>
+<li>&#x76EE;&#x6807;&#x51FD;&#x6570;&#xFF1A;&#x6700;&#x5927;&#x5316;log&#x4F3C;&#x7136;&#x51FD;&#x6570;&#xFF1A;<br><img src="/2017/01/08/Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Traslation/likelihood.png" alt="likelihood"></li>
+<li>&#x4F5C;&#x7528;&#xFF1A;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x8F93;&#x5165;&#x5E8F;&#x5217;&#xFF0C;&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x5E8F;&#x5217;;&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x7ED9;&#x5B9A;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x5E8F;&#x5217;&#x5BF9;&#x7684;&#x5F97;&#x5206;&#x3002;&#x8FD9;&#x4E2A;&#x5F97;&#x5206;&#x662F;&#x5DF2;&#x77E5;&#x8F93;&#x5165;&#xFF0C;&#x8F93;&#x51FA;&#x7684;&#x6761;&#x4EF6;&#x6982;&#x7387;&#x3002;</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h2 id="&#x4F5C;&#x7528;"><a href="#&#x4F5C;&#x7528;" class="headerlink" title="&#x4F5C;&#x7528;"></a>&#x4F5C;&#x7528;</h2><p>&#x5728;&#x673A;&#x5668;&#x7FFB;&#x8BD1;&#x7B49;&#x53D6;&#x5F97;&#x4E86;&#x6781;&#x4F73;&#x7684;&#x6210;&#x679C;</p>
+<h1 id="&#x5C0F;&#x7ED3;"><a href="#&#x5C0F;&#x7ED3;" class="headerlink" title="&#x5C0F;&#x7ED3;"></a>&#x5C0F;&#x7ED3;</h1><ul>
+<li>&#x672C;&#x6587;&#x5E94;&#x8BE5;&#x662F;&#x76F8;&#x5BF9;&#x8F83;&#x65E9;&#x7684;seq2seq&#x6A21;&#x578B;&#x3002;</li>
+<li>seq2seq&#x4E5F;&#x53EF;&#x4EE5;&#x5E94;&#x7528;&#x4E8E;&#x6587;&#x672C;&#x8868;&#x8FBE;&#x65B9;&#x9762;&#x3002;</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Embedding/" rel="tag"># Embedding</a>
+          
+            <a href="/tags/RNN/" rel="tag"># RNN</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/08/Fine-Grained-Analysis-of-Sentence-Embedding-Using-Auxiliary-Prediction-Task/" rel="next" title="Fine Grained Analysis of Sentence Embedding<br>Using Auxiliary Prediction Task">
+                <i class="fa fa-chevron-left"></i> Fine Grained Analysis of Sentence Embedding<br>Using Auxiliary Prediction Task
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="He Guoxiu" />
+          <p class="site-author-name" itemprop="name">He Guoxiu</p>
+          <p class="site-description motion-element" itemprop="description">Some notes for interesting papers, tutorials for useful tools, and inspire for life.</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/FrankBlood" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#论文阅读笔记——Learning-Phrase-Representations-using-RNN-Encoder-Decoder-for-Statistical-Machine-Translation"><span class="nav-number">1.</span> <span class="nav-text">论文阅读笔记——Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要："><span class="nav-number">1.1.</span> <span class="nav-text">摘要：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RNN-Encoder-Decoder"><span class="nav-number">1.3.</span> <span class="nav-text">RNN Encoder-Decoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.4.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">2.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">He Guoxiu</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
