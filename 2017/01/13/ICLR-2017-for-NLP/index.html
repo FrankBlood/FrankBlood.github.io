@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/sentence-representation.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/attention-mechanism.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/residual-network.png">
-<meta property="og:updated_time" content="2017-01-13T02:33:28.704Z">
+<meta property="og:updated_time" content="2017-01-13T02:38:24.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ICLR_2017_for_NLP">
 <meta name="twitter:description" content="Note for Papers in ICLR 2017 about NLPInternational Conference on Learning Representations known as ICLR is one of the topest Conference. Because I have being concentrating on the representation of t">
@@ -397,7 +397,7 @@
 <ul>
 <li>Word representation construction: $C$ is vocabulary of characters, $E\in R^{d_c\dot |C|}$ is the character embedding matrix, $d_c$ is the dimensionality of character embedding, $E^w\in R^{d_c\dot n_c}$ is word character-level embedding matrix, $E_i^w=E\dot v_i$ where $v_i$ is a binary column vector that is one row in $E$. Then use convolution network to get the vector $q_c$ which captures the character-level information.(But I still don&#x2019;t know how does the paper solve the problem that the dimentions of the matrix are not same about all words. Maybe some skills known as the padding?) The character-level embedding can only caputure the word morphological features, therefore concatenating the distributed word representative vector as the reflect of the word semantic and syntactic characteristics.</li>
 <li>Sentence representation vector construction: shown as below:<br><img src="/2017/01/13/ICLR-2017-for-NLP/sentence-representation.png" alt="sentence-representation"><br>Using different weights for every vector of matirx and attention mechanism to enrich the sentence representation.<ul>
-<li>attention mechanism shown as below.<br><img src="/2017/01/13/ICLR-2017-for-NLP/attention-mechanism.png" alt="attention-mechanism"><br>$g(q_i)=Tanh(W_{qh}q_i+b_{qh})$<br>$s_i=\frac{exp(g(q_i))}{\sum_n_w^{j=i}exp(g(q_j))}, \hat q_i=s_iq_i$</li>
+<li>attention mechanism shown as below.<br><img src="/2017/01/13/ICLR-2017-for-NLP/attention-mechanism.png" alt="attention-mechanism"><br>$g(q_i)=Tanh(W_{qh}q_i+b_{qh})$<br>$s_i=\frac{exp(g(q_i))}{\sum_{n_w}^{j=i}exp(g(q_j))}, \hat q_i=s_iq_i$</li>
 <li>convolution operations on $Q$ with n-grams.</li>
 </ul>
 </li>
