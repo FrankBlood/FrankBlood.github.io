@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Embedding,Attention,Character,Residual," />
+  <meta name="keywords" content="Embedding,Character,Residual,Attention," />
 
 
 
@@ -94,7 +94,8 @@
 <meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/sentence-representation.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/attention-mechanism.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/residual-network.png">
-<meta property="og:updated_time" content="2017-01-13T03:00:11.918Z">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/gate-between-word-and-char.png">
+<meta property="og:updated_time" content="2017-02-24T01:57:36.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ICLR_2017_for_NLP">
 <meta name="twitter:description" content="Note for Papers in ICLR 2017 about NLPInternational Conference on Learning Representations known as ICLR is one of the topest Conference. Because I have being concentrating on the representation of t">
@@ -403,7 +404,7 @@
 
       
         <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
-<h1 id="Note-for-Papers-in-ICLR-2017-about-NLP"><a href="#Note-for-Papers-in-ICLR-2017-about-NLP" class="headerlink" title="Note for Papers in ICLR 2017 about NLP"></a>Note for Papers in ICLR 2017 about NLP</h1><p><strong>International Conference on Learning Representations known as ICLR is one of the topest Conference. Because I have being concentrating on the representation of the text more, I have done a review of the papers in ICLR on NLP.</strong><br><a id="more"></a></p>
+<h1 id="Note-for-Papers-in-ICLR-2017-about-NLP"><a href="#Note-for-Papers-in-ICLR-2017-about-NLP" class="headerlink" title="Note for Papers in ICLR 2017 about NLP"></a>Note for Papers in ICLR 2017 about NLP</h1><p><strong>International Conference on Learning Representations known as ICLR is one of the topest Conference. B<br>ecause I have being concentrating on the representation of the text more, I have done a review of the p<br>apers in ICLR on NLP.</strong><br><a id="more"></a></p>
 <h2 id="1-Representation-of-Character-Word-and-Sentence"><a href="#1-Representation-of-Character-Word-and-Sentence" class="headerlink" title="1. Representation of Character, Word and Sentence"></a>1. Representation of Character, Word and Sentence</h2><p><strong>Representations or Embeddings in many ways</strong></p>
 <h3 id="1-1-Character-Aware-Attention-Residual-Network-for-Sentence-Representation"><a href="#1-1-Character-Aware-Attention-Residual-Network-for-Sentence-Representation" class="headerlink" title="1.1 Character-Aware Attention Residual Network for Sentence Representation"></a>1.1 Character-Aware Attention Residual Network for Sentence Representation</h3><p><strong>One way about the sentence embedding by Xin Zheng&#xFF08;Nanyang Technological University, Singapore&#xFF09;, Zhenzhou Wu(SAP)</strong></p>
 <ul>
@@ -437,7 +438,7 @@
 <ul>
 <li>Word representation construction: $C$ is vocabulary of characters, $E\in R^{d_c\dot |C|}$ is the character embedding matrix, $d_c$ is the dimensionality of character embedding, $E^w\in R^{d_c\dot n_c}$ is word character-level embedding matrix, $E_i^w=E\dot v_i$ where $v_i$ is a binary column vector that is one row in $E$. Then use convolution network to get the vector $q_c$ which captures the character-level information.(But I still don&#x2019;t know how does the paper solve the problem that the dimentions of the matrix are not same about all words. Maybe some skills known as the padding?) The character-level embedding can only caputure the word morphological features, therefore concatenating the distributed word representative vector as the reflect of the word semantic and syntactic characteristics.</li>
 <li>Sentence representation vector construction: shown as below:<br><img src="/2017/01/13/ICLR-2017-for-NLP/sentence-representation.png" alt="sentence-representation"><br>Using different weights for every vector of matirx and attention mechanism to enrich the sentence representation.<ul>
-<li>attention mechanism shown as below.<br><img src="/2017/01/13/ICLR-2017-for-NLP/attention-mechanism.png" alt="attention-mechanism"><br>$g(q_i)=Tanh(W_{qh}q_i+b_{qh})$<br>$s_i=\frac{exp(g(q_i))}{\sum_{n_w}^{j=1} exp(g(q_j))}, \hat q_i=s_i q_i$</li>
+<li>attention mechanism shown as below.<br><img src="/2017/01/13/ICLR-2017-for-NLP/attention-mechanism.png" alt="attention-mechanism"><br>$g(q_i)=Tanh(W_{qh}q_i+b_{qh})$<br>$s_i=\frac{exp(g(q_i))}{\sum_n_w^{j=i}exp(g(q_j))}, \hat q_i=s_iq_i$</li>
 <li>convolution operations on $Q$ with n-grams.</li>
 </ul>
 </li>
@@ -446,50 +447,13 @@
 </li>
 <li><p>Experiments: The model outperforms stat-of-the-art models on a few short-text datasets.</p>
 <ul>
-<li>Dataset</li>
-</ul>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Dataset</th>
-<th style="text-align:center">classes</th>
-<th style="text-align:center">Train Samples</th>
-<th style="text-align:center">Test Samples</th>
-<th style="text-align:center">Average Length of text</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Tweet</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">28,000</td>
-<td style="text-align:center">7,500</td>
-<td style="text-align:center">7</td>
-</tr>
-<tr>
-<td style="text-align:center">Question</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">2,000</td>
-<td style="text-align:center">700</td>
-<td style="text-align:center">25</td>
-</tr>
-<tr>
-<td style="text-align:center">AG_news</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">120,000</td>
-<td style="text-align:center">7,600</td>
-<td style="text-align:center">20</td>
-</tr>
-</tbody>
-</table>
-<ul>
+<li>Dataset<br>|Dataset|classes|Train Samples|Test Samples|Average Length of text|<br>|:&#x2014;&#x2013;:|:&#x2014;&#x2013;:|:&#x2014;&#x2014;&#x2014;&#x2013;:|:&#x2014;&#x2014;&#x2014;-:|:&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2013;:|<br>|Tweet|5|28,000|7,500|7|<br>|Question|5|2,000|700|25|<br>|AG_news|5|120,000|7,600|20|</li>
 <li>Other details of the experiment is ignored by me.:)</li>
 <li>The result is very good.:)</li>
 </ul>
-<ul>
-<li>High insight:<blockquote>
+</li>
+<li><p>High insight:</p>
+<blockquote>
 <ul>
 <li>We must explain the word-level representation about the Chinese. And that is important also.</li>
 <li>Attention mechanism which focuses on specific part of input could help achieve this goal that not all the words in a sentence contribute the same when predicting the sentence&#x2019;s label</li>
@@ -497,7 +461,65 @@
 </blockquote>
 </li>
 </ul>
-<h1 id="To-be-continued"><a href="#To-be-continued" class="headerlink" title="To be continued."></a>To be continued.</h1><h3 id="1-2-Program-Synthesis-for-Character-Level-Language-Modeling"><a href="#1-2-Program-Synthesis-for-Character-Level-Language-Modeling" class="headerlink" title="1.2 Program Synthesis for Character Level Language Modeling"></a>1.2 Program Synthesis for Character Level Language Modeling</h3>
+<h3 id="1-2-Program-Synthesis-for-Character-Level-Language-Modeling"><a href="#1-2-Program-Synthesis-for-Character-Level-Language-Modeling" class="headerlink" title="1.2 Program Synthesis for Character Level Language Modeling"></a>1.2 Program Synthesis for Character Level Language Modeling</h3><p><strong>a character level language modeling created by Pavol Bielik, Veselin Raychev &amp; Martin Vechev in Department of Computer Science</strong></p>
+<ul>
+<li>Goal: a character level language modeling for both program source code and English text.</li>
+<li>How to do: the model is parameterized by a program from a domain-specific language(DSL).</li>
+</ul>
+<h3 id="1-3-Words-or-Characters-Fine-Grained-Gating-for-Reading-Comprehension"><a href="#1-3-Words-or-Characters-Fine-Grained-Gating-for-Reading-Comprehension" class="headerlink" title="1.3 Words or Characters? Fine-Grained Gating for Reading Comprehension"></a>1.3 Words or Characters? Fine-Grained Gating for Reading Comprehension</h3><p><strong>A mode for reading comprehension created by Zhilin Yang, Bhuwan Dhingra, Ye Yuan, Junjie Hu, William W. Cohen, Ruslan Salakhutdinov in CMU</strong></p>
+<ul>
+<li><strong>This paper should be read more carefully!</strong></li>
+<li>Goal: The authors present a fine-grained gating mechanism to dynamically combine word-level and character-level representations based on properties of the word and model the interaction between questions and paragraphs for reading comprehension.</li>
+<li>Method: The authors compute a vector gate as a linear projection of the token features followed by a sigmoid avtivation. Then multiplicatively apply the gate to the character-level and word-level representations. Each dimension of the gate controls how much information is flowed from the word-level and character-level representations respectively. The gate is determined by named entity tags, part-of-speech tags, document frequencies, and word-level representations as the features for token properties. The gating mechanism can be generally used to model multiple levels of structure in language, including words, characters, phrases, sentences and paragraphs.<br><img src="/2017/01/13/ICLR-2017-for-NLP/gate-between-word-and-char.png" alt="gate-between-word-and-char"></li>
+<li>Datasets: Children&#x2019;s Book Test dataset.</li>
+<li>Tasks: children&#x2019;s book test dataset and social media tag prediction task.</li>
+<li>Experiments: Their approach can improve the performance on reading comprehension task.</li>
+<li>advantage: Character-level representations are used to alleviate the difficulties of modeling out-of-vocabulary(OOV) tokens.</li>
+</ul>
+<h3 id="1-4-Deep-Character-Level-Neural-Machine-Translation-By-Learning-Morphology"><a href="#1-4-Deep-Character-Level-Neural-Machine-Translation-By-Learning-Morphology" class="headerlink" title="1.4 Deep Character-Level Neural Machine Translation By Learning Morphology"></a>1.4 Deep Character-Level Neural Machine Translation By Learning Morphology</h3><p><strong>A new method for NMT by Shenjian Zhao in Shanghai Jiao Tong University and Zhihua Zhang in Peking University</strong></p>
+<ul>
+<li>Goal: NMT aims at building a single large neural network that can be trained to maximize translation preformance.</li>
+<li>Problem: The use of large vocabulary becomes the bottleneck in both training and improving the performance.</li>
+<li>Methods: Two recurrent networks and a hierarchical decoder which translates at character level.</li>
+<li>Advantages: It avoids the large vocabulary issue radically; It is more efficient in training than word-based models.</li>
+<li>Experiments: Higer BLEU and learn more morphology.</li>
+</ul>
+<h3 id="1-5-Opening-The-Vocabulary-of-Neural-Language-Models-with-Character-Level-Word-Representations"><a href="#1-5-Opening-The-Vocabulary-of-Neural-Language-Models-with-Character-Level-Word-Representations" class="headerlink" title="1.5 Opening The Vocabulary of Neural Language Models with Character-Level Word Representations"></a>1.5 Opening The Vocabulary of Neural Language Models with Character-Level Word Representations</h3><p><strong>a opening-vocabulary neural language model by Matthieu Labeau and Alexandre Allauzen in LIMSI-CNRS / Orsay, France</strong></p>
+<ul>
+<li>Goal: an open-vocabulary neural language model</li>
+<li>Advantage: can consider any word, that is the model can build representations of unknown words.</li>
+<li>Experiment: gain up tp 0.7 BLEU point.</li>
+</ul>
+<h3 id="1-6-Unsupervised-Sentence-Representation-Learning-With-Adversarial-Auto-Encoder"><a href="#1-6-Unsupervised-Sentence-Representation-Learning-With-Adversarial-Auto-Encoder" class="headerlink" title="1.6 Unsupervised Sentence Representation Learning With Adversarial Auto-Encoder"></a>1.6 Unsupervised Sentence Representation Learning With Adversarial Auto-Encoder</h3><p><strong>A fixed dimension to represent sentence by Shuai Tang(UC San Diego) and Hailin Jin &amp; Chen Fang &amp; Zhaowen Wang(Adobe Research)</strong></p>
+<ul>
+<li>Goal: a fixed dimension</li>
+<li>Challenge: capture both of the semantic and structural information conveyed by a sentence.</li>
+<li>Advantage: learn representation from the unlabeled large corpus text data.</li>
+</ul>
+<h3 id="1-7-Offline-Bilingual-Word-Vectors-Without-A-Dictionary"><a href="#1-7-Offline-Bilingual-Word-Vectors-Without-A-Dictionary" class="headerlink" title="1.7 Offline Bilingual Word Vectors Without A Dictionary"></a>1.7 Offline Bilingual Word Vectors Without A Dictionary</h3><p><strong>Word Vectors for Bilingual as offline by Samuel L. Smith, David H. P. Turban, Nils Y. Hammerla &amp; Steven Hamblin in London, SW3 3DD, UK</strong></p>
+<ul>
+<li>Goal: A model that two pre-trained embeddings are aligned by a linear transformation, using dictionaries compiled from expert knowledge.</li>
+<li>Method: &#x201C;inverted softmax&#x201D; for identifying translation pairs.</li>
+</ul>
+<h3 id="1-8-Learning-Word-like-Units-from-Joint-Audio-Visual-Analysis"><a href="#1-8-Learning-Word-like-Units-from-Joint-Audio-Visual-Analysis" class="headerlink" title="1.8 Learning Word-like Units from Joint Audio-Visual Analysis"></a>1.8 Learning Word-like Units from Joint Audio-Visual Analysis</h3><p><strong>created by David Harwath and James R. Glass in Massachusetts Institute of Technology</strong></p>
+<ul>
+<li>Goal: A method for discorvering word-like acoustic units in the continuous speech signal and grounding them to semantically relevant image regions from given a collection of images and spoken audio captions.</li>
+</ul>
+<h3 id="1-9-Tying-Word-Vectors-and-Word-Classifiers-A-Loss-Framework-for-Language-Modeling"><a href="#1-9-Tying-Word-Vectors-and-Word-Classifiers-A-Loss-Framework-for-Language-Modeling" class="headerlink" title="1.9 Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"></a>1.9 Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling</h3><p><strong>A new framework created by Massachusetts Institute of Technology(in Stanford University) and Richard Socher(in Salesforce Research)</strong></p>
+<ul>
+<li>Goal: A new framework</li>
+<li>Advantage: greatly reducing the number of trainable variables.</li>
+<li>Experiments: Their LSTM model lowers the state of the art word-level perplexity on the Penn Treebank to 68.5.</li>
+</ul>
+<h3 id="1-10-Sentence-Ordering-Using-Recurrent-Neural-Networks"><a href="#1-10-Sentence-Ordering-Using-Recurrent-Neural-Networks" class="headerlink" title="1.10 Sentence Ordering Using Recurrent Neural Networks"></a>1.10 Sentence Ordering Using Recurrent Neural Networks</h3><p><strong>A model for structure of coherent text created by Lajanugen Logeswaran, Honglak Lee &amp; Dragomir Radev in University of Michigan</strong></p>
+<ul>
+<li>Goal: an end-to-end neural approach based on the proposed set to sequence mapping framework to address the sentence ordering problem.</li>
+<li>Method: &#x2026;</li>
+<li>Result: the model has captured high level logical structure in these paragraphs and also learns rich semantic sentence representations.</li>
+</ul>
+<h2 id="2-Retrieval-Q-amp-A-Recommend-System"><a href="#2-Retrieval-Q-amp-A-Recommend-System" class="headerlink" title="2. Retrieval / Q&amp;A / Recommend System"></a>2. Retrieval / Q&amp;A / Recommend System</h2><p><strong>some applications by using NN</strong></p>
+<h3 id="2-1-Learning-to-Query-Reason-and-Answer-Questions-on-Ambiguous-Texts"><a href="#2-1-Learning-to-Query-Reason-and-Answer-Questions-on-Ambiguous-Texts" class="headerlink" title="2.1 Learning to Query, Reason, and Answer Questions on Ambiguous Texts"></a>2.1 Learning to Query, Reason, and Answer Questions on Ambiguous Texts</h3><h3 id="2-2-Group-Sparse-CNNs-for-Question-Sentence-Classification-with-Answer-Sets"><a href="#2-2-Group-Sparse-CNNs-for-Question-Sentence-Classification-with-Answer-Sets" class="headerlink" title="2.2 Group Sparse CNNs for Question Sentence Classification with Answer Sets"></a>2.2 Group Sparse CNNs for Question Sentence Classification with Answer Sets</h3><h3 id="2-3-Content2Vec-Specializing-Joint-Representations-of-Product-Images-and-Text-for-the-task-Product-Recommendation"><a href="#2-3-Content2Vec-Specializing-Joint-Representations-of-Product-Images-and-Text-for-the-task-Product-Recommendation" class="headerlink" title="2.3 Content2Vec: Specializing Joint Representations of Product Images and Text for the task Product Recommendation"></a>2.3 Content2Vec: Specializing Joint Representations of Product Images and Text for the task Product Recommendation</h3><h3 id="2-4-Is-a-picture-worth-a-thousand-words-A-Deep-Multi-Modal-Fusion-Architecture-for-Product-Classification-in-e-commerce"><a href="#2-4-Is-a-picture-worth-a-thousand-words-A-Deep-Multi-Modal-Fusion-Architecture-for-Product-Classification-in-e-commerce" class="headerlink" title="2.4 Is a picture worth a thousand words? A Deep Multi-Modal Fusion Architecture for Product Classification in e-commerce"></a>2.4 Is a picture worth a thousand words? A Deep Multi-Modal Fusion Architecture for Product Classification in e-commerce</h3><h2 id="3-Word-Sentence-Embedding"><a href="#3-Word-Sentence-Embedding" class="headerlink" title="3. Word/Sentence Embedding"></a>3. Word/Sentence Embedding</h2><p><strong>some ways for embedding</strong></p>
+<h3 id="3-1-A-Simple-but-Tough-to-Beat-Baseline-for-Sentence-Embeddings"><a href="#3-1-A-Simple-but-Tough-to-Beat-Baseline-for-Sentence-Embeddings" class="headerlink" title="3.1 A Simple but Tough-to-Beat Baseline for Sentence Embeddings"></a>3.1 A Simple but Tough-to-Beat Baseline for Sentence Embeddings</h3><h3 id="3-2-Investigating-Different-Context-Types-and-Representations-for-Learning-Word-Embedding"><a href="#3-2-Investigating-Different-Context-Types-and-Representations-for-Learning-Word-Embedding" class="headerlink" title="3.2 Investigating Different Context Types and Representations for Learning Word Embedding"></a>3.2 Investigating Different Context Types and Representations for Learning Word Embedding</h3><h3 id="3-3-Multi-view-Recurrent-Neural-Acoustic-Word-Embeddings"><a href="#3-3-Multi-view-Recurrent-Neural-Acoustic-Word-Embeddings" class="headerlink" title="3.3 Multi-view Recurrent Neural Acoustic Word Embeddings"></a>3.3 Multi-view Recurrent Neural Acoustic Word Embeddings</h3><h3 id="3-4-A-Self-Attentive-Sentence-Embedding"><a href="#3-4-A-Self-Attentive-Sentence-Embedding" class="headerlink" title="3.4 A Self-Attentive Sentence Embedding"></a>3.4 A Self-Attentive Sentence Embedding</h3><h3 id="3-5-Fine-grained-Analysis-of-Sentence-Embeddings-Using-Auxiliary-Prediction-Tasks"><a href="#3-5-Fine-grained-Analysis-of-Sentence-Embeddings-Using-Auxiliary-Prediction-Tasks" class="headerlink" title="3.5 Fine-grained Analysis of Sentence Embeddings Using Auxiliary Prediction Tasks"></a>3.5 Fine-grained Analysis of Sentence Embeddings Using Auxiliary Prediction Tasks</h3>
       
     </div>
 
@@ -522,11 +544,11 @@
           
             <a href="/tags/Embedding/" rel="tag"># Embedding</a>
           
-            <a href="/tags/Attention/" rel="tag"># Attention</a>
-          
             <a href="/tags/Character/" rel="tag"># Character</a>
           
             <a href="/tags/Residual/" rel="tag"># Residual</a>
+          
+            <a href="/tags/Attention/" rel="tag"># Attention</a>
           
         </div>
       
@@ -685,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Note-for-Papers-in-ICLR-2017-about-NLP"><span class="nav-number">1.</span> <span class="nav-text">Note for Papers in ICLR 2017 about NLP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Representation-of-Character-Word-and-Sentence"><span class="nav-number">1.1.</span> <span class="nav-text">1. Representation of Character, Word and Sentence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Character-Aware-Attention-Residual-Network-for-Sentence-Representation"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Character-Aware Attention Residual Network for Sentence Representation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#To-be-continued"><span class="nav-number">2.</span> <span class="nav-text">To be continued.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Program-Synthesis-for-Character-Level-Language-Modeling"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.2 Program Synthesis for Character Level Language Modeling</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Note-for-Papers-in-ICLR-2017-about-NLP"><span class="nav-number">1.</span> <span class="nav-text">Note for Papers in ICLR 2017 about NLP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Representation-of-Character-Word-and-Sentence"><span class="nav-number">1.1.</span> <span class="nav-text">1. Representation of Character, Word and Sentence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Character-Aware-Attention-Residual-Network-for-Sentence-Representation"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Character-Aware Attention Residual Network for Sentence Representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Program-Synthesis-for-Character-Level-Language-Modeling"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Program Synthesis for Character Level Language Modeling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Words-or-Characters-Fine-Grained-Gating-for-Reading-Comprehension"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Words or Characters? Fine-Grained Gating for Reading Comprehension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Deep-Character-Level-Neural-Machine-Translation-By-Learning-Morphology"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4 Deep Character-Level Neural Machine Translation By Learning Morphology</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-Opening-The-Vocabulary-of-Neural-Language-Models-with-Character-Level-Word-Representations"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5 Opening The Vocabulary of Neural Language Models with Character-Level Word Representations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-Unsupervised-Sentence-Representation-Learning-With-Adversarial-Auto-Encoder"><span class="nav-number">1.1.6.</span> <span class="nav-text">1.6 Unsupervised Sentence Representation Learning With Adversarial Auto-Encoder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-Offline-Bilingual-Word-Vectors-Without-A-Dictionary"><span class="nav-number">1.1.7.</span> <span class="nav-text">1.7 Offline Bilingual Word Vectors Without A Dictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-Learning-Word-like-Units-from-Joint-Audio-Visual-Analysis"><span class="nav-number">1.1.8.</span> <span class="nav-text">1.8 Learning Word-like Units from Joint Audio-Visual Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-Tying-Word-Vectors-and-Word-Classifiers-A-Loss-Framework-for-Language-Modeling"><span class="nav-number">1.1.9.</span> <span class="nav-text">1.9 Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-10-Sentence-Ordering-Using-Recurrent-Neural-Networks"><span class="nav-number">1.1.10.</span> <span class="nav-text">1.10 Sentence Ordering Using Recurrent Neural Networks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Retrieval-Q-amp-A-Recommend-System"><span class="nav-number">1.2.</span> <span class="nav-text">2. Retrieval / Q&A / Recommend System</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Learning-to-Query-Reason-and-Answer-Questions-on-Ambiguous-Texts"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Learning to Query, Reason, and Answer Questions on Ambiguous Texts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Group-Sparse-CNNs-for-Question-Sentence-Classification-with-Answer-Sets"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Group Sparse CNNs for Question Sentence Classification with Answer Sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Content2Vec-Specializing-Joint-Representations-of-Product-Images-and-Text-for-the-task-Product-Recommendation"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 Content2Vec: Specializing Joint Representations of Product Images and Text for the task Product Recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Is-a-picture-worth-a-thousand-words-A-Deep-Multi-Modal-Fusion-Architecture-for-Product-Classification-in-e-commerce"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 Is a picture worth a thousand words? A Deep Multi-Modal Fusion Architecture for Product Classification in e-commerce</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Word-Sentence-Embedding"><span class="nav-number">1.3.</span> <span class="nav-text">3. Word/Sentence Embedding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-A-Simple-but-Tough-to-Beat-Baseline-for-Sentence-Embeddings"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 A Simple but Tough-to-Beat Baseline for Sentence Embeddings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Investigating-Different-Context-Types-and-Representations-for-Learning-Word-Embedding"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Investigating Different Context Types and Representations for Learning Word Embedding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Multi-view-Recurrent-Neural-Acoustic-Word-Embeddings"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 Multi-view Recurrent Neural Acoustic Word Embeddings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-A-Self-Attentive-Sentence-Embedding"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 A Self-Attentive Sentence Embedding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Fine-grained-Analysis-of-Sentence-Embeddings-Using-Auxiliary-Prediction-Tasks"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 Fine-grained Analysis of Sentence Embeddings Using Auxiliary Prediction Tasks</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
