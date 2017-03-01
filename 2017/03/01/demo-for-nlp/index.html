@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://frankblood.github.io/2017/03/01/demo-for-nlp/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
 <meta property="og:description" content="Demo for NLPThis is demo for NLP using python and Java">
-<meta property="og:updated_time" content="2017-03-01T13:11:38.592Z">
+<meta property="og:updated_time" content="2017-03-01T13:31:10.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="demo_for_nlp">
 <meta name="twitter:description" content="Demo for NLPThis is demo for NLP using python and Java">
@@ -401,14 +401,27 @@
 <h1 id="Demo-for-NLP"><a href="#Demo-for-NLP" class="headerlink" title="Demo for NLP"></a>Demo for NLP</h1><p><strong>This is demo for NLP using python and Java</strong><br><a id="more"></a></p>
 <h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h3 id="jieba"><a href="#jieba" class="headerlink" title="jieba"></a>jieba</h3><p><strong><a href="https://github.com/fxsjy/jieba/" target="_blank" rel="external">&#x53C2;&#x7167;jieba&#x5B98;&#x65B9;&#x7F51;&#x7AD9;</a></strong></p>
 <ul>
-<li>&#x5BFC;&#x5165;jieba&#x5305;<br>&#x2018;&#x2019;&#x2019;python<br>import jieba<br>&#x2018;&#x2019;&#x2019;</li>
-<li>jieba&#x652F;&#x6301;&#x4E09;&#x79CD;&#x5206;&#x8BCD;&#x6A21;&#x578B;&#xFF1A;<ul>
+<li><p>&#x5BFC;&#x5165;jieba&#x5305;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> jieba</div></pre></td></tr></table></figure>
+</li>
+<li><p>jieba&#x652F;&#x6301;&#x4E09;&#x79CD;&#x5206;&#x8BCD;&#x6A21;&#x578B;&#xFF1A;</p>
+<ul>
 <li>&#x7CBE;&#x786E;&#x6A21;&#x5F0F;&#xFF0C;&#x8BD5;&#x56FE;&#x5C06;&#x53E5;&#x5B50;&#x6700;&#x7CBE;&#x786E;&#x5730;&#x5207;&#x5F00;&#xFF0C;&#x9002;&#x5408;&#x6587;&#x672C;&#x5206;&#x6790;&#xFF1B;</li>
 <li>&#x5168;&#x6A21;&#x5F0F;&#xFF0C;&#x628A;&#x53E5;&#x5B50;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x53EF;&#x4EE5;&#x6210;&#x8BCD;&#x7684;&#x8BCD;&#x8BED;&#x90FD;&#x626B;&#x63CF;&#x51FA;&#x6765;, &#x901F;&#x5EA6;&#x975E;&#x5E38;&#x5FEB;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x89E3;&#x51B3;&#x6B67;&#x4E49;&#xFF1B;</li>
 <li>&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x6A21;&#x5F0F;&#xFF0C;&#x5728;&#x7CBE;&#x786E;&#x6A21;&#x5F0F;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x5BF9;&#x957F;&#x8BCD;&#x518D;&#x6B21;&#x5207;&#x5206;&#xFF0C;&#x63D0;&#x9AD8;&#x53EC;&#x56DE;&#x7387;&#xFF0C;&#x9002;&#x5408;&#x7528;&#x4E8E;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x5206;&#x8BCD;&#x3002;</li>
 </ul>
 </li>
+<li><p>jieba&#x7684;&#x5206;&#x8BCD;&#x63D0;&#x4F9B;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>jieba.cut&#x63A5;&#x53D7;&#x4E09;&#x4E2A;&#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF1A;&#x9700;&#x8981;&#x5206;&#x8BCD;&#x7684;&#x5B57;&#x7B26;&#x4E32;(String)&#xFF1B;cut_all&#x53C2;&#x6570;(True or False)&#x6765;&#x63A7;&#x5236;&#x662F;&#x5426;&#x91C7;&#x7528;&#x5168;&#x6A21;&#x5F0F;&#xFF1B;HMM&#x53C2;&#x6570;&#xFF08;True or False&#xFF09;&#x63A7;&#x5236;&#x662F;&#x5426;&#x4F7F;&#x7528;HMM&#x6A21;&#x578B;&#xFF08;HMM&#x4E3A;&#x5904;&#x7406;&#x672A;&#x767B;&#x5F55;&#x8BCD;&#x7684;&#x6A21;&#x578B;&#xFF09;&#x3002;&#x5176;&#x8F93;&#x51FA;&#x4E3A;&#x4E00;&#x4E2A;&#x751F;&#x6210;&#x5668;generator&#x3002;</li>
+<li>jieba.cut_for_search&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF1A;&#x9700;&#x8981;&#x5206;&#x8BCD;&#x7684;&#x5B57;&#x7B26;&#x4E32;(String)&#xFF1B;HMM&#x53C2;&#x6570;(True or False)&#x3002;&#x5176;&#x8F93;&#x51FA;&#x4E3A;&#x4E00;&#x4E2A;&#x751F;&#x6210;&#x5668;generator&#x3002;</li>
+<li>&#x6216;&#x8005;&#x7528;jieba.lcut &#x4EE5;&#x53CA; jieba.lcut_for_search&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;list&#x3002;</li>
 </ul>
+</li>
+<li><p>&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#xFF1A;</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">seg_list = jieba.cut(<span class="string">&quot;&#x5C0F;&#x660E;&#x7855;&#x58EB;&#x6BD5;&#x4E1A;&#x4E8E;&#x4E2D;&#x56FD;&#x79D1;&#x5B66;&#x9662;&#x8BA1;&#x7B97;&#x6240;&#xFF0C;&#x4ED6;&#x6765;&#x5230;&#x4E86;&#x7F51;&#x6613;&#x676D;&#x7814;&#x5927;&#x53A6;, &#x540E;&#x5728;&#x65E5;&#x672C;&#x4EAC;&#x90FD;&#x5927;&#x5B66;&#x6DF1;&#x9020;&quot;</span>, cut_all=<span class="keyword">True</span>)</div><div class="line">print(<span class="string">&quot;Full Mode: &quot;</span> + <span class="string">&quot;/ &quot;</span>.join(seg_list))  <span class="comment"># &#x5168;&#x6A21;&#x5F0F;</span></div></pre></td></tr></table></figure>
 
       
     </div>
