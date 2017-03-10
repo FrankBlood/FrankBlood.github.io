@@ -90,13 +90,13 @@
 <meta property="og:url" content="https://frankblood.github.io/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
 <meta property="og:description" content="A Deep Relevance Matching Model for Ad-hoc RetrievalDRMM by Jiafeng Guo, Yixing Fan, Qingyao Ai and W.Bruce Croft for CIKM2016">
-<meta property="og:image" content="https://frankblood.github.io/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/A_Deep_Relevance_Matching_Model_for_Ad-hoc_Retrieval/representation_and_interaction.png">
-<meta property="og:image" content="https://frankblood.github.io/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/A_Deep_Relevance_Matching_Model_for_Ad-hoc_Retrieval/DRMM.jpg">
-<meta property="og:updated_time" content="2017-03-10T04:41:44.577Z">
+<meta property="og:image" content="https://frankblood.github.io/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/representation_and_interaction.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/DRMM.jpg">
+<meta property="og:updated_time" content="2017-03-10T04:53:48.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A_Deep_Relevance_Matching_Model_for_Ad-hoc_Retrieval">
 <meta name="twitter:description" content="A Deep Relevance Matching Model for Ad-hoc RetrievalDRMM by Jiafeng Guo, Yixing Fan, Qingyao Ai and W.Bruce Croft for CIKM2016">
-<meta name="twitter:image" content="https://frankblood.github.io/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/A_Deep_Relevance_Matching_Model_for_Ad-hoc_Retrieval/representation_and_interaction.png">
+<meta name="twitter:image" content="https://frankblood.github.io/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/representation_and_interaction.png">
 
 
 
@@ -423,10 +423,10 @@
 <h2 id="&#x7B80;&#x4ECB;&#x548C;&#x76F8;&#x5173;&#x7814;&#x7A76;"><a href="#&#x7B80;&#x4ECB;&#x548C;&#x76F8;&#x5173;&#x7814;&#x7A76;" class="headerlink" title="&#x7B80;&#x4ECB;&#x548C;&#x76F8;&#x5173;&#x7814;&#x7A76;"></a>&#x7B80;&#x4ECB;&#x548C;&#x76F8;&#x5173;&#x7814;&#x7A76;</h2><ul>
 <li>ad-hoc&#x68C0;&#x7D22;&#x7684;&#x672C;&#x8D28;&#x662F;&#x5BF9;&#x7ED9;&#x5B9A;&#xFF08;&#x67E5;&#x8BE2;-&#x6587;&#x6863;&#xFF09;&#x5BF9;&#x76F8;&#x5173;&#x6027;&#x5F97;&#x5206;&#x7684;&#x6392;&#x5E8F;&#x6A21;&#x578B;&#xFF08;&#x76F8;&#x5173;&#x6027;&#x5339;&#x914D;&#xFF09;&#x3002;</li>
 <li>&#x673A;&#x5668;&#x5B66;&#x4E60;&#x5728;&#x68C0;&#x7D22;&#x5E94;&#x7528;&#x7684;&#x96BE;&#x70B9;&#x662F;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x3002;</li>
-<li>&#x5E94;&#x7528;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x7684;&#x6587;&#x672C;&#x5339;&#x914D;&#x6A21;&#x578B;&#xFF1A;$match(T_1, T_2)=F(\Theta(T_1), \Theta(T_2))$<blockquote>
+<li>&#x5E94;&#x7528;&#x6DF1;&#x5EA6;&#x5B66;&#x4E60;&#x7684;&#x6587;&#x672C;&#x5339;&#x914D;&#x6A21;&#x578B;&#xFF1A;$match(T_1, T_2)=F(\Phi(T_1), \Phi(T_2))$<blockquote>
 <ul>
 <li>&#x57FA;&#x4E8E;&#x8868;&#x8FBE;&#x7684;&#x6A21;&#x578B;&#xFF1A;&#x5229;&#x7528;&#x6DF1;&#x5EA6;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5BF9;&#x5355;&#x4E2A;&#x6587;&#x6863;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x8868;&#x8FBE;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x6587;&#x6863;&#x4E4B;&#x95F4;&#x7684;&#x5339;&#x914D;&#x7A0B;&#x5EA6;&#x3002;&#x5982;&#xFF1A;DSSM, C-DSSM and ARC-I&#x3002;</li>
-<li>&#x57FA;&#x4E8E;&#x4EA4;&#x4E92;&#x7684;&#x6A21;&#x578B;&#xFF1A;&#x9996;&#x5148;&#x5EFA;&#x7ACB;&#x4E24;&#x4E2A;&#x6587;&#x6863;&#x7684;&#x5C40;&#x90E8;&#x4EA4;&#x96C6;&#xFF0C;&#x7136;&#x540E;&#x5229;&#x7528;&#x6DF1;&#x5EA6;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5B66;&#x4E60;&#x5339;&#x914D;&#x7684;&#x878D;&#x5408;&#x4EA4;&#x4E92;&#x6A21;&#x5F0F;&#x3002;&#x5982;&#xFF1A;Deep Match Tree (DeepMatchtree)&#x3001;ARC-II and MatchPyramid&#x3002;<br><img src="/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/A_Deep_Relevance_Matching_Model_for_Ad-hoc_Retrieval/representation_and_interaction.png" alt="representation_and_interaction"></li>
+<li>&#x57FA;&#x4E8E;&#x4EA4;&#x4E92;&#x7684;&#x6A21;&#x578B;&#xFF1A;&#x9996;&#x5148;&#x5EFA;&#x7ACB;&#x4E24;&#x4E2A;&#x6587;&#x6863;&#x7684;&#x5C40;&#x90E8;&#x4EA4;&#x96C6;&#xFF0C;&#x7136;&#x540E;&#x5229;&#x7528;&#x6DF1;&#x5EA6;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5B66;&#x4E60;&#x5339;&#x914D;&#x7684;&#x878D;&#x5408;&#x4EA4;&#x4E92;&#x6A21;&#x5F0F;&#x3002;&#x5982;&#xFF1A;Deep Match Tree (DeepMatchtree)&#x3001;ARC-II and MatchPyramid&#x3002;<br><img src="/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/representation_and_interaction.png" alt="representation_and_interaction"></li>
 </ul>
 </blockquote>
 </li>
@@ -452,8 +452,8 @@
 </li>
 </ul>
 <h2 id="&#x672C;&#x6587;&#x63D0;&#x51FA;&#x7684;&#xFF08;Deep-Relevance-Matching-Model&#xFF0C;DRMM&#xFF09;"><a href="#&#x672C;&#x6587;&#x63D0;&#x51FA;&#x7684;&#xFF08;Deep-Relevance-Matching-Model&#xFF0C;DRMM&#xFF09;" class="headerlink" title="&#x672C;&#x6587;&#x63D0;&#x51FA;&#x7684;&#xFF08;Deep Relevance Matching Model&#xFF0C;DRMM&#xFF09;"></a>&#x672C;&#x6587;&#x63D0;&#x51FA;&#x7684;&#xFF08;Deep Relevance Matching Model&#xFF0C;DRMM&#xFF09;</h2><ul>
-<li><strong>&#x4E00;&#x79CD;&#x4EA4;&#x4E92;&#x6A21;&#x578B;&#x2014;&#x2014;&#x89E3;&#x51B3;&#x4E86;&#x5339;&#x914D;&#x6A21;&#x578B;&#x7684;&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x56E0;&#x5B50;</strong><br><img src="/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/A_Deep_Relevance_Matching_Model_for_Ad-hoc_Retrieval/DRMM.jpg" alt="DRMM"></li>
-<li>&#x5B9A;&#x4E49;&#xFF1A;$q={w_1^(q),&#x2026;.,w_M^(q)}$&#x548C;$d={w_1^(d),&#x2026;,w_N^(d)$&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;$w_i^(q),i=1,&#x2026;,M$&#x548C;$w_j^(d),j=1,&#x2026;,N$&#x5206;&#x522B;&#x8868;&#x793A;query term&#x7684;vector&#x548C;document term&#x7684;vector&#xFF08;&#x76F4;&#x63A5;&#x5229;&#x7528;&#x5DF2;&#x7ECF;&#x8BAD;&#x7EC3;&#x597D;&#x7684;word2vec&#x5DE5;&#x5177;&#xFF09;&#xFF0C;$s$&#x8868;&#x793A;&#x6700;&#x540E;&#x7684;&#x76F8;&#x5173;&#x6027;&#x5F97;&#x5206;&#xFF0C;&#x672C;&#x6587;&#x7684;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;$$z_i^(0)=h(w_i^(q)\dot d), i=1,&#x2026;,M$$,$$z_i^(l)=tanh(W^(l)z_i^(l-1)+b^(l)),i=1,&#x2026;,M,l=1,&#x2026;,L$$,$$s=\sum_{i=1}^M g_i z_i^(L)$$</li>
+<li><strong>&#x4E00;&#x79CD;&#x4EA4;&#x4E92;&#x6A21;&#x578B;&#x2014;&#x2014;&#x89E3;&#x51B3;&#x4E86;&#x5339;&#x914D;&#x6A21;&#x578B;&#x7684;&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x56E0;&#x5B50;</strong><br><img src="/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/DRMM.jpg" alt="DRMM"></li>
+<li>&#x5B9A;&#x4E49;&#xFF1A;$q={w_1^{(q)},\ldots ,w_M^{(q)}}$&#x548C;$d={w_1^{(d)},\ldots ,w_N^{(d)}$&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;$w_i^{(q)},i=1,\ldots ,M$&#x548C;$w_j^{(d)},j=1,\ldots ,N$&#x5206;&#x522B;&#x8868;&#x793A;query term&#x7684;vector&#x548C;document term&#x7684;vector&#xFF08;&#x76F4;&#x63A5;&#x5229;&#x7528;&#x5DF2;&#x7ECF;&#x8BAD;&#x7EC3;&#x597D;&#x7684;word2vec&#x5DE5;&#x5177;&#xFF09;&#xFF0C;$s$&#x8868;&#x793A;&#x6700;&#x540E;&#x7684;&#x76F8;&#x5173;&#x6027;&#x5F97;&#x5206;&#xFF0C;&#x672C;&#x6587;&#x7684;&#x516C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;$$z_i^{(0)}=h(w_i^{(q)}\times d), i=1,\ldots ,M$$,$$z_i^{(l)}=tanh(W^{(l)}z_i^{(l-1)}+b^{(l)}),i=1,\ldots ,M,l=1,\ldots ,L$$,$$s=\sum_{i=1}^M g_i z_i^{(L)}$$</li>
 </ul>
 <blockquote>
 <ol>
