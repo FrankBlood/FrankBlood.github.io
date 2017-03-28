@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Tutorial,Tools,Word2vec," />
+  <meta name="keywords" content="RNN,Sentence Ordering," />
 
 
 
@@ -84,18 +84,16 @@
 
 
 
-<meta name="description" content="&amp;#x5229;&amp;#x7528;gensim&amp;#x8C03;&amp;#x7528;word2vec&amp;#x6A21;&amp;#x578B;Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28">
+<meta name="description" content="Sentence Ordering Using Recurrent Neural NetworksAn application of RNN about Sentence Ordering by Lajanugen Logeswaran, Honglak Lee &amp;amp; Dragomir Radev in University of Michigan for ICLR2017">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tutorial-for-Word2vec">
-<meta property="og:url" content="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/index.html">
+<meta property="og:title" content="Sentence_Ordering_Using_Recurrent_Neural_Networks">
+<meta property="og:url" content="https://frankblood.github.io/2017/03/26/Sentence-Ordering-Using-Recurrent-Neural-Networks/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
-<meta property="og:description" content="&amp;#x5229;&amp;#x7528;gensim&amp;#x8C03;&amp;#x7528;word2vec&amp;#x6A21;&amp;#x578B;Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28">
-<meta property="og:image" content="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/avatar.png">
-<meta property="og:updated_time" content="2017-01-03T03:21:36.958Z">
+<meta property="og:description" content="Sentence Ordering Using Recurrent Neural NetworksAn application of RNN about Sentence Ordering by Lajanugen Logeswaran, Honglak Lee &amp;amp; Dragomir Radev in University of Michigan for ICLR2017">
+<meta property="og:updated_time" content="2017-03-27T02:18:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tutorial-for-Word2vec">
-<meta name="twitter:description" content="&amp;#x5229;&amp;#x7528;gensim&amp;#x8C03;&amp;#x7528;word2vec&amp;#x6A21;&amp;#x578B;Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28">
-<meta name="twitter:image" content="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/avatar.png">
+<meta name="twitter:title" content="Sentence_Ordering_Using_Recurrent_Neural_Networks">
+<meta name="twitter:description" content="Sentence Ordering Using Recurrent Neural NetworksAn application of RNN about Sentence Ordering by Lajanugen Logeswaran, Honglak Lee &amp;amp; Dragomir Radev in University of Michigan for ICLR2017">
 
 
 
@@ -123,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/"/>
+  <link rel="canonical" href="https://frankblood.github.io/2017/03/26/Sentence-Ordering-Using-Recurrent-Neural-Networks/"/>
 
 
 
 
 
-  <title> Tutorial-for-Word2vec | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Sentence_Ordering_Using_Recurrent_Neural_Networks | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -292,7 +290,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/03/26/Sentence-Ordering-Using-Recurrent-Neural-Networks/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="He Guoxiu">
@@ -316,7 +314,7 @@
             
             
               
-                Tutorial-for-Word2vec
+                Sentence_Ordering_Using_Recurrent_Neural_Networks
               
             
           </h1>
@@ -331,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-02T17:02:37+08:00">
-                2017-01-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-26T22:49:17+08:00">
+                2017-03-26
               </time>
             
 
@@ -354,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tutorial/" itemprop="url" rel="index">
-                    <span itemprop="name">Tutorial</span>
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
                   </a>
                 </span>
 
@@ -372,8 +370,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/02/Tutorial-for-Word2vec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/02/Tutorial-for-Word2vec/" itemprop="commentCount"></span>
+                <a href="/2017/03/26/Sentence-Ordering-Using-Recurrent-Neural-Networks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/26/Sentence-Ordering-Using-Recurrent-Neural-Networks/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -400,27 +398,33 @@
 
       
         <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
-<h1 id="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;"><a href="#&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;" class="headerlink" title="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;"></a>&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;</h1><p><strong>Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28</strong><br><a id="more"></a></p>
-<h2 id="Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;"><a href="#Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;" class="headerlink" title="Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;"></a>Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;</h2><ul>
-<li>&#x8BF7;&#x53C2;&#x7167;<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001374738150500472fd5785c194ebea336061163a8a974000" target="_blank" rel="external">Python &#x5ED6;&#x96EA;&#x5CF0;&#x5B98;&#x7F51;</a></li>
+<h1 id="Sentence-Ordering-Using-Recurrent-Neural-Networks"><a href="#Sentence-Ordering-Using-Recurrent-Neural-Networks" class="headerlink" title="Sentence Ordering Using Recurrent Neural Networks"></a>Sentence Ordering Using Recurrent Neural Networks</h1><p><strong>An application of RNN about Sentence Ordering by Lajanugen Logeswaran, Honglak Lee &amp; Dragomir Radev in University of Michigan for ICLR2017</strong><br><a id="more"></a></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><ul>
+<li>Background: Modeling the structure of conherent texts is a task of great importance in NLP.</li>
+<li>Task: The task of organizing a given set of sentences into a coherent order has been commonly used to build and evaluate models that understand such structure.</li>
+<li>Method: In this paper, we propose an end-to-end neural approach based on the recently proposed set to sequence mapping framework to address the sentence ordering problem.</li>
+<li><p>Result: </p>
+<ul>
+<li>Our model achieves state-of-the-art performance in the order discrimination task on two datasets widely used in the literature.</li>
+<li>They also consider a new interesting task of ordering abstracts from conference papers and research proposals and demonstrate strong performance against recent methods.</li>
 </ul>
-<h2 id="gensim&#x5B89;&#x88C5;"><a href="#gensim&#x5B89;&#x88C5;" class="headerlink" title="gensim&#x5B89;&#x88C5;"></a>gensim&#x5B89;&#x88C5;</h2><ul>
-<li><code>$ pip install --upgrade gensim</code></li>
-<li>&#x5177;&#x4F53;&#x53C2;&#x89C1;<a href="http://radimrehurek.com/gensim/install.html" target="_blank" rel="external">gensim Install</a></li>
+</li>
+<li><p>Visual: Visualizing the sentence representations learned by the model shows that the model has captured high level logical structure in these paragraphs.</p>
+</li>
+<li>Lucky: The model also learn rich semantic sentence representations by learning to order texts, performing conparably to recent unsupervised representation learning methods in the sentence similarity and paraphrase detection tasks.</li>
 </ul>
-<h2 id="&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;"><a href="#&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;" class="headerlink" title="&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;"></a>&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;</h2><ul>
-<li>&#x5E38;&#x89C1;&#x7684;<a href="https://github.com/3Top/word2vec-api" target="_blank" rel="external">&#x6A21;&#x578B;&#x4E0B;&#x8F7D;&#x5217;&#x8868;</a>&#xFF0C;&#x8BF7;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x4E0B;&#x8F7D;&#x5373;<br>&#x53EF;&#x3002;</li>
-<li>&#x5B9E;&#x9A8C;&#x5BA4;&#x5DF2;&#x4E0B;&#x8F7D;&#x597D;&#x4E00;&#x4E2A;wikipedia-pubmed-and-PMC-w2v.bin&#x3002;</li>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>Background: Modeling the structure of coherent texts is one of the central problems in NLP. A well written piece of text has a particular high level logical and topical structure to it. The actual word and sentence choices as well as their transitions come together to convey the purpose of the text. Our overaching goal is to build models that can learn such structure by learning to arrange a given set of sentence to make coherent text.</li>
+<li>Application of Sentence Ordering task: Multi-document Summarization(MDS) and retrieval based question answering involve extracting information from multiple source documents and organizing and content into a conherent summary. Since the relative ordering about sentences that come from different sources can be unclear, being able to automatically evaluate a particular order and/or finding the optimal order is essential.</li>
+<li>Lucky: The models that learn to order text fragments can also be used as models of coherence. It can be considered as a jigsaw puzzle of sorts in the language domain.</li>
+<li><p>Driven: </p>
+<ul>
+<li>capturing sematics using distributed representations</li>
+<li>Using RNNs for sequence modeling tasks</li>
 </ul>
-<h2 id="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;-1"><a href="#&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;-1" class="headerlink" title="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;"></a>&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;</h2><ul>
-<li>&#x8FDB;&#x5165;python&#x73AF;&#x5883;&#xFF1A;<code>$ python</code></li>
-<li>&#x5BFC;&#x5165;gensim&#xFF1A;<code>import gensim</code></li>
-<li>&#x8BBE;&#x7F6E;word2vec&#x6A21;&#x578B;&#x8DEF;&#x5F84;&#xFF1A;<code>word2vec_path=&apos;./wikipedia-pubmed-and-PMC-w2v.bin&apos;</code></li>
-<li>&#x52A0;&#x8F7D;word2vec&#x6A21;&#x578B;&#xFF1A;<code>model = gensim.models.Word2Vec.load_word2vec_format(word2vec_path, binary=True)  # C binary format</code></li>
-<li>&#x83B7;&#x5F97;&#x67D0;&#x4E2A;&#x8BCD;&#x7684;&#x8BCD;&#x5411;&#x91CF;&#xFF1A;<code>model[&apos;computer&apos;]</code></li>
-<li>&#x83B7;&#x5F97;&#x548C;&#x67D0;&#x4E2A;&#x8BCD;&#x6700;&#x76F8;&#x4F3C;&#x7684;3&#x4E2A;&#x8BCD;&#xFF1A;<code>model.similar_by_word(&apos;computer&apos;, topn=3, restrict_vocab=None)</code></li>
-<li>&#x83B7;&#x5F97;&#x67D0;&#x4E24;&#x4E2A;&#x8BCD;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#xFF1A;<code>model.similarity(&apos;woman&apos;, &apos;man&apos;)</code></li>
-<li>&#x5176;&#x4ED6;&#x66F4;&#x591A;&#x8BF7;&#x53C2;&#x89C1;<a href="http://radimrehurek.com/gensim/models/word2vec.html" target="_blank" rel="external">gensim&#x5B98;&#x65B9;API</a><br><br><img src="/2017/01/02/Tutorial-for-Word2vec/avatar.png" alt="avatar"><h1 id="&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;"><a href="#&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;" class="headerlink" title="&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;"></a>&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;</h1></li>
+</li>
+<li><p>Embeddings: Success in unsupervised approaches for learning embeddings for textual entities from large text corpora altered the way NLP problems are studied today.</p>
+</li>
 </ul>
 
       
@@ -445,11 +449,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tutorial/" rel="tag"># Tutorial</a>
+            <a href="/tags/RNN/" rel="tag"># RNN</a>
           
-            <a href="/tags/Tools/" rel="tag"># Tools</a>
-          
-            <a href="/tags/Word2vec/" rel="tag"># Word2vec</a>
+            <a href="/tags/Sentence-Ordering/" rel="tag"># Sentence Ordering</a>
           
         </div>
       
@@ -458,8 +460,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/31/A-Self-Attentive-Sentence-Embedding/" rel="next" title="A_Self_Attentive_Sentence_Embedding">
-                <i class="fa fa-chevron-left"></i> A_Self_Attentive_Sentence_Embedding
+              <a href="/2017/03/12/Tutorial-for-Retrieval-Engine/" rel="next" title="Tutorial-for-Retrieval-Engine">
+                <i class="fa fa-chevron-left"></i> Tutorial-for-Retrieval-Engine
               </a>
             
           </div>
@@ -467,10 +469,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/03/report-for-data-mining/" rel="prev" title="report_for_data_mining">
-                report_for_data_mining <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,8 +494,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/02/Tutorial-for-Word2vec/"
-           data-title="Tutorial-for-Word2vec" data-url="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/">
+      <div class="ds-thread" data-thread-key="2017/03/26/Sentence-Ordering-Using-Recurrent-Neural-Networks/"
+           data-title="Sentence_Ordering_Using_Recurrent_Neural_Networks" data-url="https://frankblood.github.io/2017/03/26/Sentence-Ordering-Using-Recurrent-Neural-Networks/">
       </div>
     
   </div>
@@ -608,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用gensim调用word2vec模型"><span class="nav-number">1.</span> <span class="nav-text">利用gensim调用word2vec模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python2环境配置"><span class="nav-number">1.1.</span> <span class="nav-text">Python2环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gensim安装"><span class="nav-number">1.2.</span> <span class="nav-text">gensim安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载word2vec模型"><span class="nav-number">1.3.</span> <span class="nav-text">下载word2vec模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用gensim调用word2vec模型-1"><span class="nav-number">1.4.</span> <span class="nav-text">利用gensim调用word2vec模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…"><span class="nav-number">2.</span> <span class="nav-text">补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Sentence-Ordering-Using-Recurrent-Neural-Networks"><span class="nav-number">1.</span> <span class="nav-text">Sentence Ordering Using Recurrent Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Introduction</span></a></li></ol></li></ol></div>
             
 
           </div>
