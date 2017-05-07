@@ -291,6 +291,183 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/05/01/A-Survey-of-Neural-Network-Techniques-for-Feature-Extraction-from-Text/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="He Guoxiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Study in IRLAB">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Study in IRLAB" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/01/A-Survey-of-Neural-Network-Techniques-for-Feature-Extraction-from-Text/" itemprop="url">
+                  A_Survey_of_Neural_Network_Techniques_for_Feature_Extraction_from_Text
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-01T23:18:10+08:00">
+                2017-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/01/A-Survey-of-Neural-Network-Techniques-for-Feature-Extraction-from-Text/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/01/A-Survey-of-Neural-Network-Techniques-for-Feature-Extraction-from-Text/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="&#x6587;&#x672C;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6280;&#x672F;&#x8C03;&#x67E5;"><a href="#&#x6587;&#x672C;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6280;&#x672F;&#x8C03;&#x67E5;" class="headerlink" title="&#x6587;&#x672C;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6280;&#x672F;&#x8C03;&#x67E5;"></a>&#x6587;&#x672C;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6280;&#x672F;&#x8C03;&#x67E5;</h1><p><strong>&#x5C11;&#x6709;&#x7684;&#x6587;&#x672C;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x7684;&#x7EFC;&#x8FF0;by Vineet John from University of Waterloo</strong><br><br><strong>&#x9664;&#x4E86;&#x5E38;&#x89C1;&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x8BCD;&#x6027;&#x6807;&#x6CE8;&#x3001;&#x8BCD;&#x5757;&#x3001;&#x547D;&#x540D;&#x5B9E;&#x4F53;&#x8BC6;&#x522B;&#x548C;&#x8BED;&#x4E49;&#x89D2;&#x8272;&#x6807;&#x6CE8;&#x4E5F;&#x7B97;&#x662F;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x3002;</strong></p>
+<h2 id="&#x80CC;&#x666F;"><a href="#&#x80CC;&#x666F;" class="headerlink" title="&#x80CC;&#x666F;"></a>&#x80CC;&#x666F;</h2><ul>
+<li><p>&#x8BCD;&#x6027;&#x6807;&#x6CE8;(Part-of-Speech Tagging)&#xFF1A;&#x6307;&#x5BF9;&#x6BCF;&#x4E2A;&#x8BCD;&#x4E00;&#x4E2A;&#x72EC;&#x7279;&#x7684;&#x6807;&#x8BB0;&#x4EE5;&#x8868;&#x660E;&#x5176;&#x8BED;&#x4E49;&#x89D2;&#x8272;&#xFF0C;&#x5982;&#x540D;&#x8BCD;&#x3001;&#x52A8;&#x8BCD;&#x548C;&#x526F;&#x8BCD;&#x7B49;&#xFF1B;&#x6700;&#x597D;&#x7684;&#x8BCD;&#x6027;&#x6807;&#x6CE8;&#x5668;&#x662F;&#x57FA;&#x4E8E;&#x5206;&#x7C7B;&#x5668;&#xFF1B;bi-directional dependency network &#x548C; &#x5229;&#x7528; support vector machines and bi-directional Viterbi decoders.</p>
+</li>
+<li><p>&#x8BCD;&#x5757;&#x8BC6;&#x522B;(Chunking)&#xFF1A;&#x8BC6;&#x522B;&#x53E5;&#x5B50;&#x4E2D;&#x7684;&#x77ED;&#x8BED;&#x3002;</p>
+</li>
+<li><p>&#x547D;&#x540D;&#x5B9E;&#x4F53;&#x8BC6;&#x522B;(Named Entity Recognition)&#xFF1A;&#x5BF9;&#x53E5;&#x5B50;&#x4E2D;&#x7684;&#x5355;&#x5143;&#x8FDB;&#x884C;&#x6807;&#x6CE8;&#xFF0C;&#x5982;&#x4EBA;&#x6216;&#x8005;&#x5730;&#x70B9;&#x4E4B;&#x7C7B;&#x3002;</p>
+</li>
+<li><p>&#x8BED;&#x4E49;&#x89D2;&#x8272;&#x6807;&#x6CE8;(Semantic Role Labeling)&#xFF1A;&#x6807;&#x6CE8;&#x53E5;&#x5B50;&#x4E2D;&#x7684;&#x8BED;&#x4E49;&#x89D2;&#x8272;&#xFF1B;&#x53EF;&#x4EE5;&#x751F;&#x6210;&#x53E5;&#x6CD5;&#x5206;&#x6790;&#x6811;&#x3002;</p>
+</li>
+</ul>
+<h2 id="&#x6587;&#x6863;&#x5411;&#x91CF;&#x5316;"><a href="#&#x6587;&#x6863;&#x5411;&#x91CF;&#x5316;" class="headerlink" title="&#x6587;&#x6863;&#x5411;&#x91CF;&#x5316;"></a>&#x6587;&#x6863;&#x5411;&#x91CF;&#x5316;</h2><p><strong>&#x628A;&#x6587;&#x6863;&#x5185;&#x5BB9;&#x8F6C;&#x5316;&#x6210;&#x6570;&#x5B57;&#x5411;&#x91CF;&#x8868;&#x8FBE;</strong></p>
+<ul>
+<li><p>N-gram Model: &#x5728;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x6587;&#x672C;&#x7684;&#x5E8F;&#x5217;&#x4E2D;&#xFF0C;&#x9009;&#x62E9;&#x8FDE;&#x7EED;&#x7684;n&#x4E2A;&#x9879;&#x7684;&#x5E8F;&#x5217;&#xFF1B;&#x7136;&#x540E;&#x6BCF;&#x4E2A;N-gram&#x548C;word&#x90FD;&#x88AB;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;&#x4E8C;&#x5143;&#x5411;&#x91CF;&#x3002;</p>
+</li>
+<li><p>TF-IDF Model&#xFF1A;&#x662F;&#x4E00;&#x79CD;&#x8BCD;&#x888B;&#x6A21;&#x578B;&#xFF0C;&#x6CA1;&#x6709;&#x8868;&#x793A;&#x8BCD;&#x5E8F;&#x5217;&#xFF1B;&#x5176;&#x503C;&#x968F;&#x7740;&#x8BCD;&#x5728;&#x6587;&#x6863;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;&#x589E;&#x52A0;&#x800C;&#x589E;&#x52A0;&#xFF0C;&#x968F;&#x7740;&#x8BCD;&#x5728;&#x8BED;&#x6599;&#x5E93;&#x4E2D;&#x7684;&#x6B21;&#x6570;&#x7684;&#x589E;&#x52A0;&#x800C;&#x51CF;&#x5C11;&#x3002;</p>
+</li>
+<li><p>Paragraph Vector Model&#xFF1A;&#x5BF9;&#x4E0D;&#x540C;&#x957F;&#x5EA6;&#x7684;&#x6587;&#x672C;&#x5982;&#x53E5;&#x5B50;&#x548C;&#x6587;&#x6863;&#xFF0C;&#x7528;&#x65E0;&#x76D1;&#x7763;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;&#x7684;&#x5411;&#x91CF;&#x3002;Doc2Vec &#x548C; FastText&#x3002;</p>
+</li>
+</ul>
+<h2 id="NLP&#x7684;&#x521D;&#x7EA7;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6A21;&#x578B;"><a href="#NLP&#x7684;&#x521D;&#x7EA7;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6A21;&#x578B;" class="headerlink" title="NLP&#x7684;&#x521D;&#x7EA7;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6A21;&#x578B;"></a>NLP&#x7684;&#x521D;&#x7EA7;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x6A21;&#x578B;</h2><ul>
+<li>&#x5168;&#x8FDE;&#x63A5;&#x524D;&#x9988;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF0C;&#x4E00;&#x79CD;&#x975E;&#x7EBF;&#x6027;&#x7684;&#x5B66;&#x4E60;&#x5668;</li>
+<li>&#x5229;&#x7528;&#x4E0E;&#x8BAD;&#x7EC3;&#x597D;&#x7684;&#x8BCD;&#x5411;&#x91CF;&#x7684;&#x5168;&#x8FDE;&#x63A5;&#x524D;&#x9988;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</li>
+<li>&#x591A;&#x5C42;&#x524D;&#x9988;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</li>
+<li>&#x5377;&#x79EF;&#x548C;&#x6C60;&#x5316;&#x6846;&#x67B6;</li>
+<li>&#x9012;&#x5F52;&#x548C;&#x5FAA;&#x73AF;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;</li>
+</ul>
+<h2 id="&#x795E;&#x7ECF;&#x6982;&#x7387;&#x8BED;&#x8A00;&#x6A21;&#x578B;"><a href="#&#x795E;&#x7ECF;&#x6982;&#x7387;&#x8BED;&#x8A00;&#x6A21;&#x578B;" class="headerlink" title="&#x795E;&#x7ECF;&#x6982;&#x7387;&#x8BED;&#x8A00;&#x6A21;&#x578B;"></a>&#x795E;&#x7ECF;&#x6982;&#x7387;&#x8BED;&#x8A00;&#x6A21;&#x578B;</h2><h2 id="&#x591A;&#x5C42;&#x6982;&#x7387;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8BED;&#x8A00;&#x6A21;&#x578B;"><a href="#&#x591A;&#x5C42;&#x6982;&#x7387;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8BED;&#x8A00;&#x6A21;&#x578B;" class="headerlink" title="&#x591A;&#x5C42;&#x6982;&#x7387;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8BED;&#x8A00;&#x6A21;&#x578B;"></a>&#x591A;&#x5C42;&#x6982;&#x7387;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8BED;&#x8A00;&#x6A21;&#x578B;</h2><h2 id="&#x6BB5;&#x843D;&#x548C;&#x7A33;&#x5F53;&#x7684;&#x591A;&#x5C42;&#x795E;&#x7ECF;&#x81EA;&#x7F16;&#x7801;&#x5668;"><a href="#&#x6BB5;&#x843D;&#x548C;&#x7A33;&#x5F53;&#x7684;&#x591A;&#x5C42;&#x795E;&#x7ECF;&#x81EA;&#x7F16;&#x7801;&#x5668;" class="headerlink" title="&#x6BB5;&#x843D;&#x548C;&#x7A33;&#x5F53;&#x7684;&#x591A;&#x5C42;&#x795E;&#x7ECF;&#x81EA;&#x7F16;&#x7801;&#x5668;"></a>&#x6BB5;&#x843D;&#x548C;&#x7A33;&#x5F53;&#x7684;&#x591A;&#x5C42;&#x795E;&#x7ECF;&#x81EA;&#x7F16;&#x7801;&#x5668;</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/04/05/Compositional-Semantic-Parsing-on-Semi-Structured-Tables/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -904,161 +1081,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="He Guoxiu">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Study in IRLAB">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Study in IRLAB" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/" itemprop="url">
-                  A_Deep_Relevance_Matching_Model_for_Ad-hoc_Retrieval
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T12:36:47+08:00">
-                2017-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval"><a href="#A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval" class="headerlink" title="A Deep Relevance Matching Model for Ad-hoc Retrieval"></a>A Deep Relevance Matching Model for Ad-hoc Retrieval</h1><p><strong>DRMM by Jiafeng Guo, Yixing Fan, Qingyao Ai and W.Bruce Croft for CIKM2016</strong><br></p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/10/A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1106,7 +1128,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1124,7 +1146,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
