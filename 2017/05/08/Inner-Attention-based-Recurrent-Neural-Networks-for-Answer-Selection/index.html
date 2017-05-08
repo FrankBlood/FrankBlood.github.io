@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://frankblood.github.io/2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
 <meta property="og:description" content="Inner Attention based Recurrent Neural Networks for Answer SelectionA RNN model using Inner Attention to select answer by Bingning Wang, Kang Liu and Jun Zhao for ACL 2016">
-<meta property="og:updated_time" content="2017-05-08T06:19:37.587Z">
+<meta property="og:updated_time" content="2017-05-08T06:47:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Inner_Attention_based_Recurrent_Neural_Networks_for_Answer_Selection">
 <meta name="twitter:description" content="Inner Attention based Recurrent Neural Networks for Answer SelectionA RNN model using Inner Attention to select answer by Bingning Wang, Kang Liu and Jun Zhao for ACL 2016">
@@ -428,9 +428,10 @@
 </ul>
 <h2 id="Traditional-Attention-based-RNN-Models-and-Their-Deficiency"><a href="#Traditional-Attention-based-RNN-Models-and-Their-Deficiency" class="headerlink" title="Traditional Attention based RNN Models and Their Deficiency"></a>Traditional Attention based RNN Models and Their Deficiency</h2><ul>
 <li>RNN architecture:<ul>
-<li>$X = D[q_1, q_2, \ldots, q_n]$</li>
-<li>$h_t=\delta(W_{ih}x_t+W_{hh}h_{t-1}+b_h)$</li>
-<li>$y_t=\delta(W_{ho}h_t+b_o)$</li>
+<li>$X=D[q_1, q_2, \ldots, q_n]$&#xFF1A;$D$is an embedding maxtrix in $R^d$ </li>
+<li>$h_t=\delta(W_{ih}x_t+W_{hh}h_{t-1}+b_h)$: $W_{ih}, W_{hh}, W_{ho}$ are weights matrices and $b_h$ is bias. $\delta$ is active function such as $tanh$. This means $h_t$ is from this input $x_t$ and last hidden stat $h_{t-1}$</li>
+<li>$y_t=\delta(W_{ho}h_t+b_o)$: $b_o$ is bias vectors.</li>
+<li>Usually we can ignore the output variables and use the hidden variables: the last hidden variable $h_n$ or all hidden stats averge$\frac{1}{n}\sum_{t=1}^n h_t$ as sentence(question) representation $r_q$.</li>
 </ul>
 </li>
 </ul>
