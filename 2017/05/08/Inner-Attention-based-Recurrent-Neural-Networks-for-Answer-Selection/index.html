@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://frankblood.github.io/2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
 <meta property="og:description" content="Inner Attention based Recurrent Neural Networks for Answer SelectionA RNN model using Inner Attention to select answer by Bingning Wang, Kang Liu and Jun Zhao for ACL 2016">
-<meta property="og:updated_time" content="2017-05-08T06:47:32.000Z">
+<meta property="og:updated_time" content="2017-05-08T08:55:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Inner_Attention_based_Recurrent_Neural_Networks_for_Answer_Selection">
 <meta name="twitter:description" content="Inner Attention based Recurrent Neural Networks for Answer SelectionA RNN model using Inner Attention to select answer by Bingning Wang, Kang Liu and Jun Zhao for ACL 2016">
@@ -428,10 +428,18 @@
 </ul>
 <h2 id="Traditional-Attention-based-RNN-Models-and-Their-Deficiency"><a href="#Traditional-Attention-based-RNN-Models-and-Their-Deficiency" class="headerlink" title="Traditional Attention based RNN Models and Their Deficiency"></a>Traditional Attention based RNN Models and Their Deficiency</h2><ul>
 <li>RNN architecture:<ul>
-<li>$X=D[q_1, q_2, \ldots, q_n]$&#xFF1A;$D$is an embedding maxtrix in $R^d$ </li>
+<li>$X=D[q_1, q_2, \ldots, q_n]$&#xFF1A;$D$ is an embedding maxtrix in $R^d$ </li>
 <li>$h_t=\delta(W_{ih}x_t+W_{hh}h_{t-1}+b_h)$: $W_{ih}, W_{hh}, W_{ho}$ are weights matrices and $b_h$ is bias. $\delta$ is active function such as $tanh$. This means $h_t$ is from this input $x_t$ and last hidden stat $h_{t-1}$</li>
 <li>$y_t=\delta(W_{ho}h_t+b_o)$: $b_o$ is bias vectors.</li>
 <li>Usually we can ignore the output variables and use the hidden variables: the last hidden variable $h_n$ or all hidden stats averge$\frac{1}{n}\sum_{t=1}^n h_t$ as sentence(question) representation $r_q$.</li>
+</ul>
+</li>
+<li>Attention based RNN model:<ul>
+<li>$H_a=[h_a(1), h_a(2), \ldots, h_a(m)]$: $h_a(t)$ is hidden state of the sentence at time $t$.</li>
+<li>$s_t \propto f_{attention}(r_q, h_a(t))$: $f_{attention}$ was computed as: $m(t)=tanh(W_{hm}h_a(t)+W_{qm}r_q)$ and $f_{attention}(r_q, h_a(t))=exp(w_{mx}^Tm(t))$, and $W_{hm}$, $W_{qm}$ are attentive weight matrices and $w_{ms}$ is attentive weight vector.</li>
+<li>$h&#x2019;_a(t)=h_a(t)s_t$</li>
+<li>$r_a=\sum_{t=1}^mh&#x2019;_a(t)$</li>
+<li>this is OARNN: Outer Attention based RNN</li>
 </ul>
 </li>
 </ul>
