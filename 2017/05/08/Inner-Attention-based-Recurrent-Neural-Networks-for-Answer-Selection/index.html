@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Tutorial,Tools,Word2vec," />
+  <meta name="keywords" content="RNN,Attention,Q&A,Answer Selection,ACL,2016," />
 
 
 
@@ -84,18 +84,16 @@
 
 
 
-<meta name="description" content="&amp;#x5229;&amp;#x7528;gensim&amp;#x8C03;&amp;#x7528;word2vec&amp;#x6A21;&amp;#x578B;Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28">
+<meta name="description" content="Inner Attention based Recurrent Neural Networks for Answer SelectionA RNN model using Inner Attention to select answer by Bingning Wang, Kang Liu and Jun Zhao for ACL 2016">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tutorial-for-Word2vec">
-<meta property="og:url" content="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/index.html">
+<meta property="og:title" content="Inner_Attention_based_Recurrent_Neural_Networks_for_Answer_Selection">
+<meta property="og:url" content="https://frankblood.github.io/2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
-<meta property="og:description" content="&amp;#x5229;&amp;#x7528;gensim&amp;#x8C03;&amp;#x7528;word2vec&amp;#x6A21;&amp;#x578B;Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28">
-<meta property="og:image" content="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/avatar.png">
-<meta property="og:updated_time" content="2017-03-30T16:30:08.901Z">
+<meta property="og:description" content="Inner Attention based Recurrent Neural Networks for Answer SelectionA RNN model using Inner Attention to select answer by Bingning Wang, Kang Liu and Jun Zhao for ACL 2016">
+<meta property="og:updated_time" content="2017-05-08T03:07:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tutorial-for-Word2vec">
-<meta name="twitter:description" content="&amp;#x5229;&amp;#x7528;gensim&amp;#x8C03;&amp;#x7528;word2vec&amp;#x6A21;&amp;#x578B;Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28">
-<meta name="twitter:image" content="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/avatar.png">
+<meta name="twitter:title" content="Inner_Attention_based_Recurrent_Neural_Networks_for_Answer_Selection">
+<meta name="twitter:description" content="Inner Attention based Recurrent Neural Networks for Answer SelectionA RNN model using Inner Attention to select answer by Bingning Wang, Kang Liu and Jun Zhao for ACL 2016">
 
 
 
@@ -123,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/"/>
+  <link rel="canonical" href="https://frankblood.github.io/2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/"/>
 
 
 
 
 
-  <title> Tutorial-for-Word2vec | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Inner_Attention_based_Recurrent_Neural_Networks_for_Answer_Selection | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -292,7 +290,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="He Guoxiu">
@@ -316,7 +314,7 @@
             
             
               
-                Tutorial-for-Word2vec
+                Inner_Attention_based_Recurrent_Neural_Networks_for_Answer_Selection
               
             
           </h1>
@@ -331,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-02T17:02:37+08:00">
-                2017-01-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-08T09:31:24+08:00">
+                2017-05-08
               </time>
             
 
@@ -354,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tutorial/" itemprop="url" rel="index">
-                    <span itemprop="name">Tutorial</span>
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
                   </a>
                 </span>
 
@@ -372,8 +370,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/02/Tutorial-for-Word2vec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/02/Tutorial-for-Word2vec/" itemprop="commentCount"></span>
+                <a href="/2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,41 +397,34 @@
       
 
       
-        <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
-<h1 id="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;"><a href="#&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;" class="headerlink" title="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;"></a>&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;</h1><p><strong>Tutorial about Word2vec for IRLAB by Guoxiu in 2016/12/28</strong><br><a id="more"></a></p>
-<h2 id="Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;"><a href="#Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;" class="headerlink" title="Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;"></a>Python2&#x73AF;&#x5883;&#x914D;&#x7F6E;</h2><ul>
-<li>&#x8BF7;&#x53C2;&#x7167;<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001374738150500472fd5785c194ebea336061163a8a974000" target="_blank" rel="external">Python &#x5ED6;&#x96EA;&#x5CF0;&#x5B98;&#x7F51;</a></li>
+        <h1 id="Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection"><a href="#Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection" class="headerlink" title="Inner Attention based Recurrent Neural Networks for Answer Selection"></a>Inner Attention based Recurrent Neural Networks for Answer Selection</h1><p><strong>A RNN model using Inner Attention to select answer by Bingning Wang, Kang Liu and Jun Zhao for ACL 2016</strong><br><a id="more"></a></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><ul>
+<li>Attention: Based on recurrent neural networks, external attention information was added to hidden representation to get an attentive sentenve representation.</li>
+<li>This work:<ul>
+<li>analyze the deficiency of traditional attention based RNN models quantitatively and qualitatively.</li>
+<li>present three new RNN models that add attention information before RNN hidden representation.</li>
 </ul>
-<h2 id="gensim&#x5B89;&#x88C5;"><a href="#gensim&#x5B89;&#x88C5;" class="headerlink" title="gensim&#x5B89;&#x88C5;"></a>gensim&#x5B89;&#x88C5;</h2><ul>
-<li><code>$ pip install --upgrade gensim</code></li>
-<li>&#x5177;&#x4F53;&#x53C2;&#x89C1;<a href="http://radimrehurek.com/gensim/install.html" target="_blank" rel="external">gensim Install</a></li>
+</li>
+<li>Experiment: achieves new stat-of-art results in answer selection task.</li>
 </ul>
-<h2 id="&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;"><a href="#&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;" class="headerlink" title="&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;"></a>&#x4E0B;&#x8F7D;word2vec&#x6A21;&#x578B;</h2><ul>
-<li>&#x5E38;&#x89C1;&#x7684;<a href="https://github.com/3Top/word2vec-api" target="_blank" rel="external">&#x6A21;&#x578B;&#x4E0B;&#x8F7D;&#x5217;&#x8868;</a>&#xFF0C;&#x8BF7;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x4E0B;&#x8F7D;&#x5373;<br>&#x53EF;&#x3002;</li>
-<li>&#x5B9E;&#x9A8C;&#x5BA4;&#x5DF2;&#x4E0B;&#x8F7D;&#x597D;&#x4E00;&#x4E2A;wikipedia-pubmed-and-PMC-w2v.bin&#x3002;</li>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>Answer selection(AS): given a question, the goal is to choose the answer from a set of pre-selected sentences.</li>
+<li>Traditional AS model: mainly based on lexical features such as parsing tree edit distance.</li>
+<li>Traditional RNN model: represent the meaning of a sentence in a vector space and then compare the question and answer candidates in this hidden space, but may ignore the information subject to the question when representing the answer.</li>
+<li>This work just same as the above said.</li>
 </ul>
-<h2 id="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;-1"><a href="#&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;-1" class="headerlink" title="&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;"></a>&#x5229;&#x7528;gensim&#x8C03;&#x7528;word2vec&#x6A21;&#x578B;</h2><ul>
-<li>&#x8FDB;&#x5165;python&#x73AF;&#x5883;: $ python</li>
-<li><p>&#x5BFC;&#x5165;gensim&#xFF1A;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> gensim</div></pre></td></tr></table></figure>
+<h2 id="Related-work"><a href="#Related-work" class="headerlink" title="Related work"></a>Related work</h2><ul>
+<li>Attention based model<ul>
+<li>attention techniques can improve the performance of machine learning models.</li>
+<li>attention model: one representation is built with attention from other representation.</li>
+<li>common two ways: get attention from source sentence, either by the whole sentence representation(which they call attentive) or word-by-word attention(called impatient).</li>
+</ul>
 </li>
-<li><p>&#x8BBE;&#x7F6E;word2vec&#x6A21;&#x578B;&#x8DEF;&#x5F84;&#xFF1A;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">word2vec_path=<span class="string">&apos;./wikipedia-pubmed-and-PMC-w2v.bin</span></div></pre></td></tr></table></figure>
+<li>Answer Selection<ul>
+<li>given a question and a set of candidate sentences, one should choose the best sentence from a candidate sentence set that can answer the question.</li>
+<li>traditional functions are all based on lexical and parse tree, suffering from the availability of additional resources and errors of many NLP tools such as dependency parsing.</li>
+</ul>
 </li>
-<li><p>&#x52A0;&#x8F7D;word2vec&#x6A21;&#x578B;&#xFF1A;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model = gensim.models.Word2Vec.load_word2vec_format(word2vec_path, binary=<span class="keyword">True</span>)  <span class="comment"># C binary format</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>&#x83B7;&#x5F97;&#x67D0;&#x4E2A;&#x8BCD;&#x7684;&#x8BCD;&#x5411;&#x91CF;&#xFF1A;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model[<span class="string">&apos;computer&apos;</span>]</div></pre></td></tr></table></figure>
-</li>
-<li><p>&#x83B7;&#x5F97;&#x548C;&#x67D0;&#x4E2A;&#x8BCD;&#x6700;&#x76F8;&#x4F3C;&#x7684;3&#x4E2A;&#x8BCD;&#xFF1A;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.similar_by_word(<span class="string">&apos;computer&apos;</span>, topn=<span class="number">3</span>, restrict_vocab=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>&#x83B7;&#x5F97;&#x67D0;&#x4E24;&#x4E2A;&#x8BCD;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#xFF1A;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">model.similarity(<span class="string">&apos;woman&apos;</span>, <span class="string">&apos;man&apos;</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>&#x5176;&#x4ED6;&#x66F4;&#x591A;&#x8BF7;&#x53C2;&#x89C1;<a href="http://radimrehurek.com/gensim/models/word2vec.html" target="_blank" rel="external">gensim&#x5B98;&#x65B9;API</a><br><br><img src="/2017/01/02/Tutorial-for-Word2vec/avatar.png" alt="avatar"></p>
-<h1 id="&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;"><a href="#&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;" class="headerlink" title="&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;"></a>&#x8865;&#x5145;&#xFF1A;gensim&#x5728;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x5305;&#x3002;&#x5373;gensim&#x5927;&#x6CD5;&#x597D;&#xFF01;&#xFF01;&#x539F;&#x751F;word2vec&#x8BAD;&#x7EC3;&#x53CA;&#x8C03;&#x7528;&#x7B49;&#x5F85;&#x4EE5;&#x540E;&#x8865;&#x5145;&#x2026;</h1></li>
 </ul>
 
       
@@ -458,11 +449,17 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tutorial/" rel="tag"># Tutorial</a>
+            <a href="/tags/RNN/" rel="tag"># RNN</a>
           
-            <a href="/tags/Tools/" rel="tag"># Tools</a>
+            <a href="/tags/Attention/" rel="tag"># Attention</a>
           
-            <a href="/tags/Word2vec/" rel="tag"># Word2vec</a>
+            <a href="/tags/Q-A/" rel="tag"># Q&A</a>
+          
+            <a href="/tags/Answer-Selection/" rel="tag"># Answer Selection</a>
+          
+            <a href="/tags/ACL/" rel="tag"># ACL</a>
+          
+            <a href="/tags/2016/" rel="tag"># 2016</a>
           
         </div>
       
@@ -471,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/31/A-Self-Attentive-Sentence-Embedding/" rel="next" title="A_Self_Attentive_Sentence_Embedding">
-                <i class="fa fa-chevron-left"></i> A_Self_Attentive_Sentence_Embedding
+              <a href="/2017/05/07/Summarizing-Answer-in-Non-Factoid-Community-Question-Answering/" rel="next" title="Summarizing_Answer_in_Non-Factoid_Community_Question_Answering">
+                <i class="fa fa-chevron-left"></i> Summarizing_Answer_in_Non-Factoid_Community_Question_Answering
               </a>
             
           </div>
@@ -480,10 +477,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/03/report-for-data-mining/" rel="prev" title="report_for_data_mining">
-                report_for_data_mining <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -509,8 +502,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/02/Tutorial-for-Word2vec/"
-           data-title="Tutorial-for-Word2vec" data-url="https://frankblood.github.io/2017/01/02/Tutorial-for-Word2vec/">
+      <div class="ds-thread" data-thread-key="2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/"
+           data-title="Inner_Attention_based_Recurrent_Neural_Networks_for_Answer_Selection" data-url="https://frankblood.github.io/2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/">
       </div>
     
   </div>
@@ -621,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#利用gensim调用word2vec模型"><span class="nav-number">1.</span> <span class="nav-text">利用gensim调用word2vec模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python2环境配置"><span class="nav-number">1.1.</span> <span class="nav-text">Python2环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gensim安装"><span class="nav-number">1.2.</span> <span class="nav-text">gensim安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载word2vec模型"><span class="nav-number">1.3.</span> <span class="nav-text">下载word2vec模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用gensim调用word2vec模型-1"><span class="nav-number">1.4.</span> <span class="nav-text">利用gensim调用word2vec模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…"><span class="nav-number">2.</span> <span class="nav-text">补充：gensim在文本处理上有很多有用的包。即gensim大法好！！原生word2vec训练及调用等待以后补充…</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection"><span class="nav-number">1.</span> <span class="nav-text">Inner Attention based Recurrent Neural Networks for Answer Selection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-work"><span class="nav-number">1.3.</span> <span class="nav-text">Related work</span></a></li></ol></li></ol></div>
             
 
           </div>
