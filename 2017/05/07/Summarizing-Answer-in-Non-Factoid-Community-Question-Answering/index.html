@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://frankblood.github.io/2017/05/07/Summarizing-Answer-in-Non-Factoid-Community-Question-Answering/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
 <meta property="og:description" content="Summarizing Answers in Non-Factoid Community Question-Answeringcreate a model to summarize answer for non-factoid CQA by Ren Zhaochun and Maarten for WSDM 2017">
-<meta property="og:updated_time" content="2017-05-07T15:11:46.000Z">
+<meta property="og:updated_time" content="2017-05-08T13:31:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summarizing_Answer_in_Non-Factoid_Community_Question_Answering">
 <meta name="twitter:description" content="Summarizing Answers in Non-Factoid Community Question-Answeringcreate a model to summarize answer for non-factoid CQA by Ren Zhaochun and Maarten for WSDM 2017">
@@ -401,7 +401,12 @@
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><ul>
 <li>keywords: Community question-answering; Sparse coding; Short text processing; Document summarization</li>
 <li>goal: summarizing answers in community question-answering(CQA)</li>
-<li>challenges: requiring passages as answers, shortness, sparsity and diversity.</li>
+<li>challenges: requiring passages as answers, shortness, sparsity and diversity.<ul>
+<li>The shortness of answers in non-factoid CQA is an obstacle for document summarization methods in answer summarization.</li>
+<li>The sparsity of syntactic and context information hinders the summarization process using traditional representation of short text, based on term frequency or latent topic modeling.</li>
+<li>Summarization in non-factoid CQA is a recall-oriented problem, in which we need to recall as much relevant information as possible. However, the diverse topic distribution of answers in non-factoid CQA makes it difficult to generate a summary with high recall.</li>
+</ul>
+</li>
 <li><p>this work: propose a sparse coding-based summarization strategy that includes tree core ingredients:</p>
 <ul>
 <li>short document expansion: extend each answer in a question answering thread to a more comprehensive represensive via entity linking and sentence ranking strategies.</li>
@@ -413,7 +418,15 @@
 </li>
 <li>metrics: ROUGE</li>
 </ul>
-
+<h2 id="Related-work"><a href="#Related-work" class="headerlink" title="Related work"></a>Related work</h2><ul>
+<li>Multi-document summarization<ul>
+<li>abstractive summaries and extractive summaries</li>
+<li>extractive: cluster, graph-based ranking methods, </li>
+</ul>
+</li>
+<li>question-answer retrieval</li>
+</ul>
+<h1 id="To-be-continued&#x2026;"><a href="#To-be-continued&#x2026;" class="headerlink" title="To be continued&#x2026;"></a>To be continued&#x2026;</h1>
       
     </div>
 
@@ -599,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summarizing-Answers-in-Non-Factoid-Community-Question-Answering"><span class="nav-number">1.</span> <span class="nav-text">Summarizing Answers in Non-Factoid Community Question-Answering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summarizing-Answers-in-Non-Factoid-Community-Question-Answering"><span class="nav-number">1.</span> <span class="nav-text">Summarizing Answers in Non-Factoid Community Question-Answering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-work"><span class="nav-number">1.2.</span> <span class="nav-text">Related work</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#To-be-continued…"><span class="nav-number">2.</span> <span class="nav-text">To be continued…</span></a></li></ol></div>
             
 
           </div>
