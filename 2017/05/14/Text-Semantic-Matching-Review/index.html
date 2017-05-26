@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://frankblood.github.io/2017/05/14/Text-Semantic-Matching-Review/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
 <meta property="og:description" content="Text Semantic Matching ReviewSeveral papers about Text Semantic Matching">
-<meta property="og:updated_time" content="2017-05-14T04:49:02.000Z">
+<meta property="og:updated_time" content="2017-05-16T12:42:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Text Semantic Matching Review">
 <meta name="twitter:description" content="Text Semantic Matching ReviewSeveral papers about Text Semantic Matching">
@@ -388,19 +388,37 @@
 
       
         <h1 id="Text-Semantic-Matching-Review"><a href="#Text-Semantic-Matching-Review" class="headerlink" title="Text Semantic Matching Review"></a>Text Semantic Matching Review</h1><p><strong>Several papers about Text Semantic Matching</strong><br><a id="more"></a></p>
-<h2 id="Short-Text-Similarity-with-Word-Embeddings"><a href="#Short-Text-Similarity-with-Word-Embeddings" class="headerlink" title="Short Text Similarity with Word Embeddings"></a>Short Text Similarity with Word Embeddings</h2><p><strong>a model for short text similarity using word embeddings created by Tom Kenter and Maarten for CIKM 2015</strong></p>
+<h2 id="Short-Text-Similarity-with-Word-Embeddings"><a href="#Short-Text-Similarity-with-Word-Embeddings" class="headerlink" title="Short Text Similarity with Word Embeddings"></a>Short Text Similarity with Word Embeddings</h2><p><strong>a model for short text similarity using word embeddings created by Tom Kenter and Maarten from University of Amsterdam for CIKM 2015</strong></p>
 <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
+<li>Keywords: Short Text Similarity, Word Embeddings</li>
 <li>Backgroud: Determining semantic similarity between texts is important in many tasks in information retrieval such as search, query suggestion, automatic summarization and image finding.</li>
 <li>Previous work: <ul>
 <li>Methods: many approaches have been suggested, based on lexical matching, handcrafted patterns, syntactic parse trees, external sources of structured semantic knowledge and distributional semantic.</li>
-<li>Drawbacks: </li>
+<li>Drawbacks: <blockquote>
+<ul>
+<li>lexical features: like string matching, do not capture semantic similarity beyond a trivial level.</li>
+<li>handcrafted patterns and external sources of structured semantic knowledge: can&#x2019;t be assumed to be available in all circumstances and for all domains</li>
+<li>approaches dependings on parse trees are restricted to syntactically well-formed text, typically of on sentence in length.</li>
+</ul>
+</blockquote>
+</li>
 </ul>
 </li>
 <li>This work:<ul>
 <li>Try: determining short text similarity is possible using only semantic features.</li>
+<li>using word embeddings to pertain to a representation of meaning.</li>
+<li>They show on a publicly available evaluation set commonly used for the task of semantic similarity that their method outperforms baseline methods that work under the same conditions.</li>
 </ul>
 </li>
 </ul>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
+<li>Distributional semantics: LSA, word embeddings, GloVe</li>
+<li>Text-level semantics without external semantic knowledge: CNN, et al.</li>
+<li>Text-level semantics with external knowledge: using sources of structured semantic knowledge like Wikipedia and WordNet for semantic text similarity task.</li>
+<li>SemEval STS: two evaluation for Semantic Text Similarity task.</li>
+<li>Meta-level features:</li>
+</ul>
+<h3 id="Short-Text-Similarity-With-Semantics-Only"><a href="#Short-Text-Similarity-With-Semantics-Only" class="headerlink" title="Short Text Similarity With Semantics Only"></a>Short Text Similarity With Semantics Only</h3><p><strong>The meaning of longer pieces of text(containing multiple terms) can be captured by taking the mean of the individual term vectors.</strong></p>
 <h2 id="Question-Similarity-Modeling-with-Bidirectional-Long-Short-Term-Memory-Neural-Network"><a href="#Question-Similarity-Modeling-with-Bidirectional-Long-Short-Term-Memory-Neural-Network" class="headerlink" title="Question Similarity Modeling with Bidirectional Long Short-Term Memory Neural Network"></a>Question Similarity Modeling with Bidirectional Long Short-Term Memory Neural Network</h2><p><strong>BiLSTM Memory Neural Network for question similarity modeling created by Chao An and Jiuming Huang from NUDT for IEEE First International Conference on Data Science(I don&#x2019;t know what it is)</strong></p>
 <h3 id="Abstract-1"><a href="#Abstract-1" class="headerlink" title="Abstract:"></a>Abstract:</h3><ul>
 <li>Background: Modeling sentence similarity all along is a challengeable task in the field of natural language processing(NLP), since ambiguity and variability of linguistic expression.</li>
@@ -423,6 +441,16 @@
 <li>evaluate tasks: paraphrase identification, natural language inference and answer sentence selection.</li>
 <li>Experimental results on standard benchmark datasets show that our model achieves the state-of-the-art performance on all tasks.</li>
 </ul>
+</li>
+</ul>
+<h3 id="Related-Works"><a href="#Related-Works" class="headerlink" title="Related Works"></a>Related Works</h3><ul>
+<li><p>Siamese architecture: CNN or RNN is applied to two input sentences individually, and a matching decision is made solely based on the two sentence vectors.</p>
+<ul>
+<li>advantage: sharing parameters makes the model smaller and easier to train.</li>
+<li>disadvantage: there is no interaction between the two sentences during the encoding procedure, which may lose some important information.</li>
+</ul>
+</li>
+<li><p>Matching aggregation framework: </p>
 </li>
 </ul>
 <h2 id="A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval"><a href="#A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval" class="headerlink" title="A Deep Relevance Matching Model for Ad-hoc Retrieval"></a>A Deep Relevance Matching Model for Ad-hoc Retrieval</h2><p><strong>another deep matching model created by Jiafeng Guo, Yixing Fan, Qingyao Ai and W. Bruce Croft from CAS for CIKM 2016</strong></p>
@@ -564,7 +592,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -628,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Text-Semantic-Matching-Review"><span class="nav-number">1.</span> <span class="nav-text">Text Semantic Matching Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Short-Text-Similarity-with-Word-Embeddings"><span class="nav-number">1.1.</span> <span class="nav-text">Short Text Similarity with Word Embeddings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.1.</span> <span class="nav-text">Abstract</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Question-Similarity-Modeling-with-Bidirectional-Long-Short-Term-Memory-Neural-Network"><span class="nav-number">1.2.</span> <span class="nav-text">Question Similarity Modeling with Bidirectional Long Short-Term Memory Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Abstract:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences"><span class="nav-number">1.3.</span> <span class="nav-text">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">Abstract:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval"><span class="nav-number">1.4.</span> <span class="nav-text">A Deep Relevance Matching Model for Ad-hoc Retrieval</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">Abstract:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Text-Semantic-Matching-Review"><span class="nav-number">1.</span> <span class="nav-text">Text Semantic Matching Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Short-Text-Similarity-with-Word-Embeddings"><span class="nav-number">1.1.</span> <span class="nav-text">Short Text Similarity with Word Embeddings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Related-Work"><span class="nav-number">1.1.2.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Short-Text-Similarity-With-Semantics-Only"><span class="nav-number">1.1.3.</span> <span class="nav-text">Short Text Similarity With Semantics Only</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Question-Similarity-Modeling-with-Bidirectional-Long-Short-Term-Memory-Neural-Network"><span class="nav-number">1.2.</span> <span class="nav-text">Question Similarity Modeling with Bidirectional Long Short-Term Memory Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Abstract:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences"><span class="nav-number">1.3.</span> <span class="nav-text">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">Abstract:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Related-Works"><span class="nav-number">1.3.2.</span> <span class="nav-text">Related Works</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval"><span class="nav-number">1.4.</span> <span class="nav-text">A Deep Relevance Matching Model for Ad-hoc Retrieval</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">Abstract:</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
