@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ACL,Attention,NLSM," />
+  <meta name="keywords" content="Attention,ACL,NLSM," />
 
 
 
@@ -99,7 +99,15 @@
 <meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/ExperimentsonParaphraseIdentification.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/ExperimentsonNaturalLanguageInference.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/ExperimentsonAnswerSentenceSelection.png">
-<meta property="og:updated_time" content="2017-06-19T07:31:34.000Z">
+<meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/TraditionalAttentionBasedRNN.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/IARNNWORD.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/IARNNCONTEXT.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/IABRNNGATE.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/OARNN2.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/IARNNDataset.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/IARNNInsuranceQA.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/IARNNTrecQA.png">
+<meta property="og:updated_time" content="2017-06-19T07:56:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A_Survey_of_Attention">
 <meta name="twitter:description" content="A Survey of AttentionSome papers about Attention in NLSM">
@@ -417,7 +425,8 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="show"><a href="#show" class="headerlink" title="show"></a>show</h3><p><img src="/2017/06/19/A-Survey-of-Attention/attentionNMT.png" alt="attentionNMT"><br>The important part is that each decoder output word $y<em>t$ now depends on a weighted combination(sum to 1) of all the input states, not just the last state. The $a$&#x2019;s are weights that define in how much of each input state should be considered for each output. So, if $a</em>{3,2}$ is a large number, this would mean that the decoder pays a lot of attention to the second state in the source sentence while producing the third word of the target sentence.</p>
+<h3 id="show"><a href="#show" class="headerlink" title="show"></a>show</h3><p><img src="/2017/06/19/A-Survey-of-Attention/attentionNMT.png" alt="attentionNMT"></p>
+<p>The important part is that each decoder output word $y<em>t$ now depends on a weighted combination(sum to 1) of all the input states, not just the last state. The $a$&#x2019;s are weights that define in how much of each input state should be considered for each output. So, if $a</em>{3,2}$ is a large number, this would mean that the decoder pays a lot of attention to the second state in the source sentence while producing the third word of the target sentence.</p>
 <h1 id="Papers"><a href="#Papers" class="headerlink" title="Papers"></a>Papers</h1><h2 id="Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences"><a href="#Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences" class="headerlink" title="Bilateral Multi-Perspective Matching for Natural Language Sentences"></a>Bilateral Multi-Perspective Matching for Natural Language Sentences</h2><p><strong>ZhiguoWang,Wael Hamza, Radu Florian IBM T.J.Watson Research Center arXiv 2017</strong></p>
 <h3 id="Points"><a href="#Points" class="headerlink" title="Points"></a>Points</h3><ul>
 <li>Natural language sentence matching is a fundamental technology for a variety of tasks.</li>
@@ -451,7 +460,42 @@
 <h3 id="Experiments-on-Paraphrase-Identification"><a href="#Experiments-on-Paraphrase-Identification" class="headerlink" title="Experiments on Paraphrase Identification"></a>Experiments on Paraphrase Identification</h3><p><img src="/2017/06/19/A-Survey-of-Attention/ExperimentsonParaphraseIdentification.png" alt="ExperimentsonParaphraseIdentification"></p>
 <p><img src="/2017/06/19/A-Survey-of-Attention/ExperimentsonNaturalLanguageInference.png" alt="ExperimentsonNaturalLanguageInference"></p>
 <p><img src="/2017/06/19/A-Survey-of-Attention/ExperimentsonAnswerSentenceSelection.png" alt="ExperimentsonAnswerSentenceSelection"></p>
-
+<h2 id="Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection"><a href="#Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection" class="headerlink" title="Inner Attention based Recurrent Neural Networks for Answer Selection"></a>Inner Attention based Recurrent Neural Networks for Answer Selection</h2><p><strong>BingningWang, Kang Liu, Jun Zhao Institute of Automation Chinese Academy of Sciences ACL 2016</strong></p>
+<h3 id="Points-1"><a href="#Points-1" class="headerlink" title="Points"></a>Points</h3><ul>
+<li>Attention based recurrent neural networks in representing natural language sentences.</li>
+<li>Analyze the deficiency of traditional attention based RNN models quantitatively and qualitatively. </li>
+<li>Present three new RNN models that add attention information before RNN hidden representation.</li>
+<li>Experimental results show advantage in repre- senting sentence and achieves new state-of-art results in answer selection task.</li>
+</ul>
+<h3 id="Traditional-Attention-based-RNN-Models"><a href="#Traditional-Attention-based-RNN-Models" class="headerlink" title="Traditional Attention based RNN Models"></a>Traditional Attention based RNN Models</h3><p><img src="/2017/06/19/A-Survey-of-Attention/TraditionalAttentionBasedRNN.png" alt="TraditionalAttentionBasedRNN"></p>
+<p>$H_a=[h_a(1),h_a(2),\cdots, h_a(m)]$</p>
+<p>$m(t)=tanh(W_{hm}h<em>a(t)+W</em>{qm}r_q)$</p>
+<p>$f_{attention}(r_q, h<em>a(t))=exp(w</em>{ms}^Tm(t))$</p>
+<p>$s<em>t\propto f</em>{attention}(r_q, h_a(t))$</p>
+<p>$\tilde{h}_a(t)=h_a(t)s_t$</p>
+<p>$r<em>a=\sum</em>{t=1}^m\tilde{h}_a(t)$</p>
+<p>answer sentence representation $r_a$ may be represented in a question-guided way: when its hidden state $h_a(t)$ is irrelevant to the question (determined by attention weight $s_t$), it will take less part in the final representation; but when this hidden state is relavent to the question, it will contribute more in representing $r_a$.</p>
+<h3 id="IARNN-WORD"><a href="#IARNN-WORD" class="headerlink" title="IARNN WORD"></a>IARNN WORD</h3><p><img src="/2017/06/19/A-Survey-of-Attention/IARNNWORD.png" alt="IARNNWORD"></p>
+<p>$\alpha_t=\sigma(r<em>q^TM</em>{qi}x_t)$</p>
+<p>$\tilde{x}_t=\alpha_t*x_t$</p>
+<p>$M_{qi}$ is an attention matrix to transform a question representaion into the word embedding space. Then we use the dot value to determine the question attention strength, $\theta$ is sigmoid function to normalize the weight $\alpha_t$ between 0 and 1.</p>
+<h3 id="IARNN-CONTEXT"><a href="#IARNN-CONTEXT" class="headerlink" title="IARNN CONTEXT"></a>IARNN CONTEXT</h3><p><img src="/2017/06/19/A-Survey-of-Attention/IARNNCONTEXT.png" alt="IARNNCONTEXT"></p>
+<p>$w<em>C(t)=M</em>{hc}h<em>{t-1}+M</em>{qc}r_q$</p>
+<p>$\alpha_C^t=\sigma(w_C^T(t)x_t)$</p>
+<p>$\tilde{x}_t=\alpha_C^t\ast x_t$</p>
+<p>Use $h<em>{t&#x2212;1}$ as context, $M</em>{hc}$ and $M_{qc}$ are attention weight matrices, $w_C(t)$ is the attention representation which consists of both question and word context information.</p>
+<h3 id="IARNN-GATE"><a href="#IARNN-GATE" class="headerlink" title="IARNN GATE"></a>IARNN GATE</h3><p><img src="/2017/06/19/A-Survey-of-Attention/IABRNNGATE.png" alt="IABRNNGATE"></p>
+<p>$z<em>t=\sigma(W</em>{xz}x<em>t+W</em>{hz}h<em>{h-t}+M</em>{qz}r_q)$</p>
+<p>$f<em>t=\sigma(W</em>{xf}x<em>t+W</em>{hf}h<em>{t-1}+M</em>{qf}r_q)$</p>
+<p>$\tilde{h}<em>t=tanh(W</em>{xh}x<em>t+W</em>{hh}(f<em>t\odot h</em>{t-1}))$</p>
+<p>$h_t=(1-z<em>t)\odot h</em>{t-1}+z_t\odot \tilde{h}_t$</p>
+<p>$M<em>{qz}$ and $M</em>{hz}$ are attention weight matrices. In thisway, the update and forget units in GRU can focus on not only long and short term memory but also the attention information from the question.</p>
+<h3 id="IARNN-OCCAM"><a href="#IARNN-OCCAM" class="headerlink" title="IARNN OCCAM"></a>IARNN OCCAM</h3><p>I don&#x2019;t know what is it.</p>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p><img src="/2017/06/19/A-Survey-of-Attention/OARNN2.png" alt="OARNN2"></p>
+<p><img src="/2017/06/19/A-Survey-of-Attention/IARNNDataset.png" alt="IARNNDataset"></p>
+<p><img src="/2017/06/19/A-Survey-of-Attention/IARNNInsuranceQA.png" alt="IARNNInsuranceQA"></p>
+<p><img src="/2017/06/19/A-Survey-of-Attention/IARNNTrecQA.png" alt="IARNNTrecQA"></p>
+<h1 id="To-be-continued&#x2026;"><a href="#To-be-continued&#x2026;" class="headerlink" title="To be continued&#x2026;"></a>To be continued&#x2026;</h1>
       
     </div>
 
@@ -474,9 +518,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ACL/" rel="tag"># ACL</a>
-          
             <a href="/tags/Attention/" rel="tag"># Attention</a>
+          
+            <a href="/tags/ACL/" rel="tag"># ACL</a>
           
             <a href="/tags/NLSM/" rel="tag"># NLSM</a>
           
@@ -629,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-Survey-of-Attention"><span class="nav-number">1.</span> <span class="nav-text">A Survey of Attention</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-and-Why"><span class="nav-number">1.1.1.</span> <span class="nav-text">What and Why</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#show"><span class="nav-number">1.1.2.</span> <span class="nav-text">show</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Papers"><span class="nav-number">2.</span> <span class="nav-text">Papers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences"><span class="nav-number">2.1.</span> <span class="nav-text">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Points"><span class="nav-number">2.1.1.</span> <span class="nav-text">Points</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Models"><span class="nav-number">2.1.2.</span> <span class="nav-text">Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiments-on-Paraphrase-Identification"><span class="nav-number">2.1.3.</span> <span class="nav-text">Experiments on Paraphrase Identification</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-Survey-of-Attention"><span class="nav-number">1.</span> <span class="nav-text">A Survey of Attention</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-and-Why"><span class="nav-number">1.1.1.</span> <span class="nav-text">What and Why</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#show"><span class="nav-number">1.1.2.</span> <span class="nav-text">show</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Papers"><span class="nav-number">2.</span> <span class="nav-text">Papers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences"><span class="nav-number">2.1.</span> <span class="nav-text">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Points"><span class="nav-number">2.1.1.</span> <span class="nav-text">Points</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Models"><span class="nav-number">2.1.2.</span> <span class="nav-text">Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiments-on-Paraphrase-Identification"><span class="nav-number">2.1.3.</span> <span class="nav-text">Experiments on Paraphrase Identification</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection"><span class="nav-number">2.2.</span> <span class="nav-text">Inner Attention based Recurrent Neural Networks for Answer Selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Points-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Points</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Traditional-Attention-based-RNN-Models"><span class="nav-number">2.2.2.</span> <span class="nav-text">Traditional Attention based RNN Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IARNN-WORD"><span class="nav-number">2.2.3.</span> <span class="nav-text">IARNN WORD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IARNN-CONTEXT"><span class="nav-number">2.2.4.</span> <span class="nav-text">IARNN CONTEXT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IARNN-GATE"><span class="nav-number">2.2.5.</span> <span class="nav-text">IARNN GATE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IARNN-OCCAM"><span class="nav-number">2.2.6.</span> <span class="nav-text">IARNN OCCAM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiments"><span class="nav-number">2.2.7.</span> <span class="nav-text">Experiments</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#To-be-continued…"><span class="nav-number">3.</span> <span class="nav-text">To be continued…</span></a></li></ol></div>
             
 
           </div>
