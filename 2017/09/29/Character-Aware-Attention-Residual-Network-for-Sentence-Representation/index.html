@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Note,RNN,Attention,Text Semantic Matching," />
+  <meta name="keywords" content="Attention,Residual Network,Representation," />
 
 
 
@@ -84,16 +84,21 @@
 
 
 
-<meta name="description" content="Text Semantic Matching ReviewSeveral papers about Text Semantic Matching">
+<meta name="description" content="1.1 Character-Aware Attention Residual Network for Sentence RepresentationOne way about the sentence embedding by Xin Zheng&amp;#xFF08;Nanyang Technological University, Singapore&amp;#xFF09;, Zhenzhou Wu(SAP)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Text Semantic Matching Review">
-<meta property="og:url" content="https://frankblood.github.io/2017/05/14/Text-Semantic-Matching-Review/index.html">
+<meta property="og:title" content="Character-Aware Attention Residual Network for Sentence Representation">
+<meta property="og:url" content="https://frankblood.github.io/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
-<meta property="og:description" content="Text Semantic Matching ReviewSeveral papers about Text Semantic Matching">
-<meta property="og:updated_time" content="2017-05-16T12:42:29.000Z">
+<meta property="og:description" content="1.1 Character-Aware Attention Residual Network for Sentence RepresentationOne way about the sentence embedding by Xin Zheng&amp;#xFF08;Nanyang Technological University, Singapore&amp;#xFF09;, Zhenzhou Wu(SAP)">
+<meta property="og:image" content="https://frankblood.github.io/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/character-aware-attention-residual-network.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/sentence-representation.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/attention-mechanism.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/residual-network.png">
+<meta property="og:updated_time" content="2017-09-29T15:25:15.487Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Text Semantic Matching Review">
-<meta name="twitter:description" content="Text Semantic Matching ReviewSeveral papers about Text Semantic Matching">
+<meta name="twitter:title" content="Character-Aware Attention Residual Network for Sentence Representation">
+<meta name="twitter:description" content="1.1 Character-Aware Attention Residual Network for Sentence RepresentationOne way about the sentence embedding by Xin Zheng&amp;#xFF08;Nanyang Technological University, Singapore&amp;#xFF09;, Zhenzhou Wu(SAP)">
+<meta name="twitter:image" content="https://frankblood.github.io/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/character-aware-attention-residual-network.png">
 
 
 
@@ -121,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://frankblood.github.io/2017/05/14/Text-Semantic-Matching-Review/"/>
+  <link rel="canonical" href="https://frankblood.github.io/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/"/>
 
 
 
 
 
-  <title> Text Semantic Matching Review | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Character-Aware Attention Residual Network for Sentence Representation | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -290,7 +295,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/05/14/Text-Semantic-Matching-Review/">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="He Guoxiu">
@@ -314,7 +319,7 @@
             
             
               
-                Text Semantic Matching Review
+                Character-Aware Attention Residual Network for Sentence Representation
               
             
           </h1>
@@ -329,8 +334,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-14T11:26:43+08:00">
-                2017-05-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-29T23:18:34+08:00">
+                2017-09-29
               </time>
             
 
@@ -387,89 +392,59 @@
       
 
       
-        <h1 id="Text-Semantic-Matching-Review"><a href="#Text-Semantic-Matching-Review" class="headerlink" title="Text Semantic Matching Review"></a>Text Semantic Matching Review</h1><p><strong>Several papers about Text Semantic Matching</strong><br><a id="more"></a></p>
-<h2 id="Short-Text-Similarity-with-Word-Embeddings"><a href="#Short-Text-Similarity-with-Word-Embeddings" class="headerlink" title="Short Text Similarity with Word Embeddings"></a>Short Text Similarity with Word Embeddings</h2><p><strong>a model for short text similarity using word embeddings created by Tom Kenter and Maarten from University of Amsterdam for CIKM 2015</strong></p>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
-<li>Keywords: Short Text Similarity, Word Embeddings</li>
-<li>Backgroud: Determining semantic similarity between texts is important in many tasks in information retrieval such as search, query suggestion, automatic summarization and image finding.</li>
-<li>Previous work: <ul>
-<li>Methods: many approaches have been suggested, based on lexical matching, handcrafted patterns, syntactic parse trees, external sources of structured semantic knowledge and distributional semantic.</li>
-<li>Drawbacks: <blockquote>
+        <h3 id="1-1-Character-Aware-Attention-Residual-Network-for-Sentence-Representation"><a href="#1-1-Character-Aware-Attention-Residual-Network-for-Sentence-Representation" class="headerlink" title="1.1 Character-Aware Attention Residual Network for Sentence Representation"></a>1.1 Character-Aware Attention Residual Network for Sentence Representation</h3><p><strong>One way about the sentence embedding by Xin Zheng&#xFF08;Nanyang Technological University, Singapore&#xFF09;, Zhenzhou Wu(SAP)</strong><br><a id="more"></a></p>
 <ul>
-<li>lexical features: like string matching, do not capture semantic similarity beyond a trivial level.</li>
-<li>handcrafted patterns and external sources of structured semantic knowledge: can&#x2019;t be assumed to be available in all circumstances and for all domains</li>
-<li>approaches dependings on parse trees are restricted to syntactically well-formed text, typically of on sentence in length.</li>
+<li>Goal: Classify short and noisy text</li>
+<li><p>Problem: </p>
+<ul>
+<li>Feature sparsity using bag-of-word model, with TFIDF or other weighting schemes</li>
+<li>Bag-of-word method has an intrinsic disadvantage that two separate features will be generated for two words with the same root or of different tenses. In other word, the morphology is very important to understand the information of the short document.</li>
+<li>Word2vec or Doc2Vec which are distributed word representation miss the word morphology information and word combination information.</li>
+</ul>
+</li>
+<li><p>Backgroud: The quality of document representation here has a great impact on the classification accuracy.</p>
+</li>
+<li><p>Works of this paper:</p>
+<ul>
+<li>Take word morphology and word semantic meaning into considerationby using character-aware embedding and word distributed embedding.(This may be the common benefit of the embeddings.)</li>
+<li>To obtained a sentence representation matrix: concatenate both character-level and word distributed embedding together and arranging words in order. Sentence representation vector is then derived based on different views from sentence representation matrix to overcome data sparsity problem of short text. At last, a residual network is employed on the sentence embedding to get a consistent and refined sentence representation.(The detials will be shown later.)</li>
+</ul>
+</li>
+<li><p>Details of the model:<br>This paper proposes a character-aware attention residual network to generate sentence representation as the Figure shown.<br><img src="/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/character-aware-attention-residual-network.png" alt="character-aware-attention-residual-network"></p>
+<ol>
+<li>A matrix constructed by characters embedding in word is encoded into a vector by convolution network.</li>
+<li>Concatenate both character-level embedding and word semantic embedding into a word representation vector.</li>
+<li>A sentence is represented by a matrix.</li>
+<li>Enrich sentence representation vector by Attention Mechanism: solve the problem that not all the features contribute the same for classification(or other tasks) and target on pertinent parts.</li>
+<li>Refine sentence representation vector by Residual network: extracte features from different views consistent.</li>
+<li>Obtain the final sentence vector for the classification(or other tasks).</li>
+</ol>
+</li>
+<li><p>More details of the model: </p>
+<ul>
+<li>Word representation construction: $C$ is vocabulary of characters, $E\in R^{d_c\dot |C|}$ is the character embedding matrix, $d_c$ is the dimensionality of character embedding, $E^w\in R^{d_c\dot n_c}$ is word character-level embedding matrix, $E_i^w=E\dot v_i$ where $v_i$ is a binary column vector that is one row in $E$. Then use convolution network to get the vector $q_c$ which captures the character-level information.(But I still don&#x2019;t know how does the paper solve the problem that the dimentions of the matrix are not same about all words. Maybe some skills known as the padding?) The character-level embedding can only caputure the word morphological features, therefore concatenating the distributed word representative vector as the reflect of the word semantic and syntactic characteristics.</li>
+<li>Sentence representation vector construction: shown as below:<br><img src="/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/sentence-representation.png" alt="sentence-representation"><br>Using different weights for every vector of matirx and attention mechanism to enrich the sentence representation.<ul>
+<li>attention mechanism shown as below.<br><img src="/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/attention-mechanism.png" alt="attention-mechanism"><br>$g(q_i)=Tanh(W_{qh}q_i+b_{qh})$<br>$s_i=\frac{exp(g(q_i))}{\sum_n_w^{j=i}exp(g(q_j))}, \hat q_i=s_iq_i$</li>
+<li>convolution operations on $Q$ with n-grams.</li>
+</ul>
+</li>
+<li>Residual Network for Refining Sentence Representation: shown as below:<br><img src="/2017/09/29/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/residual-network.png" alt="residual-network"><br>That is one kind of convolution network. But I konw nothing about the residual.-_-|| So let it go.:)</li>
+</ul>
+</li>
+<li><p>Experiments: The model outperforms stat-of-the-art models on a few short-text datasets.</p>
+<ul>
+<li>Dataset<br>|Dataset|classes|Train Samples|Test Samples|Average Length of text|<br>|:&#x2014;&#x2013;:|:&#x2014;&#x2013;:|:&#x2014;&#x2014;&#x2014;&#x2013;:|:&#x2014;&#x2014;&#x2014;-:|:&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2014;&#x2013;:|<br>|Tweet|5|28,000|7,500|7|<br>|Question|5|2,000|700|25|<br>|AG_news|5|120,000|7,600|20|</li>
+<li>Other details of the experiment is ignored by me.:)</li>
+<li>The result is very good.:)</li>
+</ul>
+</li>
+<li><p>High insight:</p>
+<blockquote>
+<ul>
+<li>We must explain the word-level representation about the Chinese. And that is important also.</li>
+<li>Attention mechanism which focuses on specific part of input could help achieve this goal that not all the words in a sentence contribute the same when predicting the sentence&#x2019;s label</li>
 </ul>
 </blockquote>
-</li>
-</ul>
-</li>
-<li>This work:<ul>
-<li>Try: determining short text similarity is possible using only semantic features.</li>
-<li>using word embeddings to pertain to a representation of meaning.</li>
-<li>They show on a publicly available evaluation set commonly used for the task of semantic similarity that their method outperforms baseline methods that work under the same conditions.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
-<li>Distributional semantics: LSA, word embeddings, GloVe</li>
-<li>Text-level semantics without external semantic knowledge: CNN, et al.</li>
-<li>Text-level semantics with external knowledge: using sources of structured semantic knowledge like Wikipedia and WordNet for semantic text similarity task.</li>
-<li>SemEval STS: two evaluation for Semantic Text Similarity task.</li>
-<li>Meta-level features:</li>
-</ul>
-<h3 id="Short-Text-Similarity-With-Semantics-Only"><a href="#Short-Text-Similarity-With-Semantics-Only" class="headerlink" title="Short Text Similarity With Semantics Only"></a>Short Text Similarity With Semantics Only</h3><p><strong>The meaning of longer pieces of text(containing multiple terms) can be captured by taking the mean of the individual term vectors.</strong></p>
-<h2 id="Question-Similarity-Modeling-with-Bidirectional-Long-Short-Term-Memory-Neural-Network"><a href="#Question-Similarity-Modeling-with-Bidirectional-Long-Short-Term-Memory-Neural-Network" class="headerlink" title="Question Similarity Modeling with Bidirectional Long Short-Term Memory Neural Network"></a>Question Similarity Modeling with Bidirectional Long Short-Term Memory Neural Network</h2><p><strong>BiLSTM Memory Neural Network for question similarity modeling created by Chao An and Jiuming Huang from NUDT for IEEE First International Conference on Data Science(I don&#x2019;t know what it is)</strong></p>
-<h3 id="Abstract-1"><a href="#Abstract-1" class="headerlink" title="Abstract:"></a>Abstract:</h3><ul>
-<li>Background: Modeling sentence similarity all along is a challengeable task in the field of natural language processing(NLP), since ambiguity and variability of linguistic expression.</li>
-<li>This work:<ul>
-<li>Methods: Bidirectional Long Short-Term Memory(BLSTM) neural networks, suited for sentence similarity computation, paraphrase detection, question answering and so on.</li>
-<li>Dataset: labeled Yahoo! Answers data</li>
-<li>Note: this model doesn&#x2019;t use external resources, such as WordNet or parsers.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences"><a href="#Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences" class="headerlink" title="Bilateral Multi-Perspective Matching for Natural Language Sentences"></a>Bilateral Multi-Perspective Matching for Natural Language Sentences</h2><p><strong>a model for sentence matching created by Zhiguo Wang, Wael Hamza, Radu Florian from IBM Watson Research Center published on arXiv</strong></p>
-<h3 id="Abstract-2"><a href="#Abstract-2" class="headerlink" title="Abstract:"></a>Abstract:</h3><ul>
-<li>Backgroud: Natural language sentence matching is a fundamental technology for a variety of tasks.</li>
-<li>Previous work:<ul>
-<li>match sentences from a single direction or only apply single granular(word-by-word or sentence-by-sentence) matching.</li>
-</ul>
-</li>
-<li>This work:<ul>
-<li>Model: bilateral multi-persective matching(BiMPM) model: an inner matching model</li>
-<li>evaluate tasks: paraphrase identification, natural language inference and answer sentence selection.</li>
-<li>Experimental results on standard benchmark datasets show that our model achieves the state-of-the-art performance on all tasks.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Related-Works"><a href="#Related-Works" class="headerlink" title="Related Works"></a>Related Works</h3><ul>
-<li><p>Siamese architecture: CNN or RNN is applied to two input sentences individually, and a matching decision is made solely based on the two sentence vectors.</p>
-<ul>
-<li>advantage: sharing parameters makes the model smaller and easier to train.</li>
-<li>disadvantage: there is no interaction between the two sentences during the encoding procedure, which may lose some important information.</li>
-</ul>
-</li>
-<li><p>Matching aggregation framework: </p>
-</li>
-</ul>
-<h2 id="A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval"><a href="#A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval" class="headerlink" title="A Deep Relevance Matching Model for Ad-hoc Retrieval"></a>A Deep Relevance Matching Model for Ad-hoc Retrieval</h2><p><strong>another deep matching model created by Jiafeng Guo, Yixing Fan, Qingyao Ai and W. Bruce Croft from CAS for CIKM 2016</strong></p>
-<h3 id="Abstract-3"><a href="#Abstract-3" class="headerlink" title="Abstract:"></a>Abstract:</h3><ul>
-<li>Background:<ul>
-<li>deep neural networks have led to exciting breakthroughs in speech recognition, computer vision, and natural language processing(NLP) taks but ad-hoc retrieval.</li>
-<li>a matching problem between two pieces of text in existing work using deep models, and treated equivalent to many NLP tasks such as paraphrase identification, question answering and automatic conversation.</li>
-</ul>
-</li>
-<li>Differences between relevance matching and semantic matching:<ul>
-<li>exact matching signals</li>
-<li>query term importance</li>
-<li>diverse matching requirements</li>
-</ul>
-</li>
-<li>This work:<ul>
-<li>They propose a novel deep relevance matching model(DRMM) for ad-hoc retrieval: a joint deep architecture at the query term level for relevance matching, using matching histogram mapping, a feed forward matching network, and a term gating network.</li>
-<li>Experimental results on two representative benchmark collections show that our model can significantly outperform some well-known retrieval models as well as states-of-the-art deep matching models.</li>
-</ul>
 </li>
 </ul>
 
@@ -495,13 +470,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Note/" rel="tag"># Note</a>
-          
-            <a href="/tags/RNN/" rel="tag"># RNN</a>
-          
             <a href="/tags/Attention/" rel="tag"># Attention</a>
           
-            <a href="/tags/Text-Semantic-Matching/" rel="tag"># Text Semantic Matching</a>
+            <a href="/tags/Residual-Network/" rel="tag"># Residual Network</a>
+          
+            <a href="/tags/Representation/" rel="tag"># Representation</a>
           
         </div>
       
@@ -510,8 +483,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/08/Inner-Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/" rel="next" title="Inner_Attention_based_Recurrent_Neural_Networks_for_Answer_Selection">
-                <i class="fa fa-chevron-left"></i> Inner_Attention_based_Recurrent_Neural_Networks_for_Answer_Selection
+              <a href="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/" rel="next" title="Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences">
+                <i class="fa fa-chevron-left"></i> Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences
               </a>
             
           </div>
@@ -519,10 +492,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/14/ACL-2017-Overview/" rel="prev" title="ACL 2017 Overview">
-                ACL 2017 Overview <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -656,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Text-Semantic-Matching-Review"><span class="nav-number">1.</span> <span class="nav-text">Text Semantic Matching Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Short-Text-Similarity-with-Word-Embeddings"><span class="nav-number">1.1.</span> <span class="nav-text">Short Text Similarity with Word Embeddings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Related-Work"><span class="nav-number">1.1.2.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Short-Text-Similarity-With-Semantics-Only"><span class="nav-number">1.1.3.</span> <span class="nav-text">Short Text Similarity With Semantics Only</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Question-Similarity-Modeling-with-Bidirectional-Long-Short-Term-Memory-Neural-Network"><span class="nav-number">1.2.</span> <span class="nav-text">Question Similarity Modeling with Bidirectional Long Short-Term Memory Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Abstract:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences"><span class="nav-number">1.3.</span> <span class="nav-text">Bilateral Multi-Perspective Matching for Natural Language Sentences</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">Abstract:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Related-Works"><span class="nav-number">1.3.2.</span> <span class="nav-text">Related Works</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Deep-Relevance-Matching-Model-for-Ad-hoc-Retrieval"><span class="nav-number">1.4.</span> <span class="nav-text">A Deep Relevance Matching Model for Ad-hoc Retrieval</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">Abstract:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Character-Aware-Attention-Residual-Network-for-Sentence-Representation"><span class="nav-number">1.</span> <span class="nav-text">1.1 Character-Aware Attention Residual Network for Sentence Representation</span></a></li></ol></div>
             
 
           </div>

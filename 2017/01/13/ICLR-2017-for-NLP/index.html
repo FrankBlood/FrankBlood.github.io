@@ -90,16 +90,16 @@
 <meta property="og:url" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
 <meta property="og:description" content="Note for Papers in ICLR 2017 about NLPInternational Conference on Learning Representations known as ICLR is one of the topest Conference. Because I have being concentrating on the representation of t">
-<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/character-aware-attention-residual-network.png">
-<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/sentence-representation.png">
-<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/attention-mechanism.png">
-<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/residual-network.png">
-<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/gate-between-word-and-char.png">
-<meta property="og:updated_time" content="2017-02-24T03:11:38.366Z">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/character-aware-attention-residual-network.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/sentence-representation.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/attention-mechanism.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/residual-network.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/gate-between-word-and-char.png">
+<meta property="og:updated_time" content="2017-09-29T15:25:15.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ICLR_2017_for_NLP">
 <meta name="twitter:description" content="Note for Papers in ICLR 2017 about NLPInternational Conference on Learning Representations known as ICLR is one of the topest Conference. Because I have being concentrating on the representation of t">
-<meta name="twitter:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/character-aware-attention-residual-network.png">
+<meta name="twitter:image" content="https://frankblood.github.io/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/character-aware-attention-residual-network.png">
 
 
 
@@ -414,7 +414,7 @@
 <li>To obtained a sentence representation matrix: concatenate both character-level and word distributed embedding together and arranging words in order. Sentence representation vector is then derived based on different views from sentence representation matrix to overcome data sparsity problem of short text. At last, a residual network is employed on the sentence embedding to get a consistent and refined sentence representation.(The detials will be shown later.)</li>
 </ul>
 </li>
-<li><p>Details of the model:<br>This paper proposes a character-aware attention residual network to generate sentence representation as the Figure shown.<br><img src="/2017/01/13/ICLR-2017-for-NLP/character-aware-attention-residual-network.png" alt="character-aware-attention-residual-network"></p>
+<li><p>Details of the model:<br>This paper proposes a character-aware attention residual network to generate sentence representation as the Figure shown.<br><img src="/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/character-aware-attention-residual-network.png" alt="character-aware-attention-residual-network"></p>
 <ol>
 <li>A matrix constructed by characters embedding in word is encoded into a vector by convolution network.</li>
 <li>Concatenate both character-level embedding and word semantic embedding into a word representation vector.</li>
@@ -427,12 +427,12 @@
 <li><p>More details of the model: </p>
 <ul>
 <li>Word representation construction: $C$ is vocabulary of characters, $E\in R^{d_c\dot |C|}$ is the character embedding matrix, $d_c$ is the dimensionality of character embedding, $E^w\in R^{d_c\dot n_c}$ is word character-level embedding matrix, $E_i^w=E\dot v_i$ where $v_i$ is a binary column vector that is one row in $E$. Then use convolution network to get the vector $q_c$ which captures the character-level information.(But I still don&#x2019;t know how does the paper solve the problem that the dimentions of the matrix are not same about all words. Maybe some skills known as the padding?) The character-level embedding can only caputure the word morphological features, therefore concatenating the distributed word representative vector as the reflect of the word semantic and syntactic characteristics.</li>
-<li>Sentence representation vector construction: shown as below:<br><img src="/2017/01/13/ICLR-2017-for-NLP/sentence-representation.png" alt="sentence-representation"><br>Using different weights for every vector of matirx and attention mechanism to enrich the sentence representation.<ul>
-<li>attention mechanism shown as below.<br><img src="/2017/01/13/ICLR-2017-for-NLP/attention-mechanism.png" alt="attention-mechanism"><br>$g(q_i)=Tanh(W_{qh}q_i+b_{qh})$<br>$s_i=\frac{exp(g(q_i))}{\sum_n_w^{j=i}exp(g(q_j))}, \hat q_i=s_iq_i$</li>
+<li>Sentence representation vector construction: shown as below:<br><img src="/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/sentence-representation.png" alt="sentence-representation"><br>Using different weights for every vector of matirx and attention mechanism to enrich the sentence representation.<ul>
+<li>attention mechanism shown as below.<br><img src="/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/attention-mechanism.png" alt="attention-mechanism"><br>$g(q_i)=Tanh(W_{qh}q_i+b_{qh})$<br>$s_i=\frac{exp(g(q_i))}{\sum_n_w^{j=i}exp(g(q_j))}, \hat q_i=s_iq_i$</li>
 <li>convolution operations on $Q$ with n-grams.</li>
 </ul>
 </li>
-<li>Residual Network for Refining Sentence Representation: shown as below:<br><img src="/2017/01/13/ICLR-2017-for-NLP/residual-network.png" alt="residual-network"><br>That is one kind of convolution network. But I konw nothing about the residual.-_-|| So let it go.:)</li>
+<li>Residual Network for Refining Sentence Representation: shown as below:<br><img src="/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/residual-network.png" alt="residual-network"><br>That is one kind of convolution network. But I konw nothing about the residual.-_-|| So let it go.:)</li>
 </ul>
 </li>
 <li><p>Experiments: The model outperforms stat-of-the-art models on a few short-text datasets.</p>
@@ -460,7 +460,7 @@
 <ul>
 <li><strong>This paper should be read more carefully!</strong></li>
 <li>Goal: The authors present a fine-grained gating mechanism to dynamically combine word-level and character-level representations based on properties of the word and model the interaction between questions and paragraphs for reading comprehension.</li>
-<li>Method: The authors compute a vector gate as a linear projection of the token features followed by a sigmoid avtivation. Then multiplicatively apply the gate to the character-level and word-level representations. Each dimension of the gate controls how much information is flowed from the word-level and character-level representations respectively. The gate is determined by named entity tags, part-of-speech tags, document frequencies, and word-level representations as the features for token properties. The gating mechanism can be generally used to model multiple levels of structure in language, including words, characters, phrases, sentences and paragraphs.<br><img src="/2017/01/13/ICLR-2017-for-NLP/gate-between-word-and-char.png" alt="gate-between-word-and-char"></li>
+<li>Method: The authors compute a vector gate as a linear projection of the token features followed by a sigmoid avtivation. Then multiplicatively apply the gate to the character-level and word-level representations. Each dimension of the gate controls how much information is flowed from the word-level and character-level representations respectively. The gate is determined by named entity tags, part-of-speech tags, document frequencies, and word-level representations as the features for token properties. The gating mechanism can be generally used to model multiple levels of structure in language, including words, characters, phrases, sentences and paragraphs.<br><img src="/2017/01/13/ICLR-2017-for-NLP/Character-Aware-Attention-Residual-Network-for-Sentence-Representation/gate-between-word-and-char.png" alt="gate-between-word-and-char"></li>
 <li>Datasets: Children&#x2019;s Book Test dataset.</li>
 <li>Tasks: children&#x2019;s book test dataset and social media tag prediction task.</li>
 <li>Experiments: Their approach can improve the performance on reading comprehension task.</li>
@@ -647,7 +647,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
