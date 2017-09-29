@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Note,RNN,Seq2Seq," />
+  <meta name="keywords" content="Study in IRLAB" />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Deep Keyphrase Generationgenerate keyphrases from abstract using seq2seq by Rui Meng for ACL">
+<meta name="description" content="Some notes for interesting papers, tutorials for useful tools, and inspire for life.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Deep_Keyphrase_Generation">
-<meta property="og:url" content="https://frankblood.github.io/2017/04/05/Deep-Keypharse-Generation/index.html">
+<meta property="og:title" content="Attention-based-Recurrent-Neural-Networks-for-Answer-Selection">
+<meta property="og:url" content="https://frankblood.github.io/2017/09/29/Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
-<meta property="og:description" content="Deep Keyphrase Generationgenerate keyphrases from abstract using seq2seq by Rui Meng for ACL">
-<meta property="og:updated_time" content="2017-04-05T08:56:03.192Z">
+<meta property="og:description" content="Some notes for interesting papers, tutorials for useful tools, and inspire for life.">
+<meta property="og:updated_time" content="2017-09-29T15:12:45.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deep_Keyphrase_Generation">
-<meta name="twitter:description" content="Deep Keyphrase Generationgenerate keyphrases from abstract using seq2seq by Rui Meng for ACL">
+<meta name="twitter:title" content="Attention-based-Recurrent-Neural-Networks-for-Answer-Selection">
+<meta name="twitter:description" content="Some notes for interesting papers, tutorials for useful tools, and inspire for life.">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://frankblood.github.io/2017/04/05/Deep-Keypharse-Generation/"/>
+  <link rel="canonical" href="https://frankblood.github.io/2017/09/29/Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/"/>
 
 
 
 
 
-  <title> Deep_Keyphrase_Generation | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Attention-based-Recurrent-Neural-Networks-for-Answer-Selection | Study in IRLAB </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -290,7 +290,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/04/05/Deep-Keypharse-Generation/">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/09/29/Attention-based-Recurrent-Neural-Networks-for-Answer-Selection/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="He Guoxiu">
@@ -314,7 +314,7 @@
             
             
               
-                Deep_Keyphrase_Generation
+                Attention-based-Recurrent-Neural-Networks-for-Answer-Selection
               
             
           </h1>
@@ -329,8 +329,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T16:46:39+08:00">
-                2017-04-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-29T23:12:45+08:00">
+                2017-09-29
               </time>
             
 
@@ -339,28 +339,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -387,17 +365,7 @@
       
 
       
-        <h1 id="Deep-Keyphrase-Generation"><a href="#Deep-Keyphrase-Generation" class="headerlink" title="Deep Keyphrase Generation"></a>Deep Keyphrase Generation</h1><p><strong>generate keyphrases from abstract using seq2seq by Rui Meng for ACL</strong><br><br><a id="more"></a></p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><ul>
-<li>background: Keyphrase provides highly summative information that can be effectively used for understanding, organizing and retrieving text content.</li>
-<li>drawback: These approaches can neither identify keyphrases that do not appear in the text, nor capture the real semantic meaning behind the text.</li>
-<li>in this work:<ul>
-<li>encoder-decoder(seq2seq) framework named deep keyphrase generation.</li>
-<li>Empirical analysis on six datasets demonstrates that our proposed model not only achieves a significant performance boost on extracting keyphrases that appear absent keyphrases based on the semantic meaning of the text.</li>
-</ul>
-</li>
-</ul>
-
+        
       
     </div>
 
@@ -418,23 +386,13 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Note/" rel="tag"># Note</a>
-          
-            <a href="/tags/RNN/" rel="tag"># RNN</a>
-          
-            <a href="/tags/Seq2Seq/" rel="tag"># Seq2Seq</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/26/Sentence-Ordering-Using-Recurrent-Neural-Networks/" rel="next" title="Sentence_Ordering_Using_Recurrent_Neural_Networks">
-                <i class="fa fa-chevron-left"></i> Sentence_Ordering_Using_Recurrent_Neural_Networks
+              <a href="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/" rel="next" title="Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences">
+                <i class="fa fa-chevron-left"></i> Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences
               </a>
             
           </div>
@@ -442,10 +400,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/05/Compositional-Semantic-Parsing-on-Semi-Structured-Tables/" rel="prev" title="Compositional_Semantic_Parsing_on_Semi_Structured_Tables">
-                Compositional_Semantic_Parsing_on_Semi_Structured_Tables <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -492,17 +446,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -569,22 +514,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Deep-Keyphrase-Generation"><span class="nav-number">1.</span> <span class="nav-text">Deep Keyphrase Generation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
