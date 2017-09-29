@@ -291,6 +291,180 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="He Guoxiu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Study in IRLAB">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Study in IRLAB" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/" itemprop="url">
+                  Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-29T22:27:21+08:00">
+                2017-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><meta http-equiv="content-type" content="text/html; charset=UTF-8"></p>
+<h1 id="Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences"><a href="#Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences" class="headerlink" title="Bilateral Multi-Perspective Matching for Natural Language Sentences"></a>Bilateral Multi-Perspective Matching for Natural Language Sentences</h1><p><strong>ZhiguoWang,Wael Hamza, Radu Florian IBM T.J.Watson Research Center arXiv 2017</strong></p>
+<h2 id="Points"><a href="#Points" class="headerlink" title="Points"></a>Points</h2><ul>
+<li>Natural language sentence matching is a fundamental technology for a variety of tasks.</li>
+<li>Given two sentences P and Q, our model first encodes them with a BiLSTM encoder. </li>
+<li>We match the two encoded sentences in two directions P&#x2192;Q and P&#x2190;Q. In each matching direction, each time step of one sentence is matched against all time-steps of the other sentence from multiple perspectives. Then, another BiLSTM layer is utilized to aggregate the matching results into a fix-length matching vector. </li>
+<li>Based on the matching vector, the decision is made through a fully connected layer.</li>
+<li>We evaluate our model on three tasks: paraphrase identification, natural language inference and answer sentence selection(achieves the state-of-the-art performance on all tasks).</li>
+</ul>
+<h2 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h2><ul>
+<li>Overview<br><img src="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/A-Survey-of-Attention/OverviewOfBiMPM.png" alt="OverviewOfBiMPM"></li>
+</ul>
+<p>$\otimes$ is multi-perspective matching operation. $m=f_m(v_1,v_2;W)$, where $v_1$ and $v_2$ are two $d$ dimensional vectors, $W\in R^{l\times d}$ is a trainable parameter, $l$ is the number of perspectives, and the returned $m$ is a $l$ dimensional vector. $m_k=cosine(W_k\circ v_1, W_k\circ v_2)$</p>
+<ul>
+<li>Full Matching<br><img src="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/A-Survey-of-Attention/FullMatching.png" alt="FullMatching"></li>
+</ul>
+<p>In this strategy, each forward (or backward) contextual embedding $h_i^p$ is compared with the last time step of the forward (or backward)representation of the other sentence $h_N^q$. $m_i^{full}=f_m(h_i^p, h_N^q; W)$</p>
+<ul>
+<li>Maxpooling Matching<br><img src="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/A-Survey-of-Attention/MaxpoolingMatching.png" alt="MaxpoolingMatching"></li>
+</ul>
+<p>In this strategy, each forward (or backward) contextual embedding $h_i^p$ is compared with every forward contextual embeddings of the other sentence $h_j^q$ for $j \in (1&#x2026;N)$, and only the maximum value of each dimension is retained. $m<em>i^{max}=max</em>{j\in (1\cdots N)} f_m(h_i^p, h_j^q; W)$</p>
+<ul>
+<li>Attentive Matching<br><img src="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/A-Survey-of-Attention/AttentiveMatching.png" alt="AttentiveMatching"></li>
+</ul>
+<p>First calculate the cosine similarities between each forward contextual embedding $h_i^p$ and every forward contextual embeddings of the other sentence $h<em>j^q$: $\alpha</em>{i,j}=consine(h_i^p, h_j^q), j=1, \cdots, N$</p>
+<p>Then, take $\alpha_{i,j}$ as the weight of $h_j^q$ and calculate an attentive vector for the entire sentence Q by weighted summing all the contextual embeddings of Q: $h<em>i^{mean}=\frac{\sum</em>{j=1}^{N}\alpha_{i,j}\dot h<em>j^q}{\sum</em>{j=1}^N\alpha_{i,j}}$</p>
+<p>Finally, we match each forward contextual embedding of $h_i^p$ with its corresponding attentive vector: $m_i^{att}=f_m(h_i^p, h_i^{mean}; W)$</p>
+<ul>
+<li>Max Attentive Matching<br><img src="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/A-Survey-of-Attention/MaxAttentiveMatching.png" alt="MaxAttentiveMatching"></li>
+</ul>
+<p>Instead of taking the weighed sum of all the contextual embeddings as the attentive vector, they pick \alert{the contextual embedding with the highest cosine similarity} as the attentive vector. Then, we match each contextual embedding of the sentence P with its new attentive vector.</p>
+<h2 id="Experiments-on-Paraphrase-Identification"><a href="#Experiments-on-Paraphrase-Identification" class="headerlink" title="Experiments on Paraphrase Identification"></a>Experiments on Paraphrase Identification</h2><p><img src="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/A-Survey-of-Attention/ExperimentsonParaphraseIdentification.png" alt="ExperimentsonParaphraseIdentification"></p>
+<p><img src="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/A-Survey-of-Attention/ExperimentsonNaturalLanguageInference.png" alt="ExperimentsonNaturalLanguageInference"></p>
+<p><img src="/2017/09/29/Bilateral-Multi-Perspective-Matching-for-Natural-Language-Sentences/A-Survey-of-Attention/ExperimentsonAnswerSentenceSelection.png" alt="ExperimentsonAnswerSentenceSelection"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/06/19/A-Survey-of-Attention/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -863,151 +1037,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://frankblood.github.io/2017/05/07/Summarizing-Answer-in-Non-Factoid-Community-Question-Answering/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="He Guoxiu">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Study in IRLAB">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Study in IRLAB" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/07/Summarizing-Answer-in-Non-Factoid-Community-Question-Answering/" itemprop="url">
-                  Summarizing_Answer_in_Non-Factoid_Community_Question_Answering
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-07T18:04:01+08:00">
-                2017-05-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Summarizing-Answers-in-Non-Factoid-Community-Question-Answering"><a href="#Summarizing-Answers-in-Non-Factoid-Community-Question-Answering" class="headerlink" title="Summarizing Answers in Non-Factoid Community Question-Answering"></a>Summarizing Answers in Non-Factoid Community Question-Answering</h1><p><strong>create a model to summarize answer for non-factoid CQA by Ren Zhaochun and Maarten for WSDM 2017</strong><br></p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/05/07/Summarizing-Answer-in-Non-Factoid-Community-Question-Answering/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1055,7 +1084,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1073,7 +1102,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
