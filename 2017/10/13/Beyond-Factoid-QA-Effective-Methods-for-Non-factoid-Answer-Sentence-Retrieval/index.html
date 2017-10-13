@@ -84,16 +84,21 @@
 
 
 
-<meta name="description" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval">
+<meta name="description" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-RetrievalSentence Retrieval for Non-factoid QA by Liu Yang for ECIR2016">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval">
 <meta property="og:url" content="https://frankblood.github.io/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/index.html">
 <meta property="og:site_name" content="Study in IRLAB">
-<meta property="og:description" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval">
-<meta property="og:updated_time" content="2017-10-13T02:33:26.022Z">
+<meta property="og:description" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-RetrievalSentence Retrieval for Non-factoid QA by Liu Yang for ECIR2016">
+<meta property="og:image" content="https://frankblood.github.io/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/dataset.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/baseline_experiment.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/result.png">
+<meta property="og:image" content="https://frankblood.github.io/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/examples.png">
+<meta property="og:updated_time" content="2017-10-13T02:43:12.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval">
-<meta name="twitter:description" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval">
+<meta name="twitter:description" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-RetrievalSentence Retrieval for Non-factoid QA by Liu Yang for ECIR2016">
+<meta name="twitter:image" content="https://frankblood.github.io/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/dataset.png">
 
 
 
@@ -387,7 +392,76 @@
       
 
       
-        <h1 id="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval"><a href="#Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval" class="headerlink" title="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval"></a>Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval</h1><a id="more"></a>
+        <h1 id="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval"><a href="#Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval" class="headerlink" title="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval"></a>Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval</h1><p><strong>Sentence Retrieval for Non-factoid QA by Liu Yang for ECIR2016</strong><br><a id="more"></a></p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><ul>
+<li>Task: Retrieving finer grained text units such as passages or sentences as answers for non-factoid Web queries.</li>
+<li>Challenge: The difference between Non-factoid QA and Factoid QA.</li>
+<li><p>This Work:</p>
+<ul>
+<li>Design two types of features, namely semantic and context features.</li>
+<li>Compare learning to rank methods with multiple baseline methods including query likelihood and the state-of-the-art convolutional neural network based method.</li>
+</ul>
+</li>
+<li><p>Evaluation: Results show that features used previously to retrieve topical sentences and factoid answer sentences are not sufficient for retrieving answer sentences for non-factoid queries, but with semantic and context features, we can significantly outperform the baseline methods.</p>
+</li>
+</ul>
+<h2 id="Research-Questions"><a href="#Research-Questions" class="headerlink" title="Research Questions"></a>Research Questions</h2><ul>
+<li>Could we directly apply existing methods like factoid QA methods and sentence selection methods to solve this task?</li>
+<li>How could we design more effective methods for answer sentence retrieval for non-factoid Web queries?</li>
+</ul>
+<h2 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h2><ul>
+<li>We formally introduce the answer sentence retrieval task for non-factoid Web queries, and build a benchmark data set (WebAP) using the TREC GOV2 collection.</li>
+<li>Based on the analysis of theWebAP data, we design effective new features including semantic and context features for non-factoid answer sentence retrieval.</li>
+<li>The results show that MART with semantic and context features can significantly outperform existing methods including language models, a state-of-the-art CNN based factoid QA method and a sentence selection method using multiple features.</li>
+</ul>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><ul>
+<li>Answer Passage Retrieval</li>
+<li>Answer Retrieval with Translation Models</li>
+<li>Answer Ranking in CQA</li>
+<li>Answer Retrieval for Factoid Questions</li>
+</ul>
+<h2 id="Task-Definition"><a href="#Task-Definition" class="headerlink" title="Task Definition"></a>Task Definition</h2><p>We now give a formal definition of our task. </p>
+<ul>
+<li>non-factoid questions: ${Q_1,Q_2, \cdots, Q_n}$ </li>
+<li>Web documents: ${D_1,D_2,\cdots, D_m}$ that may contain answers</li>
+<li>our task is to learn a \alert{ranking model} $R$ to rank the sentences in the Web documents to find sentences that are part of answers. The ranker is trained based on available \alert{features} $F_S$ and \alert{labels} $L_S$ to optimize a \alert{metric} $E$ over the sentence rank list.</li>
+</ul>
+<p>Our task is different from previous research in the TREC QA track and answer retrieval in CQA sites likeYahoo! Answers.</p>
+<ul>
+<li>Answers could be much longer than in factoid QA</li>
+<li>The search space is much larger than CQA answer posts.</li>
+</ul>
+<h2 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h2><ul>
+<li>Then we map &#x201C;Perfect&#x201D;, &#x201C;Excellent&#x201D;, &#x201C;Good&#x201D;, &#x201C;Fair&#x201D; to 4-1 and assign 0 for all the other sentences.</li>
+<li>There are 991233 sentences in the data set and the average length of sentences is 17.58.</li>
+<li>After label propagation from passage level to sentence level, 99.02\% (981510) sentences are labeled as 0 and less than 1\% sentences have positive labels (149 sentences are labeled as 1; 783 sentences are labeled as 2; 4283 sentences are labeled as 3; 4508 sentences are labeled as 4.)</li>
+</ul>
+<p><img src="/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/dataset.png" alt="Dataset"></p>
+<h2 id="Baseline-Experiments"><a href="#Baseline-Experiments" class="headerlink" title="Baseline Experiments"></a>Baseline Experiments</h2><ul>
+<li>Retrieval functions: query likelihood language model with Dirichlet smoothing (LM).</li>
+<li>Factoid question answering method: CNN</li>
+<li>Summary sentence selection method: MART</li>
+</ul>
+<p><img src="/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/baseline_experiment.png" alt="Baseline Experiment"></p>
+<p>This result shows that automatically learned word features (as in CNN) and simple combined text matching features (as in MK) may not be sufficient for our task, suggesting that a newset of techniques is needed for non-factoid answer sentence retrieval.</p>
+<h2 id="Capturing-Semantics-and-Context"><a href="#Capturing-Semantics-and-Context" class="headerlink" title="Capturing Semantics and Context"></a>Capturing Semantics and Context</h2><p><a href="http://rmit-ir.github.io/SummaryRank\\" target="_blank" rel="external">http://rmit-ir.github.io/SummaryRank\\</a><br>MK features:<br>\begin{itemize}<br>    \item ExactMatch: a binary feature indicating whether the query is a substring of the sentence.<br>    \item TermOverlap: measures the number of terms that are both in the query and the sentence after stopping and stemming.<br>    \item SynonymsOverlap. the fraction of query terms that have a synonym in the sentence, computed by using Wordnet.<br>    \item SentLength<br>    \item SentLocation<br>\end{itemize}<br>LM feature:\<br>LanguageModelScore. $$f_{LM}(Q,S)=\sum_{w\in Q}tf_{w,Q}log\frac{tf_{w,S}+\mu P(w|C)}{|S|+\mu}$$</p>
+<h2 id="Semantics-Features"><a href="#Semantics-Features" class="headerlink" title="Semantics Features"></a>Semantics Features</h2><ul>
+<li>ESA: Explicit Semantic Analysis is a method that represents text as a weighted mixture of a predetermined set of natural concepts defined byWikipedia articles which can be easily explained. Semantic relatedness is computed as the cosine similarity between the query ESA vector and the sentence ESA vector.</li>
+<li>WordEmbedding: Word embeddings are continuous vector representations of words learned from large amount of text data using neural networks. We compute this feature as the average pairwise cosine similarity between any query-word vector and any sentence-word vector.</li>
+<li>EntityLinking: Linking short texts to a knowledge base to obtain the most related concepts gives an informative semantic representation that can be used to represent queries and sentences.(entity linking system Tagme) The Jaccard similarity is the semantic feature.$$TagmeOverlap(q,s)=\frac{Tagme(q) \cap Tagme(s)}{Tagme(q) \cup Tagme(s)}$$</li>
+</ul>
+<h2 id="Context-Features"><a href="#Context-Features" class="headerlink" title="Context Features"></a>Context Features</h2><p>Context features are features specific to the context of the candidate sentence.</p>
+<ul>
+<li>SentenceBefore: MK features and semantic features of the sentence be- fore the candidate sentence.</li>
+<li>SentenceAfter: MK features and semantic features of the sentence after the candidate sentence.</li>
+</ul>
+<h2 id="Learning-Models"><a href="#Learning-Models" class="headerlink" title="Learning Models"></a>Learning Models</h2><ul>
+<li>MART(<a href="http://www.lemurproject.org/ranklib.php" target="_blank" rel="external">http://www.lemurproject.org/ranklib.php</a>): Multiple Additive Regression Trees</li>
+<li>LambdaMART(<a href="https://code.google.com/p/jforests/" target="_blank" rel="external">https://code.google.com/p/jforests/</a>) combines the strengths of MART and LambdaRank which has been shown to be empirically optimal for a widely used information retrieval measure.</li>
+<li>Coordinate Ascent(<a href="http://www.lemurproject.org/ranklib.php" target="_blank" rel="external">http://www.lemurproject.org/ranklib.php</a>) is a list-wise linear feature-based model for information retrieval which uses coordinate ascent to optimize themodel&#x2019;s parameters.</li>
+</ul>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p><img src="/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/result.png" alt="Results"></p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><p><img src="/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/examples.png" alt="Examples"></p>
 
       
     </div>
@@ -566,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval"><span class="nav-number">1.</span> <span class="nav-text">Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval"><span class="nav-number">1.</span> <span class="nav-text">Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Research-Questions"><span class="nav-number">1.2.</span> <span class="nav-text">Research Questions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contributions"><span class="nav-number">1.3.</span> <span class="nav-text">Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Work"><span class="nav-number">1.4.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task-Definition"><span class="nav-number">1.5.</span> <span class="nav-text">Task Definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dataset"><span class="nav-number">1.6.</span> <span class="nav-text">Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Baseline-Experiments"><span class="nav-number">1.7.</span> <span class="nav-text">Baseline Experiments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Capturing-Semantics-and-Context"><span class="nav-number">1.8.</span> <span class="nav-text">Capturing Semantics and Context</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semantics-Features"><span class="nav-number">1.9.</span> <span class="nav-text">Semantics Features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Context-Features"><span class="nav-number">1.10.</span> <span class="nav-text">Context Features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Learning-Models"><span class="nav-number">1.11.</span> <span class="nav-text">Learning Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Results"><span class="nav-number">1.12.</span> <span class="nav-text">Results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Examples"><span class="nav-number">1.13.</span> <span class="nav-text">Examples</span></a></li></ol></li></ol></div>
             
 
           </div>
