@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://frankblood.github.io/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/baseline_experiment.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/result.png">
 <meta property="og:image" content="https://frankblood.github.io/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/examples.png">
-<meta property="og:updated_time" content="2017-10-13T02:44:31.707Z">
+<meta property="og:updated_time" content="2017-10-13T02:46:35.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval">
 <meta name="twitter:description" content="Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-RetrievalSentence Retrieval for Non-factoid QA by Liu Yang for ECIR2016">
@@ -445,7 +445,14 @@
 </ul>
 <p><img src="/2017/10/13/Beyond-Factoid-QA-Effective-Methods-for-Non-factoid-Answer-Sentence-Retrieval/baseline_experiment.png" alt="Baseline Experiment"></p>
 <p>This result shows that automatically learned word features (as in CNN) and simple combined text matching features (as in MK) may not be sufficient for our task, suggesting that a newset of techniques is needed for non-factoid answer sentence retrieval.</p>
-<h2 id="Capturing-Semantics-and-Context"><a href="#Capturing-Semantics-and-Context" class="headerlink" title="Capturing Semantics and Context"></a>Capturing Semantics and Context</h2><p><a href="http://rmit-ir.github.io/SummaryRank\\" target="_blank" rel="external">http://rmit-ir.github.io/SummaryRank\\</a><br>MK features:<br>\begin{itemize}<br>    \item ExactMatch: a binary feature indicating whether the query is a substring of the sentence.<br>    \item TermOverlap: measures the number of terms that are both in the query and the sentence after stopping and stemming.<br>    \item SynonymsOverlap. the fraction of query terms that have a synonym in the sentence, computed by using Wordnet.<br>    \item SentLength<br>    \item SentLocation<br>\end{itemize}<br>LM feature:\<br>LanguageModelScore. $$f_{LM}(Q,S)=\sum_{w\in Q}tf_{w,Q}log\frac{tf_{w,S}+\mu P(w|C)}{|S|+\mu}$$</p>
+<h2 id="Capturing-Semantics-and-Context"><a href="#Capturing-Semantics-and-Context" class="headerlink" title="Capturing Semantics and Context"></a>Capturing Semantics and Context</h2><p><a href="http://rmit-ir.github.io/SummaryRank\\" target="_blank" rel="external">http://rmit-ir.github.io/SummaryRank\\</a><br>MK features:</p>
+<ul>
+<li>ExactMatch: a binary feature indicating whether the query is a substring of the sentence.</li>
+<li>TermOverlap: measures the number of terms that are both in the query and the sentence after stopping and stemming.</li>
+<li>SynonymsOverlap. the fraction of query terms that have a synonym in the sentence, computed by using Wordnet.</li>
+<li>SentLength</li>
+<li>SentLocation<br>LM feature:\<br>LanguageModelScore. $$f_{LM}(Q,S)=\sum_{w\in Q}tf_{w,Q}log\frac{tf_{w,S}+\mu P(w|C)}{|S|+\mu}$$</li>
+</ul>
 <h2 id="Semantics-Features"><a href="#Semantics-Features" class="headerlink" title="Semantics Features"></a>Semantics Features</h2><ul>
 <li>ESA: Explicit Semantic Analysis is a method that represents text as a weighted mixture of a predetermined set of natural concepts defined byWikipedia articles which can be easily explained. Semantic relatedness is computed as the cosine similarity between the query ESA vector and the sentence ESA vector.</li>
 <li>WordEmbedding: Word embeddings are continuous vector representations of words learned from large amount of text data using neural networks. We compute this feature as the average pairwise cosine similarity between any query-word vector and any sentence-word vector.</li>
